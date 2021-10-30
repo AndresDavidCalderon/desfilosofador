@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://filters/filtersearch.gd" type="Script" id=1]
+[ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/aligner.gd" type="Script" id=3]
+[ext_resource path="res://filters/scroll.gd" type="Script" id=4]
+[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=5]
+
+[node name="filtersearch" type="Node"]
+script = ExtResource( 1 )
+filter = ExtResource( 2 )
+
+[node name="upcenter" type="Node2D" parent="."]
+position = Vector2( 539.885, 3.5636 )
+script = ExtResource( 3 )
+setx = true
+scaleview = Vector2( 0.5, 1 )
+safeposmult = Vector2( 0, 1 )
+
+[node name="scroll" type="ScrollContainer" parent="upcenter"]
+margin_left = -207.0
+margin_top = -4.0
+margin_right = 200.0
+margin_bottom = 595.0
+rect_clip_content = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbox" type="VBoxContainer" parent="upcenter/scroll"]
+custom_constants/separation = 30
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newfilter" type="Button" parent="."]
+margin_left = 4.56378
+margin_top = 3.5636
+margin_right = 220.564
+margin_bottom = 42.5636
+custom_fonts/font = ExtResource( 5 )
+text = "nuevo filtro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newfolder" type="Button" parent="."]
+margin_left = 4.56378
+margin_top = 50.3164
+margin_right = 237.564
+margin_bottom = 89.3164
+custom_fonts/font = ExtResource( 5 )
+text = "nueva carpeta"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="newfilter" to="." method="_on_newfilter_pressed"]

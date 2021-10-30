@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://menu/menu.gd" type="Script" id=2]
+[ext_resource path="res://filters/filtersearch.tscn" type="PackedScene" id=3]
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+filterlibrary = ExtResource( 3 )
+
+[node name="manager" type="Button" parent="."]
+anchor_left = 0.525
+anchor_top = 0.258
+anchor_right = 0.525
+anchor_bottom = 0.258
+margin_left = -184.528
+margin_top = -19.2422
+margin_right = 184.472
+margin_bottom = 19.7578
+custom_fonts/font = ExtResource( 1 )
+text = "biblioteca de filtros"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="use" type="Button" parent="."]
+anchor_left = 0.431446
+anchor_top = 0.692171
+anchor_right = 0.602345
+anchor_bottom = 0.715504
+margin_left = -54.4232
+margin_top = -12.2711
+margin_right = 54.5768
+margin_bottom = 12.7289
+custom_fonts/font = ExtResource( 1 )
+text = "Convertir y leer"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="manager" to="." method="_on_manager_pressed"]
