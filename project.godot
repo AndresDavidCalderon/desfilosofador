@@ -13,16 +13,26 @@ _global_script_classes=[ {
 "class": "aligner",
 "language": "GDScript",
 "path": "res://UI/aligner.gd"
+}, {
+"base": "Panel",
+"class": "popup",
+"language": "GDScript",
+"path": "res://UI/popup.gd"
 } ]
 _global_script_class_icons={
-"aligner": "res://ui/extendericon.png"
+"aligner": "res://ui/extendericon.png",
+"popup": "res://UI/popupicon.png"
 }
 
 [application]
 
 config/name="desfilosofador"
-run/main_scene="res://menu/menu.tscn"
+run/main_scene="res://reader/reader.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+globals="*res://globals.gd"
 
 [physics]
 

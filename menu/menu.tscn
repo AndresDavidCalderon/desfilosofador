@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://menu/menu.gd" type="Script" id=2]
 [ext_resource path="res://filters/filtersearch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://reader/reader.tscn" type="PackedScene" id=4]
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.840897
+margin_right = -0.840881
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 filterlibrary = ExtResource( 3 )
+read = ExtResource( 4 )
 
 [node name="manager" type="Button" parent="."]
 anchor_left = 0.525
@@ -44,3 +48,4 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="manager" to="." method="_on_manager_pressed"]
+[connection signal="pressed" from="use" to="." method="_on_use_pressed"]

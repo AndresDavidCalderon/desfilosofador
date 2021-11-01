@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://filters/filterinstance.gd" type="Script" id=2]
 
 [node name="filter" type="Control"]
 anchor_right = 1.0
@@ -8,6 +9,7 @@ anchor_bottom = 1.0
 margin_right = -620.0
 margin_bottom = -515.0
 rect_min_size = Vector2( 404, 85 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -81,7 +83,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="enabled" type="CheckBox" parent="."]
-margin_left = -10.0
-margin_top = -11.0
-margin_right = 14.0
-margin_bottom = 13.0
+margin_left = 376.496
+margin_top = 56.3842
+margin_right = 400.496
+margin_bottom = 80.3842
+
+[connection signal="text_changed" from="ui/of/origin" to="." method="_on_origin_text_changed"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/popup.gd" type="Script" id=1]
+[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0862745, 0.054902, 0.227451, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 2
+
+[node name="popup" type="Panel"]
+margin_left = -0.529724
+margin_right = 317.47
+margin_bottom = 120.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+margin_left = 23.5892
+margin_top = 3.17296
+margin_right = 291.589
+margin_bottom = 39.173
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "popup!"
+align = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Button" parent="."]
+margin_left = 301.759
+margin_top = -15.7403
+margin_right = 333.759
+margin_bottom = 16.2597
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vorder" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 39.0
+margin_right = 300.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="Label" parent="vorder"]
+margin_right = 284.0
+margin_bottom = 77.0
+custom_fonts/font = ExtResource( 3 )
+text = "stuff goes here, explains what happened and what to do.
+now im putting some extra space here so yeah."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="sort_children" from="vorder" to="." method="_on_vorder_sort_children"]

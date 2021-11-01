@@ -6,23 +6,31 @@
 [ext_resource path="res://filters/scroll.gd" type="Script" id=4]
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=5]
 
-[node name="filtersearch" type="Node"]
+[node name="filtersearch" type="Panel"]
+margin_left = 0.106518
+margin_top = 0.106518
+margin_right = 1021.11
+margin_bottom = 598.107
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 filter = ExtResource( 2 )
 
 [node name="upcenter" type="Node2D" parent="."]
-position = Vector2( 539.885, 3.5636 )
+position = Vector2( 510.5, 10 )
 script = ExtResource( 3 )
 setx = true
 scaleview = Vector2( 0.5, 1 )
+offset = Vector2( 0, 10 )
 safeposmult = Vector2( 0, 1 )
+istool = true
+userect = NodePath("..")
 
 [node name="scroll" type="ScrollContainer" parent="upcenter"]
 margin_left = -207.0
-margin_top = -4.0
 margin_right = 200.0
-margin_bottom = 595.0
-rect_clip_content = false
+margin_bottom = 588.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -57,4 +65,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="botright" type="Node2D" parent="."]
+position = Vector2( 1021, 598 )
+script = ExtResource( 3 )
+sety = true
+setx = true
+istool = true
+userect = NodePath("..")
+
+[node name="save" type="Button" parent="botright"]
+margin_left = -138.611
+margin_top = -54.5809
+margin_right = -7.61139
+margin_bottom = -15.5809
+custom_fonts/font = ExtResource( 5 )
+text = "guardar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="newfilter" to="." method="_on_newfilter_pressed"]
+[connection signal="pressed" from="botright/save" to="." method="_on_save_pressed"]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/aligner.gd" type="Script" id=2]
+[ext_resource path="res://filters/filtersearch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://reader/reader.gd" type="Script" id=4]
+[ext_resource path="res://UI/popup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=6]
+
+[node name="reader" type="Node"]
+script = ExtResource( 4 )
+
+[node name="new" type="Node2D" parent="."]
+
+[node name="read" type="Button" parent="new"]
+margin_left = 12.361
+margin_top = 12.7356
+margin_right = 92.361
+margin_bottom = 51.7356
+custom_fonts/font = ExtResource( 1 )
+text = "leer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center" type="Node2D" parent="new"]
+position = Vector2( 509.556, 285.732 )
+script = ExtResource( 2 )
+sety = true
+setx = true
+scaleview = Vector2( 0.5, 0.5 )
+
+[node name="text" type="TextEdit" parent="new/center"]
+margin_left = -409.115
+margin_top = -223.098
+margin_right = 409.885
+margin_bottom = 221.902
+custom_fonts/font = ExtResource( 6 )
+wrap_enabled = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="library" type="Button" parent="."]
+margin_left = 116.175
+margin_top = 13.375
+margin_right = 519.175
+margin_bottom = 52.375
+custom_fonts/font = ExtResource( 1 )
+text = "ver librería de filtros"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="librarycontainer" type="Node2D" parent="."]
+position = Vector2( 509.909, 281.651 )
+script = ExtResource( 2 )
+sety = true
+setx = true
+scaleview = Vector2( 0.5, 0.5 )
+
+[node name="filtersearch" parent="librarycontainer" instance=ExtResource( 3 )]
+position = Vector2( -424.724, -253.446 )
+scale = Vector2( 0.840534, 0.840534 )
+
+[node name="close" type="Button" parent="librarycontainer"]
+margin_left = -436.54
+margin_top = -265.933
+margin_right = -417.54
+margin_bottom = -245.933
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="read" type="Node2D" parent="."]
+
+[node name="reconstruct" type="Button" parent="read"]
+margin_left = 548.355
+margin_top = 12.8861
+margin_right = 747.355
+margin_bottom = 51.8861
+custom_fonts/font = ExtResource( 1 )
+text = "reconstruir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center" type="Node2D" parent="."]
+position = Vector2( 509.944, 282.705 )
+script = ExtResource( 2 )
+sety = true
+setx = true
+scaleview = Vector2( 0.5, 0.5 )
+
+[node name="popup" parent="center" instance=ExtResource( 5 )]
+visible = false
+margin_left = -164.443
+margin_top = -69.2777
+margin_right = 153.557
+margin_bottom = 50.7223
+
+[connection signal="pressed" from="new/read" to="." method="_on_read_pressed"]
+[connection signal="pressed" from="library" to="." method="_on_library_pressed"]
+[connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]
