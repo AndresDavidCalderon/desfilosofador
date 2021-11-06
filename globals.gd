@@ -1,3 +1,3 @@
 extends Node
 var popuper:popup
-var filterbyphrase={}
+var filterbyphrase:Dictionary={}

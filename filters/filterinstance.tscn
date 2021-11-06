@@ -23,10 +23,10 @@ __meta__ = {
 }
 
 [node name="ui" type="VBoxContainer" parent="."]
-margin_left = 5.0
-margin_top = 5.5
-margin_right = 396.0
-margin_bottom = 75.5
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 397.0
+margin_bottom = 76.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,9 +83,13 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="enabled" type="CheckBox" parent="."]
-margin_left = 376.496
-margin_top = 56.3842
-margin_right = 400.496
-margin_bottom = 80.3842
+margin_left = 375.128
+margin_top = 56.9628
+margin_right = 399.128
+margin_bottom = 80.9628
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="text_changed" from="ui/of/origin" to="." method="_on_origin_text_changed"]

@@ -10,6 +10,9 @@ func _on_library_pressed():
 	$librarycontainer/filtersearch.openfilters()
 	
 
-
+onready var reader=$read/center/text
+onready var compiler=$librarycontainer/filtersearch/upcenter/scroll/vbox
 func _on_read_pressed():
 	$librarycontainer/filtersearch.openfilters()
+	reader.text=compiler.compile($new/center/text.text)
+	$new.visible=false

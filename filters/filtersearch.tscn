@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://filters/filtersearch.gd" type="Script" id=1]
 [ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=3]
 [ext_resource path="res://filters/scroll.gd" type="Script" id=4]
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=5]
+[ext_resource path="res://filters/vbox.gd" type="Script" id=6]
 
 [node name="filtersearch" type="Panel"]
 margin_left = 0.106518
@@ -18,7 +19,7 @@ __meta__ = {
 filter = ExtResource( 2 )
 
 [node name="upcenter" type="Node2D" parent="."]
-position = Vector2( 510.5, 10 )
+position = Vector2( 510.502, 10 )
 script = ExtResource( 3 )
 setx = true
 scaleview = Vector2( 0.5, 1 )
@@ -39,6 +40,7 @@ __meta__ = {
 [node name="vbox" type="VBoxContainer" parent="upcenter/scroll"]
 custom_constants/separation = 30
 alignment = 2
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

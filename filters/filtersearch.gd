@@ -1,4 +1,4 @@
-extends Node2D
+extends Panel
 export(PackedScene) var filter
 export(bool) var onexe
 var fileman=File.new()

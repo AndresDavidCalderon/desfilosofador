@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -7,10 +7,51 @@
 [ext_resource path="res://UI/popup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=6]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0627451, 0.0666667, 0.0823529, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
 [node name="reader" type="Node"]
 script = ExtResource( 4 )
 
+[node name="read" type="Node2D" parent="."]
+
+[node name="reconstruct" type="Button" parent="read"]
+margin_left = 548.355
+margin_top = 12.8861
+margin_right = 747.355
+margin_bottom = 51.8861
+custom_fonts/font = ExtResource( 1 )
+text = "reconstruir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="center" type="Node2D" parent="read"]
+position = Vector2( 509.424, 277.187 )
+script = ExtResource( 2 )
+sety = true
+setx = true
+scaleview = Vector2( 0.5, 0.5 )
+
+[node name="text" type="RichTextLabel" parent="read/center"]
+margin_left = -393.253
+margin_top = -177.0
+margin_right = 395.747
+margin_bottom = 232.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/normal_font = ExtResource( 6 )
+text = "texto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="new" type="Node2D" parent="."]
+visible = false
 
 [node name="read" type="Button" parent="new"]
 margin_left = 12.361
@@ -54,6 +95,7 @@ __meta__ = {
 }
 
 [node name="librarycontainer" type="Node2D" parent="."]
+visible = false
 position = Vector2( 509.909, 281.651 )
 script = ExtResource( 2 )
 sety = true
@@ -61,28 +103,18 @@ setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
 [node name="filtersearch" parent="librarycontainer" instance=ExtResource( 3 )]
-position = Vector2( -424.724, -253.446 )
-scale = Vector2( 0.840534, 0.840534 )
+margin_left = -464.497
+margin_top = -256.49
+margin_right = 556.503
+margin_bottom = 341.51
+rect_scale = Vector2( 0.898282, 0.898282 )
 
 [node name="close" type="Button" parent="librarycontainer"]
-margin_left = -436.54
-margin_top = -265.933
-margin_right = -417.54
-margin_bottom = -245.933
+margin_left = -479.255
+margin_top = -266.6
+margin_right = -460.255
+margin_bottom = -246.6
 text = "x"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="read" type="Node2D" parent="."]
-
-[node name="reconstruct" type="Button" parent="read"]
-margin_left = 548.355
-margin_top = 12.8861
-margin_right = 747.355
-margin_bottom = 51.8861
-custom_fonts/font = ExtResource( 1 )
-text = "reconstruir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
