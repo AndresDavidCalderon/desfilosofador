@@ -83,13 +83,25 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="enabled" type="CheckBox" parent="."]
-margin_left = 375.128
-margin_top = 56.9628
-margin_right = 399.128
-margin_bottom = 80.9628
+margin_left = 335.816
+margin_top = 47.2925
+margin_right = 359.816
+margin_bottom = 71.2925
+pressed = true
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="delete" type="Button" parent="."]
+margin_left = 382.312
+margin_top = 61.2326
+margin_right = 401.312
+margin_bottom = 81.2326
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="text_changed" from="ui/of/origin" to="." method="_on_origin_text_changed"]
+[connection signal="pressed" from="delete" to="." method="queue_free"]

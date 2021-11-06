@@ -9,7 +9,11 @@ func _ready():
 		filedir=OS.get_executable_path()+"/filters.json"
 	else:
 		filedir="user://filters.json"
+func deleteall():
+	for i in $upcenter/scroll/vbox.get_children():
+		i.queue_free()
 func openfilters():
+	deleteall()
 	var error=fileman.open(filedir,File.READ)
 	if error==OK:
 		if fileman.get_as_text()!="":

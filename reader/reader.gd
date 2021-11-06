@@ -1,6 +1,7 @@
 extends Node
 
-
+func _ready():
+	$new.visible=true
 
 func _on_close_pressed():
 	$librarycontainer.visible=false
