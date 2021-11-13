@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://UI/aligner.gd"
 }, {
 "base": "Panel",
+"class": "libraryelement",
+"language": "GDScript",
+"path": "res://reader/element.gd"
+}, {
+"base": "Panel",
 "class": "popup",
 "language": "GDScript",
 "path": "res://UI/popup.gd"
 } ]
 _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
+"libraryelement": "res://filters/element.png",
 "popup": "res://UI/popupicon.png"
 }
 

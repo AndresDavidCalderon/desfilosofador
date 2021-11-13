@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -6,6 +6,49 @@
 [ext_resource path="res://reader/reader.gd" type="Script" id=4]
 [ext_resource path="res://UI/popup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=6]
+[ext_resource path="res://reader/options.gd" type="Script" id=7]
+[ext_resource path="res://reader/readoptions.gd" type="Script" id=8]
+[ext_resource path="res://UI/readtheme.tres" type="Theme" id=9]
+[ext_resource path="res://UI/font/AnonymousPro-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://reader/read.gd" type="Script" id=11]
+[ext_resource path="res://UI/left.png" type="Texture" id=12]
+[ext_resource path="res://reader/readersets.gd" type="Script" id=13]
+[ext_resource path="res://UI/right.png" type="Texture" id=14]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.129412, 0.101961, 0.156863, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.137255, 0.101961, 0.156863, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.203922, 0.188235, 0.188235, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.121569, 0.180392, 0.266667, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id=5]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+HBoxContainer/constants/separation = 9
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0627451, 0.0666667, 0.0823529, 1 )
@@ -15,21 +58,29 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[node name="reader" type="Node"]
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0666667, 0.054902, 0.109804, 1 )
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="reader" type="Panel"]
+margin_left = 1.0
+margin_right = 1029.0
+margin_bottom = 601.0
+theme = SubResource( 5 )
 script = ExtResource( 4 )
-
-[node name="read" type="Node2D" parent="."]
-
-[node name="reconstruct" type="Button" parent="read"]
-margin_left = 548.355
-margin_top = 12.8861
-margin_right = 747.355
-margin_bottom = 51.8861
-custom_fonts/font = ExtResource( 1 )
-text = "reconstruir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="read" type="Node2D" parent="."]
+visible = false
 
 [node name="center" type="Node2D" parent="read"]
 position = Vector2( 509.424, 277.187 )
@@ -43,26 +94,18 @@ margin_left = -393.253
 margin_top = -177.0
 margin_right = 395.747
 margin_bottom = 232.0
-custom_styles/normal = SubResource( 1 )
+focus_mode = 2
+theme = ExtResource( 9 )
 custom_fonts/normal_font = ExtResource( 6 )
+custom_styles/normal = SubResource( 1 )
 text = "texto"
+selection_enabled = true
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="new" type="Node2D" parent="."]
-visible = false
-
-[node name="read" type="Button" parent="new"]
-margin_left = 12.361
-margin_top = 12.7356
-margin_right = 92.361
-margin_bottom = 51.7356
-custom_fonts/font = ExtResource( 1 )
-text = "leer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="center" type="Node2D" parent="new"]
 position = Vector2( 509.556, 285.732 )
@@ -72,27 +115,138 @@ setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
 [node name="text" type="TextEdit" parent="new/center"]
-margin_left = -409.115
+margin_left = -409.0
 margin_top = -223.098
 margin_right = 409.885
 margin_bottom = 221.902
+theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 6 )
+text = "llllllllllloooooool"
 wrap_enabled = true
 caret_blink = true
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="library" type="Button" parent="."]
-margin_left = 116.175
-margin_top = 13.375
-margin_right = 519.175
-margin_bottom = 52.375
+[node name="options" type="HBoxContainer" parent="."]
+margin_left = 25.0
+margin_top = 10.0
+margin_right = 1010.0
+margin_bottom = 56.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="read" type="Button" parent="options"]
+margin_right = 70.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "leer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="library" type="Button" parent="options"]
+margin_left = 79.0
+margin_right = 472.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 1 )
 text = "ver librería de filtros"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="reconstruct" type="Button" parent="options"]
+margin_left = 481.0
+margin_right = 670.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "reconstruir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="change" type="Button" parent="options"]
+margin_left = 679.0
+margin_right = 902.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "cambiar texto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="readparams" type="Node2D" parent="."]
+position = Vector2( 1026.32, 283.306 )
+script = ExtResource( 2 )
+sety = true
+setx = true
+scaleview = Vector2( 1, 0.5 )
+
+[node name="readersets" type="Panel" parent="readparams"]
+margin_top = -205.0
+margin_right = 646.0
+margin_bottom = 205.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+duration = 0.5
+left = ExtResource( 12 )
+right = ExtResource( 14 )
+
+[node name="readoptions" type="VBoxContainer" parent="readparams/readersets"]
+margin_left = 9.0
+margin_top = 1.0
+margin_right = 641.0
+margin_bottom = 397.0
+mouse_filter = 2
+alignment = 1
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="font" type="HBoxContainer" parent="readparams/readersets/readoptions"]
+margin_top = 181.0
+margin_right = 632.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 80, 0 )
+
+[node name="title" type="Label" parent="readparams/readersets/readoptions/font"]
+margin_right = 323.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 6 )
+text = "tamaño de la fuente"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fontsize" type="HSlider" parent="readparams/readersets/readoptions/font"]
+margin_left = 332.0
+margin_right = 632.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 300, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hide" type="TextureButton" parent="readparams/readersets"]
+margin_left = -59.0
+margin_top = -4.0
+margin_right = -3.0
+margin_bottom = 409.0
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tween" type="Tween" parent="readparams/readersets"]
 
 [node name="librarycontainer" type="Node2D" parent="."]
 visible = false
@@ -108,6 +262,7 @@ margin_top = -256.49
 margin_right = 556.503
 margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
+custom_styles/panel = SubResource( 7 )
 
 [node name="close" type="Button" parent="librarycontainer"]
 margin_left = -479.255
@@ -133,6 +288,12 @@ margin_top = -69.2777
 margin_right = 153.557
 margin_bottom = 50.7223
 
-[connection signal="pressed" from="new/read" to="." method="_on_read_pressed"]
-[connection signal="pressed" from="library" to="." method="_on_library_pressed"]
+[connection signal="visibility_changed" from="read" to="options" method="setvis"]
+[connection signal="visibility_changed" from="new" to="options" method="setvis"]
+[connection signal="pressed" from="options/read" to="." method="_on_read_pressed"]
+[connection signal="pressed" from="options/library" to="." method="_on_library_pressed"]
+[connection signal="pressed" from="options/reconstruct" to="." method="_on_reconstruct_pressed"]
+[connection signal="pressed" from="options/change" to="." method="_on_change_pressed"]
+[connection signal="value_changed" from="readparams/readersets/readoptions/font/fontsize" to="readparams/readersets/readoptions" method="_on_fontsize_value_changed"]
+[connection signal="pressed" from="readparams/readersets/hide" to="readparams/readersets" method="_on_hide_pressed"]
 [connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]

@@ -1,17 +1,21 @@
 extends Panel
 export(PackedScene) var filter
+export(PackedScene) var folder
 export(bool) var onexe
+var filtertree=[{"name":"root","enabled":true,"subelements":[]}]
 var fileman=File.new()
 var filedir
+var currentfolder:Dictionary=filtertree[0]
 onready var box=$upcenter/scroll/vbox
 func _ready():
 	if onexe:
 		filedir=OS.get_executable_path()+"/filters.json"
 	else:
 		filedir="user://filters.json"
+	openfilters()
 func deleteall():
-	for i in $upcenter/scroll/vbox.get_children():
-		i.queue_free()
+	for i in filtertree:
+		i.delete()
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)
@@ -32,13 +36,10 @@ func openfilters():
 	else:
 		globals.popuper.popup("error abriendo el archivo","error "+str(error))
 func savefilters():
-	var filters=[]
-	for i in box.get_children().size():
-		filters.append(box.get_child(i).getsavedata())
 	var error=fileman.open(filedir,File.WRITE)
 	if error==OK:
-		fileman.store_string(JSON.print(filters))
-		prints("se guardo:",JSON.print(filters))
+		fileman.store_string(JSON.print(filtertree))
+		prints("se guardo:",JSON.print(filtertree))
 		fileman.close()
 	else:
 		globals.popuper.popup("error guardando!","error "+str(error))
@@ -50,3 +51,7 @@ func _on_save_pressed():
 func _notification(what):
 	if what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		savefilters()
+
+func addelement(scene:PackedScene):
+	currentfolder["subelements"].append((scene.instance() as libraryelement).getsavedata())
+	box.openfolder(currentfolder)

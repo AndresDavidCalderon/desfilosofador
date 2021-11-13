@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://filters/filterinstance.gd" type="Script" id=2]
 
-[node name="filter" type="Control"]
+[node name="filter" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -620.0
@@ -13,14 +13,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="back" type="Panel" parent="."]
-margin_top = 1.0
-margin_right = 404.0
-margin_bottom = 84.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+type = "filter"
 
 [node name="ui" type="VBoxContainer" parent="."]
 margin_left = 6.0
@@ -103,5 +96,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="text_changed" from="ui/of/origin" to="." method="_on_origin_text_changed"]
-[connection signal="pressed" from="delete" to="." method="queue_free"]
+[connection signal="text_changed" from="ui/of/origin" to="." method="register"]
+[connection signal="pressed" from="delete" to="." method="delete"]
