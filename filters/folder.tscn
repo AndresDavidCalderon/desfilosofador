@@ -46,3 +46,13 @@ text = "abrir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="delete" type="Button" parent="."]
+margin_left = 41.9195
+margin_top = 57.9738
+margin_right = 60.9195
+margin_bottom = 77.9738
+text = "x"
+
+[connection signal="pressed" from="open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="delete" to="." method="delete"]

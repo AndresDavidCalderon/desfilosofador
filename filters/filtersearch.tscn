@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://filters/filtersearch.gd" type="Script" id=1]
 [ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://filters/vbox.gd" type="Script" id=6]
 [ext_resource path="res://filters/folder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/folderout.png" type="Texture" id=8]
+[ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=9]
 
 [sub_resource type="Theme" id=1]
 
@@ -38,7 +39,7 @@ userect = NodePath("..")
 margin_left = -207.0
 margin_top = 40.0
 margin_right = 200.0
-margin_bottom = 572.0
+margin_bottom = 541.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -105,6 +106,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="bottom" type="Node2D" parent="."]
+position = Vector2( 510.502, 598 )
+script = ExtResource( 3 )
+sety = true
+setx = true
+scaleview = Vector2( 0.5, 1 )
+istool = true
+userect = NodePath("..")
+
+[node name="dir" type="Label" parent="bottom"]
+margin_left = -207.0
+margin_top = -34.0
+margin_right = 206.0
+margin_bottom = -16.0
+custom_fonts/font = ExtResource( 9 )
+text = "root"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="upcenter/folderup" to="." method="_on_folderup_pressed"]
 [connection signal="pressed" from="newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="botright/save" to="." method="_on_save_pressed"]

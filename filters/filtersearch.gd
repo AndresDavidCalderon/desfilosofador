@@ -2,10 +2,11 @@ extends Panel
 export(PackedScene) var filter
 export(PackedScene) var folder
 export(bool) var onexe
-var filtertree=[{"name":"root","enabled":true,"subelements":[]}]
+var defaulttree=[{"origin":-1,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"inside":[]}]
+var filtertree:Array=defaulttree
 var fileman=File.new()
 var filedir
-var currentfolder:Dictionary=filtertree[0]
+var index=1
 onready var box=$upcenter/scroll/vbox
 func _ready():
 	if onexe:
@@ -14,8 +15,7 @@ func _ready():
 		filedir="user://filters.json"
 	openfilters()
 func deleteall():
-	for i in filtertree:
-		i.delete()
+	filtertree=defaulttree
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)
@@ -23,28 +23,27 @@ func openfilters():
 		if fileman.get_as_text()!="":
 			var dict=JSON.parse(fileman.get_as_text())
 			if dict.error==OK:
-				dict=dict.result as Array
-				for i in dict.size():
-					var new=filter.instance()
-					box.add_child(new)
-					new.fromfile(dict[i])
+				filtertree=dict.result as Array
+				box.openfolder(1)
 			else:
 				globals.popuper.popup("error abriendo los filtros","error "+str(dict.error)+"en la linea "+str(dict.error_line))
 		else:
 			print("empty file.")
+			box.openfolder(1)
 		fileman.close()
 	else:
 		globals.popuper.popup("error abriendo el archivo","error "+str(error))
 func savefilters():
+	box.savecurrent()
 	var error=fileman.open(filedir,File.WRITE)
 	if error==OK:
-		fileman.store_string(JSON.print(filtertree))
+		fileman.store_string(JSON.print(filtertree,"\t"))
 		prints("se guardo:",JSON.print(filtertree))
 		fileman.close()
 	else:
 		globals.popuper.popup("error guardando!","error "+str(error))
 func _on_newfilter_pressed():
-	box.add_child(filter.instance())
+	addelement(filter)
 func _on_save_pressed():
 	savefilters()
 	globals.popuper.popup("guardado!")
@@ -53,5 +52,22 @@ func _notification(what):
 		savefilters()
 
 func addelement(scene:PackedScene):
-	currentfolder["subelements"].append((scene.instance() as libraryelement).getsavedata())
-	box.openfolder(currentfolder)
+	var new=scene.instance() as libraryelement
+	new.index=filtertree[index]["inside"].size()
+	box.add_child(new)
+	var data:Dictionary
+	if new.has_method("getdef"):
+		data=new.getonnew()
+	else:
+		data=new.getsavedata()
+	filtertree[index]["inside"].append(data)
+
+
+func _on_newfolder_pressed():
+	addelement(folder)
+
+
+func _on_folderup_pressed():
+	box.savecurrent()
+	if index==1:return
+	box.openfolder(filtertree[index]["origin"])
