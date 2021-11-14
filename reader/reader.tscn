@@ -263,6 +263,7 @@ margin_right = 556.503
 margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
 custom_styles/panel = SubResource( 7 )
+onexe = false
 
 [node name="close" type="Button" parent="librarycontainer"]
 margin_left = -479.255

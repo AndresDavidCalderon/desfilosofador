@@ -16,9 +16,17 @@ func isbetween(idx:int,between:String,text:String):
 func addbetween(text:String,added:String,where:int):
 	return text.left(where)+added+text.right(where)
 #replaces the first apeareance of a substring in a text.
-func replacefind(from:int,find:String,text:String,to:String):
-	var where=text.find(find,from)
+func replacefind(find:String,text:String,to:String,where:int):
 	#quitar la palabra
 	text=cutout(where,where+find.length(),text)
 	text=addbetween(text,to,where)
 	return text
+func findlastuntil(until:int,text:String,find:String):
+	var from=0
+	while true:
+		var lastfrom=from
+		from=text.find(find,from)
+		if from==-1 or from>until:
+			return lastfrom
+func cutright(until:int,text:String):
+	return cutout(until,text.length(),text)

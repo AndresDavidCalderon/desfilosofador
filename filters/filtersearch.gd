@@ -62,12 +62,12 @@ func addelement(scene:PackedScene):
 		data=new.getsavedata()
 	filtertree[index]["inside"].append(data)
 
-
 func _on_newfolder_pressed():
 	addelement(folder)
-
 
 func _on_folderup_pressed():
 	box.savecurrent()
 	if index==1:return
 	box.openfolder(filtertree[index]["origin"])
+	var text=$bottom/dir.text
+	$bottom/dir.text=stringfunc.cutright(text.find_last("/"),text)

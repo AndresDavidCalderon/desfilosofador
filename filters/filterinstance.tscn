@@ -96,5 +96,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="text_changed" from="ui/of/origin" to="." method="register"]
 [connection signal="pressed" from="delete" to="." method="delete"]
