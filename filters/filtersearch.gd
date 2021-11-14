@@ -1,6 +1,7 @@
 extends Panel
 export(PackedScene) var filter
 export(PackedScene) var folder
+export(Dictionary) var scriptonfound
 export(bool) var onexe
 var defaulttree=[{"origin":-1,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"inside":[]}]
 var filtertree:Array=defaulttree
@@ -16,6 +17,12 @@ func _ready():
 	openfilters()
 func deleteall():
 	filtertree=defaulttree
+func refresh():
+	globals.filterbyphrase={}
+	for i in filtertree:
+		for j in i["inside"]:
+			if scriptonfound.has(j["type"]):
+				scriptonfound[j["type"]].new().fromfile(j)
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)
@@ -38,7 +45,6 @@ func savefilters():
 	var error=fileman.open(filedir,File.WRITE)
 	if error==OK:
 		fileman.store_string(JSON.print(filtertree,"\t"))
-		prints("se guardo:",JSON.print(filtertree))
 		fileman.close()
 	else:
 		globals.popuper.popup("error guardando!","error "+str(error))

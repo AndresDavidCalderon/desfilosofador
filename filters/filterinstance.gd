@@ -9,6 +9,3 @@ func fromfile(save:Dictionary):
 	$enabled.pressed=save["enabled"]
 	new.text=save["to"]
 	from.text=save["of"]
-
-var oldtext=""
-
