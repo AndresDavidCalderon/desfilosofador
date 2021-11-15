@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=1]
 [ext_resource path="res://filters/filterinstance.gd" type="Script" id=2]
 
 [node name="filter" type="Panel"]
@@ -19,21 +19,22 @@ type = "filter"
 margin_left = 6.0
 margin_top = 6.0
 margin_right = 397.0
-margin_bottom = 76.0
+margin_bottom = 74.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="of" type="HBoxContainer" parent="ui"]
 margin_right = 391.0
-margin_bottom = 33.0
+margin_bottom = 32.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="of" type="Label" parent="ui/of"]
-margin_right = 187.0
-margin_bottom = 33.0
+margin_top = 5.0
+margin_right = 132.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 1 )
 text = "reemplazar:"
 __meta__ = {
@@ -41,10 +42,11 @@ __meta__ = {
 }
 
 [node name="origin" type="LineEdit" parent="ui/of"]
-margin_left = 191.0
-margin_right = 391.0
-margin_bottom = 33.0
-rect_min_size = Vector2( 200, 0 )
+margin_left = 136.0
+margin_right = 376.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 240, 0 )
+custom_fonts/font = ExtResource( 1 )
 placeholder_text = "frase de origen"
 caret_blink = true
 caret_blink_speed = 0.5
@@ -53,24 +55,26 @@ __meta__ = {
 }
 
 [node name="result" type="HBoxContainer" parent="ui"]
-margin_top = 37.0
+margin_top = 36.0
 margin_right = 391.0
-margin_bottom = 70.0
+margin_bottom = 68.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="with" type="Label" parent="ui/result"]
-margin_right = 68.0
-margin_bottom = 33.0
+margin_top = 5.0
+margin_right = 48.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 1 )
 text = "por:"
 
 [node name="new" type="LineEdit" parent="ui/result"]
-margin_left = 72.0
-margin_right = 272.0
-margin_bottom = 33.0
-rect_min_size = Vector2( 200, 0 )
+margin_left = 52.0
+margin_right = 302.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = ExtResource( 1 )
 placeholder_text = "nueva frase"
 caret_blink = true
 caret_blink_speed = 0.5
@@ -87,10 +91,10 @@ __meta__ = {
 }
 
 [node name="delete" type="Button" parent="."]
-margin_left = 382.312
-margin_top = 61.2326
-margin_right = 401.312
-margin_bottom = 81.2326
+margin_left = 365.794
+margin_top = 48.4903
+margin_right = 384.794
+margin_bottom = 68.4903
 text = "x"
 __meta__ = {
 "_edit_use_anchors_": false

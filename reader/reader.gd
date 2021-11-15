@@ -22,7 +22,7 @@ func _on_read_pressed():
 
 func _on_reconstruct_pressed():
 	reader.text=compiler.compile($new/center/text.text)
-
+	
 
 func _on_change_pressed():
 	$new.visible=true

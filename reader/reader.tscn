@@ -9,11 +9,12 @@
 [ext_resource path="res://reader/options.gd" type="Script" id=7]
 [ext_resource path="res://reader/readoptions.gd" type="Script" id=8]
 [ext_resource path="res://UI/readtheme.tres" type="Theme" id=9]
-[ext_resource path="res://UI/font/AnonymousPro-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=10]
 [ext_resource path="res://reader/read.gd" type="Script" id=11]
 [ext_resource path="res://UI/left.png" type="Texture" id=12]
 [ext_resource path="res://reader/readersets.gd" type="Script" id=13]
 [ext_resource path="res://UI/right.png" type="Texture" id=14]
+[ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.129412, 0.101961, 0.156863, 1 )
@@ -58,10 +59,6 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 10 )
-
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0666667, 0.054902, 0.109804, 1 )
 corner_radius_top_left = 7
@@ -80,7 +77,6 @@ __meta__ = {
 }
 
 [node name="read" type="Node2D" parent="."]
-visible = false
 
 [node name="center" type="Node2D" parent="read"]
 position = Vector2( 509.424, 277.187 )
@@ -89,23 +85,23 @@ sety = true
 setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
-[node name="text" type="RichTextLabel" parent="read/center"]
-margin_left = -393.253
+[node name="text" type="TextEdit" parent="read/center"]
+margin_left = -400.0
 margin_top = -177.0
-margin_right = 395.747
+margin_right = 400.0
 margin_bottom = 232.0
-focus_mode = 2
 theme = ExtResource( 9 )
-custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
 custom_styles/normal = SubResource( 1 )
 text = "texto"
-selection_enabled = true
+readonly = true
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="new" type="Node2D" parent="."]
+visible = false
 
 [node name="center" type="Node2D" parent="new"]
 position = Vector2( 509.556, 285.732 )
@@ -142,6 +138,7 @@ __meta__ = {
 [node name="read" type="Button" parent="options"]
 margin_right = 70.0
 margin_bottom = 46.0
+hint_tooltip = "ver el texto mejorado"
 custom_fonts/font = ExtResource( 1 )
 text = "leer"
 __meta__ = {
@@ -162,6 +159,7 @@ __meta__ = {
 margin_left = 481.0
 margin_right = 670.0
 margin_bottom = 46.0
+hint_tooltip = "aplica cambios a la libreria de filtros"
 custom_fonts/font = ExtResource( 1 )
 text = "reconstruir"
 __meta__ = {
@@ -172,6 +170,7 @@ __meta__ = {
 margin_left = 679.0
 margin_right = 902.0
 margin_bottom = 46.0
+hint_tooltip = "cambia el texto a convertir"
 custom_fonts/font = ExtResource( 1 )
 text = "cambiar texto"
 __meta__ = {
@@ -201,7 +200,7 @@ right = ExtResource( 14 )
 margin_left = 9.0
 margin_top = 1.0
 margin_right = 641.0
-margin_bottom = 397.0
+margin_bottom = 409.0
 mouse_filter = 2
 alignment = 1
 script = ExtResource( 8 )
@@ -210,15 +209,15 @@ __meta__ = {
 }
 
 [node name="font" type="HBoxContainer" parent="readparams/readersets/readoptions"]
-margin_top = 181.0
+margin_top = 193.0
 margin_right = 632.0
-margin_bottom = 214.0
+margin_bottom = 215.0
 rect_min_size = Vector2( 80, 0 )
 
 [node name="title" type="Label" parent="readparams/readersets/readoptions/font"]
-margin_right = 323.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 6 )
+margin_right = 228.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 10 )
 text = "tamaño de la fuente"
 align = 1
 __meta__ = {
@@ -226,8 +225,8 @@ __meta__ = {
 }
 
 [node name="fontsize" type="HSlider" parent="readparams/readersets/readoptions/font"]
-margin_left = 332.0
-margin_right = 632.0
+margin_left = 237.0
+margin_right = 537.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 300, 0 )
 __meta__ = {
@@ -263,7 +262,9 @@ margin_right = 556.503
 margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
 custom_styles/panel = SubResource( 7 )
-onexe = false
+scriptonfound = {
+"filter": ExtResource( 15 )
+}
 
 [node name="close" type="Button" parent="librarycontainer"]
 margin_left = -479.255

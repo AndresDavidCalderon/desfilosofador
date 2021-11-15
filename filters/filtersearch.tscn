@@ -8,10 +8,11 @@
 [ext_resource path="res://filters/vbox.gd" type="Script" id=6]
 [ext_resource path="res://filters/folder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/folderout.png" type="Texture" id=8]
-[ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=9]
+[ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=10]
 
 [sub_resource type="Theme" id=1]
+default_font = ExtResource( 9 )
 
 [node name="filtersearch" type="Panel"]
 margin_left = 0.106518
@@ -120,10 +121,9 @@ istool = true
 userect = NodePath("..")
 
 [node name="dir" type="Label" parent="bottom"]
-margin_left = -207.0
-margin_top = -34.0
+margin_left = -427.0
+margin_top = -39.0
 margin_right = 206.0
-margin_bottom = -16.0
 custom_fonts/font = ExtResource( 9 )
 text = "root"
 align = 2

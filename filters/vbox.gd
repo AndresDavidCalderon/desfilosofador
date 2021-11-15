@@ -2,12 +2,14 @@ extends VBoxContainer
 export(Dictionary) var scenebytype
 onready var root=get_parent().get_parent().get_parent()
 func compile(text:String):
+	root.refresh()
 	for i in globals.filterbyphrase.keys():
 		var pos=0
 		var timesfound=0
 		while true:
 			pos=text.find(i,pos)
 			if pos!=-1:
+				pos+=1
 				timesfound+=1
 				prints("se encontró la redundancia:",i,"por ves #",timesfound)
 				for j in globals.filterbyphrase[i].size():

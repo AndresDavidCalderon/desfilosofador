@@ -18,6 +18,7 @@ func _ready():
 func deleteall():
 	filtertree=defaulttree
 func refresh():
+	box.savecurrent()
 	globals.filterbyphrase={}
 	for i in filtertree:
 		for j in i["inside"]:
