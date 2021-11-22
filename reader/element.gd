@@ -1,7 +1,11 @@
 extends Panel
 export(String) var type
+export(NodePath) onready var enabler=get_node(enabler) as CheckBox
 var index:int
 class_name libraryelement,"res://filters/element.png"
+func _ready():
+	if not get_parent().root.filtertree[get_parent().root.index]["enabled"]:
+		enabler.disabled=true
 func getsavedata():
 	var data={"type":type}
 	if has_method("getsave"):

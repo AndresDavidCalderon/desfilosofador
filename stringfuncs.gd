@@ -17,6 +17,11 @@ func isbetween(idx:int,between:String,text:String):
 				return false
 		found+=1
 		isopen=not isopen
+func isbracketed(idx:int,between:String,text:String):
+	var isopen=false
+	var from=0
+	while true:
+		pass
 func addbetween(text:String,added:String,where:int):
 	return text.left(where-1)+added+text.right(where)
 #replaces the first apeareance of a substring in a text.
@@ -33,6 +38,6 @@ func findlastuntil(until:int,text:String,find:String):
 		if from==-1 or from>until:
 			return lastfrom
 func cutright(until:int,text:String):
-	return cutout(until,text.length(),text)
+	return cutout(until,text.length()+1,text)
 func withinquotes(idx:int,text:String):
 	return isbetween(idx,"\"",text)

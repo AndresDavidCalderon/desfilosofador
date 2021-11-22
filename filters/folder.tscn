@@ -12,6 +12,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 type = "folder"
+enabler = NodePath("enabled")
 
 [node name="name" type="LineEdit" parent="."]
 margin_left = 7.0
@@ -25,10 +26,10 @@ __meta__ = {
 }
 
 [node name="enabled" type="CheckBox" parent="."]
-margin_left = 7.72648
-margin_top = 44.4161
-margin_right = 31.7265
-margin_bottom = 68.4161
+margin_left = 39.2674
+margin_top = 46.1999
+margin_right = 63.2674
+margin_bottom = 70.1999
 pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,11 +47,22 @@ __meta__ = {
 }
 
 [node name="delete" type="Button" parent="."]
-margin_left = 39.5598
-margin_top = 45.2315
-margin_right = 58.5598
-margin_bottom = 65.2315
+margin_left = 7.15391
+margin_top = 47.9072
+margin_right = 26.1539
+margin_bottom = 67.9072
 text = "x"
 
+[node name="doall" type="Button" parent="."]
+visible = false
+margin_left = 77.5958
+margin_top = 41.9195
+margin_right = 257.596
+margin_bottom = 69.9195
+custom_fonts/font = ExtResource( 1 )
+text = "habilitar todo"
+
+[connection signal="toggled" from="enabled" to="." method="_on_enabled_toggled"]
 [connection signal="pressed" from="open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="delete" to="." method="delete"]
+[connection signal="pressed" from="doall" to="." method="_on_doall_pressed"]

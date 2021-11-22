@@ -1,5 +1,6 @@
 extends libraryelement
 var saveindex
+var whenenabled=[]
 func _ready():
 	get_parent().connect("beforesave",self,"presave")
 func getsave(data):
@@ -12,10 +13,10 @@ func _on_open_pressed():
 	get_parent().openfolder(saveindex)
 func fromfile(data):
 	$name.text=data["name"]
-	$enabled.pressed=data["enabled"]
 	saveindex=data["index"]
+	$enabled.pressed=data["enabled"]
 func getdef(data):
-	get_parent().root.filtertree.append({"inside":[],"origin":get_parent().root.index})
+	get_parent().root.filtertree.append({"inside":[],"enabled":true,"origin":get_parent().root.index})
 	data["index"]=get_parent().root.filtertree.size()-1
 	saveindex=data["index"]
 	print("set index",index)
@@ -34,3 +35,7 @@ func customdelete():
 		get_parent().add_child(new)
 		new.delete()
 	get_parent().root.filtertree.remove(saveindex)
+
+
+func _on_enabled_toggled(button_pressed):
+	get_parent().root.filtertree[saveindex]["enabled"]=button_pressed

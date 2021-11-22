@@ -1,20 +1,20 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
 [ext_resource path="res://filters/filtersearch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://reader/reader.gd" type="Script" id=4]
 [ext_resource path="res://UI/popup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/font/text.tres" type="DynamicFont" id=6]
 [ext_resource path="res://reader/options.gd" type="Script" id=7]
-[ext_resource path="res://reader/readoptions.gd" type="Script" id=8]
+[ext_resource path="res://UI/hideable.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/readtheme.tres" type="Theme" id=9]
-[ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=10]
+[ext_resource path="res://reader/tools/search.gd" type="Script" id=10]
 [ext_resource path="res://reader/read.gd" type="Script" id=11]
-[ext_resource path="res://UI/left.png" type="Texture" id=12]
-[ext_resource path="res://reader/readersets.gd" type="Script" id=13]
-[ext_resource path="res://UI/right.png" type="Texture" id=14]
+[ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=12]
+[ext_resource path="res://reader/tools/tools.gd" type="Script" id=13]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
+[ext_resource path="res://UI/search.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.129412, 0.101961, 0.156863, 1 )
@@ -44,8 +44,9 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="Theme" id=5]
-default_font = ExtResource( 1 )
+default_font = ExtResource( 12 )
 Button/colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+Button/fonts/font = ExtResource( 12 )
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
@@ -85,17 +86,18 @@ sety = true
 setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
-[node name="text" type="TextEdit" parent="read/center"]
+[node name="text" type="RichTextLabel" parent="read/center"]
 margin_left = -400.0
 margin_top = -177.0
 margin_right = 400.0
 margin_bottom = 232.0
 theme = ExtResource( 9 )
-custom_colors/font_color_readonly = Color( 1, 1, 1, 1 )
 custom_styles/normal = SubResource( 1 )
-text = "texto"
-readonly = true
-script = ExtResource( 11 )
+bbcode_enabled = true
+bbcode_text = "converted text"
+text = "converted text"
+scroll_active = false
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,53 +127,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="aligner" type="Node2D" parent="."]
+position = Vector2( 514, 78.306 )
+script = ExtResource( 2 )
+setx = true
+scaleview = Vector2( 0.5, 1 )
+fromzero = false
+istool = true
+userect = NodePath("..")
+
+[node name="tools" type="HBoxContainer" parent="aligner"]
+margin_left = -406.0
+margin_top = -16.0
+margin_right = 399.0
+margin_bottom = 22.0
+mouse_filter = 2
+alignment = 1
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="search" type="Button" parent="aligner/tools"]
+margin_left = 383.0
+margin_right = 421.0
+margin_bottom = 38.0
+toggle_mode = true
+icon = ExtResource( 16 )
+script = ExtResource( 10 )
+
+[node name="options" type="VBoxContainer" parent="aligner/tools/search"]
+margin_left = -85.0
+margin_top = 46.0
+margin_right = 129.0
+margin_bottom = 161.0
+
+[node name="terms" type="LineEdit" parent="aligner/tools/search/options"]
+margin_right = 214.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="found" type="Label" parent="aligner/tools/search/options"]
+margin_top = 36.0
+margin_right = 214.0
+margin_bottom = 58.0
+text = "found 0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="options" type="HBoxContainer" parent="."]
 margin_left = 25.0
 margin_top = 10.0
 margin_right = 1010.0
-margin_bottom = 56.0
+margin_bottom = 39.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="read" type="Button" parent="options"]
-margin_right = 70.0
-margin_bottom = 46.0
+margin_right = 50.0
+margin_bottom = 29.0
 hint_tooltip = "ver el texto mejorado"
-custom_fonts/font = ExtResource( 1 )
 text = "leer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="library" type="Button" parent="options"]
-margin_left = 79.0
-margin_right = 472.0
-margin_bottom = 46.0
-custom_fonts/font = ExtResource( 1 )
+margin_left = 59.0
+margin_right = 337.0
+margin_bottom = 29.0
 text = "ver librería de filtros"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="reconstruct" type="Button" parent="options"]
-margin_left = 481.0
-margin_right = 670.0
-margin_bottom = 46.0
+margin_left = 346.0
+margin_right = 480.0
+margin_bottom = 29.0
 hint_tooltip = "aplica cambios a la libreria de filtros"
-custom_fonts/font = ExtResource( 1 )
 text = "reconstruir"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="change" type="Button" parent="options"]
-margin_left = 679.0
-margin_right = 902.0
-margin_bottom = 46.0
+margin_left = 489.0
+margin_right = 647.0
+margin_bottom = 29.0
 hint_tooltip = "cambia el texto a convertir"
-custom_fonts/font = ExtResource( 1 )
 text = "cambiar texto"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -184,68 +234,18 @@ sety = true
 setx = true
 scaleview = Vector2( 1, 0.5 )
 
-[node name="readersets" type="Panel" parent="readparams"]
-margin_top = -205.0
-margin_right = 646.0
-margin_bottom = 205.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-duration = 0.5
-left = ExtResource( 12 )
-right = ExtResource( 14 )
+[node name="readersets" parent="readparams" instance=ExtResource( 8 )]
 
-[node name="readoptions" type="VBoxContainer" parent="readparams/readersets"]
-margin_left = 9.0
-margin_top = 1.0
-margin_right = 641.0
-margin_bottom = 409.0
-mouse_filter = 2
-alignment = 1
-script = ExtResource( 8 )
+[node name="scroll" type="ScrollContainer" parent="readparams/readersets"]
+margin_left = 15.0
+margin_top = 22.0
+margin_right = 633.0
+margin_bottom = 390.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="font" type="HBoxContainer" parent="readparams/readersets/readoptions"]
-margin_top = 193.0
-margin_right = 632.0
-margin_bottom = 215.0
-rect_min_size = Vector2( 80, 0 )
-
-[node name="title" type="Label" parent="readparams/readersets/readoptions/font"]
-margin_right = 228.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 10 )
-text = "tamaño de la fuente"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="fontsize" type="HSlider" parent="readparams/readersets/readoptions/font"]
-margin_left = 237.0
-margin_right = 537.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 300, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hide" type="TextureButton" parent="readparams/readersets"]
-margin_left = -59.0
-margin_top = -4.0
-margin_right = -3.0
-margin_bottom = 409.0
-texture_normal = ExtResource( 12 )
-expand = true
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="tween" type="Tween" parent="readparams/readersets"]
+[node name="list" type="VBoxContainer" parent="readparams/readersets/scroll"]
 
 [node name="librarycontainer" type="Node2D" parent="."]
 visible = false
@@ -291,11 +291,12 @@ margin_right = 153.557
 margin_bottom = 50.7223
 
 [connection signal="visibility_changed" from="read" to="options" method="setvis"]
+[connection signal="visibility_changed" from="read/center/text" to="aligner/tools" method="_on_text_visibility_changed"]
 [connection signal="visibility_changed" from="new" to="options" method="setvis"]
+[connection signal="visibility_changed" from="new/center/text" to="aligner/tools" method="_on_text_visibility_changed"]
+[connection signal="text_changed" from="aligner/tools/search/options/terms" to="aligner/tools/search" method="_on_terms_text_changed"]
 [connection signal="pressed" from="options/read" to="." method="_on_read_pressed"]
 [connection signal="pressed" from="options/library" to="." method="_on_library_pressed"]
 [connection signal="pressed" from="options/reconstruct" to="." method="_on_reconstruct_pressed"]
 [connection signal="pressed" from="options/change" to="." method="_on_change_pressed"]
-[connection signal="value_changed" from="readparams/readersets/readoptions/font/fontsize" to="readparams/readersets/readoptions" method="_on_fontsize_value_changed"]
-[connection signal="pressed" from="readparams/readersets/hide" to="readparams/readersets" method="_on_hide_pressed"]
 [connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]

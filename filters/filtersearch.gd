@@ -3,7 +3,7 @@ export(PackedScene) var filter
 export(PackedScene) var folder
 export(Dictionary) var scriptonfound
 export(bool) var onexe
-var defaulttree=[{"origin":-1,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"inside":[]}]
+var defaulttree=[{"origin":-1,"enabled":true,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"enabled":true,"inside":[]}]
 var filtertree:Array=defaulttree
 var fileman=File.new()
 var filedir
@@ -21,9 +21,10 @@ func refresh():
 	box.savecurrent()
 	globals.filterbyphrase={}
 	for i in filtertree:
-		for j in i["inside"]:
-			if scriptonfound.has(j["type"]):
-				scriptonfound[j["type"]].new().fromfile(j)
+		if i["enabled"]:
+			for j in i["inside"]:
+				if scriptonfound.has(j["type"]):
+					scriptonfound[j["type"]].new().fromfile(j)
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)
@@ -77,4 +78,8 @@ func _on_folderup_pressed():
 	if index==1:return
 	box.openfolder(filtertree[index]["origin"])
 	var text=$bottom/dir.text
-	$bottom/dir.text=stringfunc.cutright(text.find_last("/"),text)
+	$bottom/dir.text=stringfunc.cutright(text.find_last("/")+1,text)
+
+
+func _on_excludequotes_toggled(button_pressed):
+	globals.skipquotes=button_pressed

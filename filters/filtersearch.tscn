@@ -121,8 +121,8 @@ istool = true
 userect = NodePath("..")
 
 [node name="dir" type="Label" parent="bottom"]
-margin_left = -427.0
-margin_top = -39.0
+margin_left = -152.0
+margin_top = -47.0
 margin_right = 206.0
 custom_fonts/font = ExtResource( 9 )
 text = "root"
@@ -132,8 +132,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="botleft" type="Node2D" parent="."]
+position = Vector2( 0, 598 )
+script = ExtResource( 3 )
+sety = true
+setx = true
+scaleview = Vector2( 0, 1 )
+istool = true
+userect = NodePath("..")
+
+[node name="excludequotes" type="CheckBox" parent="botleft"]
+margin_left = 5.0
+margin_top = -39.0
+margin_right = 357.0
+margin_bottom = -9.0
+pressed = true
+text = "excluir citas de los fitros"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="visibility_changed" from="." to="." method="savefilters"]
 [connection signal="pressed" from="upcenter/folderup" to="." method="_on_folderup_pressed"]
 [connection signal="pressed" from="newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="botright/save" to="." method="_on_save_pressed"]
+[connection signal="toggled" from="botleft/excludequotes" to="." method="_on_excludequotes_toggled"]
