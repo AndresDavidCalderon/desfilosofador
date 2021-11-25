@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "popup",
 "language": "GDScript",
 "path": "res://UI/popup.gd"
+}, {
+"base": "Node",
+"class": "stringfunc",
+"language": "GDScript",
+"path": "res://stringfuncs.gd"
 } ]
 _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
 "libraryelement": "res://filters/element.png",
-"popup": "res://UI/popupicon.png"
+"popup": "res://UI/popupicon.png",
+"stringfunc": ""
 }
 
 [application]
@@ -39,7 +45,6 @@ config/icon="res://icon.png"
 [autoload]
 
 globals="*res://globals.gd"
-stringfunc="*res://stringfuncs.gd"
 
 [physics]
 

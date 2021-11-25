@@ -11,11 +11,12 @@ func _on_terms_text_changed(new_text):
 		var findon=get_parent().gettext() as String
 		while true:
 			from=findon.find(new_text,from)
-			if stringfunc.isbetween(from,"[]",findon):
-				pass
-			if from!=-1:
-				from+=1
-				found+=1
+			if not stringfunc.isbracketed(from,"[","]",findon):
+				if from!=-1:
+					from+=1
+					found+=1
+				else:
+					break
 			else:
-				break
+				from+=1
 	$options/found.text=str(found)

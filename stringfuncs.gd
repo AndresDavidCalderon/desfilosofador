@@ -1,9 +1,10 @@
 extends Node
+class_name stringfunc
 #removes part of the string
-func cutout(from:int,to:int,text:String)->String:
+static func cutout(from:int,to:int,text:String)->String:
 	return text.left(from-1)+text.right(to-1)
  #sees if the given index is between carachters
-func isbetween(idx:int,between:String,text:String):
+static func isbetween(idx:int,between:String,text:String):
 	var isopen=false
 	var found=0
 	while true:
@@ -17,27 +18,42 @@ func isbetween(idx:int,between:String,text:String):
 				return false
 		found+=1
 		isopen=not isopen
-func isbracketed(idx:int,between:String,text:String):
+static func isbracketed(idx:int,open:String,close:String,text:String):
 	var isopen=false
 	var from=0
 	while true:
-		pass
-func addbetween(text:String,added:String,where:int):
+		if isopen:
+			from=text.find(close,from)
+		else:
+			from=text.find(open,from)
+		if from==-1:
+			if isopen:
+				return true
+			else:
+				return false
+		if from>idx:
+			if isopen:
+				return true
+			else:
+				return false
+		from+=1
+		isopen= not isopen
+static func addbetween(text:String,added:String,where:int):
 	return text.left(where-1)+added+text.right(where)
 #replaces the first apeareance of a substring in a text.
-func replacefind(find:String,to:String,text:String,where:int):
+static func replacefind(find:String,to:String,text:String,where:int):
 	#quitar la palabra
 	text=cutout(where,where+find.length()-1,text)
 	text=addbetween(text,to,where)
 	return text
-func findlastuntil(until:int,text:String,find:String):
+static func findlastuntil(until:int,text:String,find:String):
 	var from=0
 	while true:
 		var lastfrom=from
 		from=text.find(find,from)
 		if from==-1 or from>until:
 			return lastfrom
-func cutright(until:int,text:String):
+static func cutright(until:int,text:String):
 	return cutout(until,text.length()+1,text)
-func withinquotes(idx:int,text:String):
+static func withinquotes(idx:int,text:String):
 	return isbetween(idx,"\"",text)

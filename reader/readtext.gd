@@ -7,7 +7,7 @@ func setsize():
 	rect_size=get_viewport_rect().size/1.3
 	rect_position=Vector2()-(rect_size/2)
 
-func getnormaltext():
+func getnormaltext()->String:
 	var from=0
 	var newtext=bbcode_text
 	while true:
