@@ -16,3 +16,4 @@ func _on_hide_pressed():
 		$tween.set_active(true)
 		$hide.texture_normal=left
 		hidden=true
+

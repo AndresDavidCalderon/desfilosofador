@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=1]
+[ext_resource path="res://blueprints/workspace.gd" type="Script" id=2]
+[ext_resource path="res://blueprints/editor.gd" type="Script" id=3]
+
+[sub_resource type="World" id=2]
+
+[node name="blueprints" type="Panel"]
+margin_right = 1024.0
+margin_bottom = 600.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="view" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = 32.0
+margin_right = -23.0
+margin_bottom = -36.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="workspace" type="Viewport" parent="view"]
+size = Vector2( 978, 532 )
+own_world = true
+world = SubResource( 2 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+script = ExtResource( 2 )
+
+[node name="camera" type="Camera2D" parent="view/workspace"]
+current = true
+
+[node name="add" type="HBoxContainer" parent="."]
+margin_left = 23.0
+margin_top = 5.83363
+margin_right = 107.0
+margin_bottom = 21.8336
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="add"]
+margin_right = 84.0
+margin_bottom = 16.0
+text = "añadir nodo:"
+
+[node name="value" type="Button" parent="add"]
+margin_left = 88.0
+margin_right = 123.0
+margin_bottom = 16.0
+text = "valor"
+
+[node name="method" type="Button" parent="add"]
+margin_left = 127.0
+margin_right = 176.0
+margin_bottom = 16.0
+text = "función"
+
+[connection signal="pressed" from="add/value" to="view/workspace" method="_on_value_pressed"]

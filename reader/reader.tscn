@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://reader/read.gd" type="Script" id=11]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=12]
 [ext_resource path="res://reader/tools/tools.gd" type="Script" id=13]
+[ext_resource path="res://reader/settings.gd" type="Script" id=14]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
 [ext_resource path="res://UI/search.png" type="Texture" id=16]
 
@@ -43,14 +44,32 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.262745, 0.192157, 0.278431, 1 )
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.188235, 0.101961, 0.239216, 1 )
+
+[sub_resource type="StyleBoxLine" id=10]
+color = Color( 0.121569, 0.12549, 0.262745, 1 )
+
+[sub_resource type="StyleBoxLine" id=11]
+color = Color( 0.152941, 0.101961, 0.160784, 1 )
+thickness = 10
+
 [sub_resource type="Theme" id=5]
 default_font = ExtResource( 12 )
-Button/colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/fonts/font = ExtResource( 12 )
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
+CheckBox/styles/normal = SubResource( 8 )
 HBoxContainer/constants/separation = 9
+HSlider/styles/grabber_area = SubResource( 9 )
+HSlider/styles/grabber_area_highlight = SubResource( 10 )
+HSlider/styles/slider = SubResource( 11 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0627451, 0.0666667, 0.0823529, 1 )
@@ -86,17 +105,16 @@ sety = true
 setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
-[node name="text" type="RichTextLabel" parent="read/center"]
+[node name="text" type="TextEdit" parent="read/center"]
 margin_left = -400.0
 margin_top = -177.0
 margin_right = 400.0
 margin_bottom = 232.0
 theme = ExtResource( 9 )
+custom_styles/read_only = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "converted text"
 text = "converted text"
-scroll_active = false
+readonly = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -120,7 +138,6 @@ margin_bottom = 221.902
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 6 )
 text = "llllllllllloooooool"
-wrap_enabled = true
 caret_blink = true
 script = ExtResource( 11 )
 __meta__ = {
@@ -160,7 +177,10 @@ script = ExtResource( 10 )
 margin_left = -85.0
 margin_top = 46.0
 margin_right = 129.0
-margin_bottom = 161.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="terms" type="LineEdit" parent="aligner/tools/search/options"]
 margin_right = 214.0
@@ -239,13 +259,39 @@ scaleview = Vector2( 1, 0.5 )
 [node name="scroll" type="ScrollContainer" parent="readparams/readersets"]
 margin_left = 15.0
 margin_top = 22.0
-margin_right = 633.0
+margin_right = 632.0
 margin_bottom = 390.0
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="list" type="VBoxContainer" parent="readparams/readersets/scroll"]
+margin_right = 587.0
+margin_bottom = 48.0
+
+[node name="font" type="HBoxContainer" parent="readparams/readersets/scroll/list"]
+margin_right = 587.0
+margin_bottom = 22.0
+
+[node name="font" type="HSlider" parent="readparams/readersets/scroll/list/font"]
+margin_right = 350.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 350, 0 )
+min_value = 10.0
+value = 10.0
+
+[node name="title" type="Label" parent="readparams/readersets/scroll/list/font"]
+margin_left = 359.0
+margin_right = 587.0
+margin_bottom = 22.0
+text = "tamaño de la fuente"
+
+[node name="fullscreen" type="CheckBox" parent="readparams/readersets/scroll/list"]
+margin_top = 26.0
+margin_right = 587.0
+margin_bottom = 48.0
+text = "pantalla completa"
 
 [node name="librarycontainer" type="Node2D" parent="."]
 visible = false
@@ -299,4 +345,6 @@ margin_bottom = 50.7223
 [connection signal="pressed" from="options/library" to="." method="_on_library_pressed"]
 [connection signal="pressed" from="options/reconstruct" to="." method="_on_reconstruct_pressed"]
 [connection signal="pressed" from="options/change" to="." method="_on_change_pressed"]
+[connection signal="value_changed" from="readparams/readersets/scroll/list/font/font" to="readparams/readersets/scroll" method="_on_font_value_changed"]
+[connection signal="toggled" from="readparams/readersets/scroll/list/fullscreen" to="readparams/readersets/scroll" method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]

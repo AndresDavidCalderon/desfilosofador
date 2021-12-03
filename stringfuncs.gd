@@ -57,3 +57,26 @@ static func cutright(until:int,text:String):
 	return cutout(until,text.length()+1,text)
 static func withinquotes(idx:int,text:String):
 	return isbetween(idx,"\"",text)
+static func removebetween(text:String,open:String,close:String)->String:
+	var from=0
+	while true:
+		from=text.find(open,from)
+		if from!=-1:
+			var to=text.find(close,from)
+			text=cutout(from+1,to+2,text)
+		else:
+			break
+	return text
+static func getuntilback(idx:int,text:String,until:String):
+	var word=""
+	while idx>-1:
+		if text[idx]!=until:
+			word=text[idx]+word
+			idx-=1
+		else:
+			break
+	return word
+static func countlist(text:String,from:int,separator:String):
+	var list=[]
+	while from<text.length():
+		pass
