@@ -36,7 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
-"blockbase": "",
+"blockbase": "res://blueprints/blockbase.png",
 "libraryelement": "res://filters/element.png",
 "popup": "res://UI/popupicon.png",
 "stringfunc": ""

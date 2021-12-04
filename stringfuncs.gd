@@ -42,11 +42,11 @@ static func addbetween(text:String,added:String,where:int):
 	return text.left(where-1)+added+text.right(where)
 #replaces the first apeareance of a substring in a text.
 static func replacefind(find:String,to:String,text:String,where:int):
-	#quitar la palabra
 	text=cutout(where,where+find.length()-1,text)
 	text=addbetween(text,to,where)
 	return text
-static func findlastuntil(until:int,text:String,find:String):
+#finds the last appereance of a substring on a text until the limit.
+static func findlastuntil(text:String,find:String,until:int):
 	var from=0
 	while true:
 		var lastfrom=from
@@ -55,8 +55,10 @@ static func findlastuntil(until:int,text:String,find:String):
 			return lastfrom
 static func cutright(until:int,text:String):
 	return cutout(until,text.length()+1,text)
+#returns if the sentence is a quote "a"=true a=false
 static func withinquotes(idx:int,text:String):
 	return isbetween(idx,"\"",text)
+#removes carachters between open and close, for example passing [ and ] will remove bbcode
 static func removebetween(text:String,open:String,close:String)->String:
 	var from=0
 	while true:
@@ -67,6 +69,7 @@ static func removebetween(text:String,open:String,close:String)->String:
 		else:
 			break
 	return text
+#gets words until the until argument is found, goes backwards.
 static func getuntilback(idx:int,text:String,until:String):
 	var word=""
 	while idx>-1:
@@ -76,7 +79,29 @@ static func getuntilback(idx:int,text:String,until:String):
 		else:
 			break
 	return word
-static func countlist(text:String,from:int,separator:String):
+static func getuntil(idx:int,text:String,until:String):
+	var word=""
+	while idx<text.length():
+		if text[idx]!=until:
+			word=word+text[idx]
+			idx+=1
+		else:
+			break
+	return word
+static func countlist(text:String,separator:String):
 	var list=[]
+	var from=0
 	while from<text.length():
-		pass
+		var new=getuntil(from,text,separator)
+		list.append(new)
+		from+=new.length()
+	return list
+static func findnotbracketed(text:String,open:String,close:String,from:int=0):
+	var result
+	while from<text.length():
+		from=text.find(open,from)+1
+		if not text[from+1]==close:
+			break
+		from+=1
+		result=text.right(from+1)
+	return result

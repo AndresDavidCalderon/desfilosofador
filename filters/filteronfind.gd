@@ -10,10 +10,7 @@ func fromfile(dict:Dictionary):
 		if find.find("/")==-1:
 			register=find
 		else:
-			var from=find.find(")",find.find("/"))
-			if find[from+1]==" ":
-				from+=1
-			register=find.right(from+1)
+			register=stringfunc.findnotbracketed(find,"(",")")
 		if not globals.filterbyphrase.has(register):
 			globals.filterbyphrase[register]=[]
 		globals.filterbyphrase[register].append(self)
@@ -22,8 +19,5 @@ func found(pos:int,text:String):
 		if find.find("/")==-1:
 			text=stringfunc.replacefind(find,replace,text,pos)
 		else:
-			print(pos)
-			var pref=stringfunc.getuntilback(pos-3,text," ")
-			var options=[]
-			
+			pass
 	return text
