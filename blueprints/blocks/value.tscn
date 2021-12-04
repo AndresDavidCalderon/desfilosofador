@@ -2,7 +2,7 @@
 
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=1]
 [ext_resource path="res://blueprints/blocks/value.gd" type="Script" id=2]
-[ext_resource path="res://blueprints/connection/sender.png" type="Texture" id=3]
+[ext_resource path="res://blueprints/connection/output.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/downsmall.png" type="Texture" id=4]
 [ext_resource path="res://blueprints/blocks/type.gd" type="Script" id=5]
 
@@ -39,30 +39,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sender" type="Button" parent="."]
-margin_left = 191.0
-margin_top = 30.0
-margin_right = 204.0
-margin_bottom = 46.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="icon" type="TextureRect" parent="sender"]
-modulate = Color( 0.752941, 0.596078, 0.0627451, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -5.32062
-margin_top = -5.87868
-margin_right = 5.67938
-margin_bottom = 5.12132
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="sender" parent="." instance=ExtResource( 3 )]
 
 [node name="type" type="Button" parent="."]
 margin_left = 118.0

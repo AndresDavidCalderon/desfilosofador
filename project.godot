@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://UI/aligner.gd"
 }, {
 "base": "Panel",
+"class": "blockbase",
+"language": "GDScript",
+"path": "res://blueprints/blocks/blockbase.gd"
+}, {
+"base": "Panel",
 "class": "libraryelement",
 "language": "GDScript",
 "path": "res://reader/element.gd"
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
+"blockbase": "",
 "libraryelement": "res://filters/element.png",
 "popup": "res://UI/popupicon.png",
 "stringfunc": ""

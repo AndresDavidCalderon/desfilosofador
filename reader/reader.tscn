@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://reader/settings.gd" type="Script" id=14]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
 [ext_resource path="res://UI/search.png" type="Texture" id=16]
+[ext_resource path="res://UI/settings.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.129412, 0.101961, 0.156863, 1 )
@@ -255,6 +256,12 @@ setx = true
 scaleview = Vector2( 1, 0.5 )
 
 [node name="readersets" parent="readparams" instance=ExtResource( 8 )]
+left = ExtResource( 17 )
+
+[node name="hide" parent="readparams/readersets" index="0"]
+margin_top = 135.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 17 )
 
 [node name="scroll" type="ScrollContainer" parent="readparams/readersets"]
 margin_left = 15.0
@@ -348,3 +355,5 @@ margin_bottom = 50.7223
 [connection signal="value_changed" from="readparams/readersets/scroll/list/font/font" to="readparams/readersets/scroll" method="_on_font_value_changed"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/fullscreen" to="readparams/readersets/scroll" method="_on_fullscreen_toggled"]
 [connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]
+
+[editable path="readparams/readersets"]
