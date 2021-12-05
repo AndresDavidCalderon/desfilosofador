@@ -1,12 +1,11 @@
 extends Resource
-
+var register:String
 var find:String
 var replace:String
 func fromfile(dict:Dictionary):
 	find=dict["of"]
 	replace=dict["to"]
 	if dict["enabled"]:
-		var register:String
 		if find.find("/")==-1:
 			register=find
 		else:
@@ -19,5 +18,10 @@ func found(pos:int,text:String):
 		if find.find("/")==-1:
 			text=stringfunc.replacefind(find,replace,text,pos)
 		else:
-			pass
-	return text
+			var from=find.find(register)
+			while from>0:
+				if find[from-2]==")":
+					var options=stringfunc.getuntilback(from-3,find,"(")
+					from-=options.length()+2
+					options=stringfunc.countlist(options,"/")
+				from-=1

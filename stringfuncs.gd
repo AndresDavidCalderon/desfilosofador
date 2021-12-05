@@ -67,10 +67,11 @@ static func removebetween(text:String,open:String,close:String)->String:
 			var to=text.find(close,from)
 			text=cutout(from+1,to+2,text)
 		else:
-			break
+			return text.right(from)
+		from=1
 	return text
 #gets words until the until argument is found, goes backwards.
-static func getuntilback(idx:int,text:String,until:String):
+static func getuntilback(idx:int,text:String,until:String)->String:
 	var word=""
 	while idx>-1:
 		if text[idx]!=until:
@@ -81,6 +82,8 @@ static func getuntilback(idx:int,text:String,until:String):
 	return word
 static func getuntil(idx:int,text:String,until:String):
 	var word=""
+	if text[idx]==until:
+		idx+=1
 	while idx<text.length():
 		if text[idx]!=until:
 			word=word+text[idx]
@@ -91,16 +94,18 @@ static func getuntil(idx:int,text:String,until:String):
 static func countlist(text:String,separator:String):
 	var list=[]
 	var from=0
-	while from<text.length():
+	while from<text.length()-1:
 		var new=getuntil(from,text,separator)
+		print(new)
 		list.append(new)
 		from+=new.length()
 	return list
 static func findnotbracketed(text:String,open:String,close:String,from:int=0):
-	var result
-	while from<text.length():
-		from=text.find(open,from)+1
-		if not text[from+1]==close:
+	var result=""
+	while from<text.length()-1:
+		if text[from]==open:
+			from=text.find(close,from)
+		else:
 			break
 		from+=1
 		result=text.right(from+1)
