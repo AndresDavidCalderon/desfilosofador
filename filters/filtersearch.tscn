@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://filters/filtersearch.gd" type="Script" id=1]
 [ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
@@ -10,15 +10,16 @@
 [ext_resource path="res://UI/folderout.png" type="Texture" id=8]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=10]
+[ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 9 )
 
 [node name="filtersearch" type="Panel"]
 margin_left = 0.106518
-margin_top = 0.106518
+margin_top = 3.67012
 margin_right = 1021.11
-margin_bottom = 598.107
+margin_bottom = 601.671
 theme = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -66,28 +67,6 @@ scenebytype = {
 margin_right = 12.0
 margin_bottom = 20.0
 icon = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="newfilter" type="Button" parent="."]
-margin_left = 4.56378
-margin_top = 3.5636
-margin_right = 220.564
-margin_bottom = 42.5636
-custom_fonts/font = ExtResource( 5 )
-text = "nuevo filtro"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="newfolder" type="Button" parent="."]
-margin_left = 4.56378
-margin_top = 50.3164
-margin_right = 237.564
-margin_bottom = 89.3164
-custom_fonts/font = ExtResource( 5 )
-text = "nueva carpeta"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -152,9 +131,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="new" type="VBoxContainer" parent="."]
+margin_left = 9.12035
+margin_top = 10.0
+margin_right = 140.12
+margin_bottom = 161.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="new"]
+margin_right = 131.0
+margin_bottom = 22.0
+text = "nuevo:"
+
+[node name="newfilter" type="Button" parent="new"]
+margin_top = 26.0
+margin_right = 131.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 5 )
+text = "filtro"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="newfolder" type="Button" parent="new"]
+margin_top = 69.0
+margin_right = 131.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 5 )
+text = "carpeta"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blueprint" type="Button" parent="new"]
+margin_top = 112.0
+margin_right = 131.0
+margin_bottom = 151.0
+custom_fonts/font = ExtResource( 5 )
+text = "plano"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blueprints" parent="." instance=ExtResource( 11 )]
+visible = false
+margin_left = 123.994
+margin_top = 50.0
+margin_right = 921.994
+margin_bottom = 516.0
+
 [connection signal="visibility_changed" from="." to="." method="savefilters"]
 [connection signal="pressed" from="upcenter/folderup" to="." method="_on_folderup_pressed"]
-[connection signal="pressed" from="newfilter" to="." method="_on_newfilter_pressed"]
-[connection signal="pressed" from="newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="botright/save" to="." method="_on_save_pressed"]
 [connection signal="toggled" from="botleft/excludequotes" to="." method="_on_excludequotes_toggled"]
+[connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
+[connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]
+[connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]

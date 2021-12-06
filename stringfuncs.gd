@@ -2,7 +2,10 @@ extends Node
 class_name stringfunc
 #removes part of the string
 static func cutout(from:int,to:int,text:String)->String:
-	return text.left(from-1)+text.right(to-1)
+	var takeleft=text.left(from)
+	var takeright=text.right(to)
+	prints("taking",takeleft,"on the left",takeright,"on the right")
+	return takeleft+takeright
  #sees if the given index is between carachters
 static func isbetween(idx:int,between:String,text:String):
 	var isopen=false
@@ -39,10 +42,10 @@ static func isbracketed(idx:int,open:String,close:String,text:String):
 		from+=1
 		isopen= not isopen
 static func addbetween(text:String,added:String,where:int):
-	return text.left(where-1)+added+text.right(where)
+	return text.left(where)+added+text.right(where)
 #replaces the first apeareance of a substring in a text.
 static func replacefind(find:String,to:String,text:String,where:int):
-	text=cutout(where,where+find.length()-1,text)
+	text=cutout(where,where+find.length(),text)
 	text=addbetween(text,to,where)
 	return text
 #finds the last appereance of a substring on a text until the limit.
@@ -83,6 +86,7 @@ static func getuntilback(idx:int,text:String,until:String)->String:
 static func getuntil(idx:int,text:String,until:String)->String:
 	var word=""
 	if text[idx]==until:
+		prints("started search on the carachter, text",text,"carachter",idx,"is",text[idx])
 		idx+=1
 	while idx<text.length():
 		if text[idx]!=until:
@@ -97,15 +101,22 @@ static func countlist(text:String,separator:String)->Array:
 	while from<text.length()-1:
 		var new=getuntil(from,text,separator)
 		list.append(new)
-		from+=new.length()
+		from+=new.length()+1
 	return list
-static func findnotbracketed(text:String,open:String,close:String,from:int=0):
-	var result=""
+static func findnotbracketed(text:String,open:String,close:String,from:int=0,skipwild:bool=true)->String:
 	while from<text.length()-1:
-		if text[from]==open:
-			from=text.find(close,from)
-		else:
-			break
+		match text[from]:
+			" ":
+				from+=1
+				continue
+			"_":
+				if skipwild:
+					from+=1
+				else:
+					continue
+			open:
+				from+=getuntil(from,text,close).length()
+			_:
+				return getuntil(from,text," ")
 		from+=1
-		result=getuntil(from+1,text," ")
-	return result
+	return ""

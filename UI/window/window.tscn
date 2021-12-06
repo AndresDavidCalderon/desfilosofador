@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Panel" type="Panel"]
+margin_right = 349.0
+margin_bottom = 177.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

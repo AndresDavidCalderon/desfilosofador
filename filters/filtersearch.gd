@@ -83,3 +83,7 @@ func _on_folderup_pressed():
 
 func _on_excludequotes_toggled(button_pressed):
 	globals.skipquotes=button_pressed
+
+
+func _on_blueprint_pressed():
+	$blueprints.visible=true
