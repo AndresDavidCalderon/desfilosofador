@@ -80,7 +80,7 @@ static func getuntilback(idx:int,text:String,until:String)->String:
 		else:
 			break
 	return word
-static func getuntil(idx:int,text:String,until:String):
+static func getuntil(idx:int,text:String,until:String)->String:
 	var word=""
 	if text[idx]==until:
 		idx+=1
@@ -91,12 +91,11 @@ static func getuntil(idx:int,text:String,until:String):
 		else:
 			break
 	return word
-static func countlist(text:String,separator:String):
+static func countlist(text:String,separator:String)->Array:
 	var list=[]
 	var from=0
 	while from<text.length()-1:
 		var new=getuntil(from,text,separator)
-		print(new)
 		list.append(new)
 		from+=new.length()
 	return list
@@ -108,5 +107,5 @@ static func findnotbracketed(text:String,open:String,close:String,from:int=0):
 		else:
 			break
 		from+=1
-		result=text.right(from+1)
+		result=getuntil(from+1,text," ")
 	return result

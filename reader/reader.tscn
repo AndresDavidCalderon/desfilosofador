@@ -275,7 +275,7 @@ __meta__ = {
 
 [node name="list" type="VBoxContainer" parent="readparams/readersets/scroll"]
 margin_right = 587.0
-margin_bottom = 48.0
+margin_bottom = 74.0
 
 [node name="font" type="HBoxContainer" parent="readparams/readersets/scroll/list"]
 margin_right = 587.0
@@ -299,6 +299,12 @@ margin_top = 26.0
 margin_right = 587.0
 margin_bottom = 48.0
 text = "pantalla completa"
+
+[node name="wrap" type="CheckBox" parent="readparams/readersets/scroll/list"]
+margin_top = 52.0
+margin_right = 587.0
+margin_bottom = 74.0
+text = "ajustar texto a la pantalla"
 
 [node name="librarycontainer" type="Node2D" parent="."]
 visible = false
@@ -354,6 +360,7 @@ margin_bottom = 50.7223
 [connection signal="pressed" from="options/change" to="." method="_on_change_pressed"]
 [connection signal="value_changed" from="readparams/readersets/scroll/list/font/font" to="readparams/readersets/scroll" method="_on_font_value_changed"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/fullscreen" to="readparams/readersets/scroll" method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="readparams/readersets/scroll/list/wrap" to="readparams/readersets/scroll" method="_on_wrap_toggled"]
 [connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]
 
 [editable path="readparams/readersets"]
