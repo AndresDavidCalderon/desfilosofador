@@ -1,8 +1,105 @@
 [gd_scene format=2]
 
-[node name="Panel" type="Panel"]
+[node name="window" type="Panel"]
 margin_right = 349.0
 margin_bottom = 177.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="topleft" type="Button" parent="."]
+margin_left = -8.52096
+margin_top = -9.61904
+margin_right = 8.47904
+margin_bottom = 10.381
+mouse_default_cursor_shape = 12
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="upright" type="Button" parent="."]
+anchor_left = 1.002
+anchor_right = 1.002
+margin_left = -5.95395
+margin_top = -8.17589
+margin_right = 6.04605
+margin_bottom = 11.8241
+mouse_default_cursor_shape = 12
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="downleft" type="Button" parent="."]
+anchor_left = 0.002
+anchor_top = 1.01
+anchor_right = 0.002
+anchor_bottom = 1.01
+margin_left = -5.95392
+margin_top = -9.94589
+margin_right = 6.04608
+margin_bottom = 10.0541
+mouse_default_cursor_shape = 12
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="downright" type="Button" parent="."]
+anchor_left = 1.001
+anchor_top = 1.0
+anchor_right = 1.001
+anchor_bottom = 1.0
+margin_left = -8.4581
+margin_top = -8.17587
+margin_right = 8.5419
+margin_bottom = 11.8241
+mouse_default_cursor_shape = 12
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="up" type="Button" parent="."]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = -10.0
+margin_right = -14.0
+margin_bottom = 10.0
+mouse_default_cursor_shape = 9
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="down" type="Button" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = -8.0
+margin_right = -9.0
+margin_bottom = 12.0
+mouse_default_cursor_shape = 9
+flat = true
+
+[node name="left" type="Button" parent="."]
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = 18.0
+margin_right = 7.0
+margin_bottom = -20.0
+mouse_default_cursor_shape = 10
+flat = true
+
+[node name="right" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.10907
+margin_top = 18.0
+margin_right = 3.89093
+margin_bottom = -20.0
+mouse_default_cursor_shape = 10
+flat = true
