@@ -4,7 +4,7 @@
 [ext_resource path="res://blueprints/connection/output.gd" type="Script" id=2]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0.118182 ), 0.0, 0.0, 0, 0, Vector2( 0.898089, 0.654545 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0.545455 ), 0.0, 0.0, 0, 0, Vector2( 0.898089, 0.654545 ), 0.0, 0.0, 0, 0 ]
 
 [node name="sender" type="Button"]
 margin_left = -9.01254

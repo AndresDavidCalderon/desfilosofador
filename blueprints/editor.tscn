@@ -1,21 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blueprints/workspace.gd" type="Script" id=2]
 [ext_resource path="res://blueprints/editor.gd" type="Script" id=3]
 
-[sub_resource type="World" id=2]
+[sub_resource type="World" id=1]
 
-[node name="blueprints" type="Panel"]
+[node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
-margin_bottom = 600.0
-theme = ExtResource( 1 )
+margin_bottom = 596.0
+rect_pivot_offset = Vector2( -183, -122.5 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="view" type="ViewportContainer" parent="."]
+[node name="view" type="ViewportContainer" parent="." index="8"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
@@ -27,19 +24,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="workspace" type="Viewport" parent="view"]
-size = Vector2( 978, 532 )
+[node name="workspace" type="Viewport" parent="view" index="0"]
+size = Vector2( 978, 528 )
 own_world = true
-world = SubResource( 2 )
+world = SubResource( 1 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 script = ExtResource( 2 )
 
-[node name="camera" type="Camera2D" parent="view/workspace"]
+[node name="camera" type="Camera2D" parent="view/workspace" index="0"]
 current = true
 
-[node name="add" type="HBoxContainer" parent="."]
+[node name="add" type="HBoxContainer" parent="." index="9"]
 margin_left = 23.0
 margin_top = 5.83363
 margin_right = 107.0
@@ -48,21 +45,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="title" type="Label" parent="add"]
-margin_right = 84.0
-margin_bottom = 16.0
+[node name="title" type="Label" parent="add" index="0"]
+margin_top = 3.0
+margin_right = 79.0
+margin_bottom = 17.0
 text = "añadir nodo:"
 
-[node name="value" type="Button" parent="add"]
-margin_left = 88.0
-margin_right = 123.0
-margin_bottom = 16.0
+[node name="value" type="Button" parent="add" index="1"]
+margin_left = 83.0
+margin_right = 126.0
+margin_bottom = 20.0
 text = "valor"
 
-[node name="method" type="Button" parent="add"]
-margin_left = 127.0
-margin_right = 176.0
-margin_bottom = 16.0
+[node name="method" type="Button" parent="add" index="2"]
+margin_left = 130.0
+margin_right = 189.0
+margin_bottom = 20.0
 text = "función"
-
-[connection signal="pressed" from="add/value" to="view/workspace" method="_on_value_pressed"]

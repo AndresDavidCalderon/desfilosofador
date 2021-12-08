@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "stringfunc",
 "language": "GDScript",
 "path": "res://stringfuncs.gd"
+}, {
+"base": "Panel",
+"class": "window",
+"language": "GDScript",
+"path": "res://UI/window/window.gd"
 } ]
 _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
 "blockbase": "res://blueprints/blockbase.png",
 "libraryelement": "res://filters/element.png",
 "popup": "res://UI/popupicon.png",
-"stringfunc": ""
+"stringfunc": "",
+"window": "res://UI/window/icon.png"
 }
 
 [application]

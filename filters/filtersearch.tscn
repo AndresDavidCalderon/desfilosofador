@@ -72,7 +72,7 @@ __meta__ = {
 }
 
 [node name="botright" type="Node2D" parent="."]
-position = Vector2( 1021, 598 )
+position = Vector2( 1021, 598.001 )
 script = ExtResource( 3 )
 sety = true
 setx = true
@@ -91,7 +91,7 @@ __meta__ = {
 }
 
 [node name="bottom" type="Node2D" parent="."]
-position = Vector2( 510.502, 598 )
+position = Vector2( 510.502, 598.001 )
 script = ExtResource( 3 )
 sety = true
 setx = true
@@ -112,7 +112,7 @@ __meta__ = {
 }
 
 [node name="botleft" type="Node2D" parent="."]
-position = Vector2( 0, 598 )
+position = Vector2( 0, 598.001 )
 script = ExtResource( 3 )
 sety = true
 setx = true

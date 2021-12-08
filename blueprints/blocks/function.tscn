@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/connection/output.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+
+[node name="blockbase" type="Panel"]
+anchor_left = 0.178
+anchor_top = 0.115
+anchor_right = 0.178
+anchor_bottom = 0.115
+margin_left = -182.272
+margin_top = -69.0
+margin_right = 99.728
+margin_bottom = 28.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -6.0
+margin_right = 5.0
+margin_bottom = 8.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="return" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.995
+anchor_top = 1.0
+anchor_right = 0.995
+anchor_bottom = 1.0
+margin_left = -6.53661
+margin_top = -4.39532
+margin_right = 6.46339
+margin_bottom = 15.6047
+
+[node name="funcname" type="LineEdit" parent="."]
+margin_left = 60.0
+margin_top = 9.0
+margin_right = 265.0
+margin_bottom = 33.0
+placeholder_text = "nombre de la función"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="argcount" type="SpinBox" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = -27.0
+margin_right = 113.0
+margin_bottom = -11.0
+max_value = 10.0
+suffix = "argumentos"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="args" type="HBoxContainer" parent="."]
+margin_left = 9.0
+margin_top = 40.0
+margin_right = 263.0
+margin_bottom = 59.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

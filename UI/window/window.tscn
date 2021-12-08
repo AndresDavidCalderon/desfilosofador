@@ -1,8 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/window/window.gd" type="Script" id=1]
 
 [node name="window" type="Panel"]
 margin_right = 349.0
 margin_bottom = 177.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,7 +28,7 @@ margin_left = -5.95395
 margin_top = -8.17589
 margin_right = 6.04605
 margin_bottom = 11.8241
-mouse_default_cursor_shape = 12
+mouse_default_cursor_shape = 11
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -40,7 +43,7 @@ margin_left = -5.95392
 margin_top = -9.94589
 margin_right = 6.04608
 margin_bottom = 10.0541
-mouse_default_cursor_shape = 12
+mouse_default_cursor_shape = 11
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
