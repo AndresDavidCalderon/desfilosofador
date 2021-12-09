@@ -1,5 +1,6 @@
 extends Panel
 class_name window,"res://UI/window/icon.png"
+var offset=Vector2()
 func _process(_delta):
 	if $up.pressed or $topleft.pressed or $upright.pressed:
 		var before=rect_global_position.y
@@ -13,7 +14,5 @@ func _process(_delta):
 		rect_size.y=get_global_mouse_position().y-rect_global_position.y
 	if $right.pressed or $downright.pressed or $upright.pressed:
 		rect_size.x=get_global_mouse_position().x-rect_global_position.x
-
-
 func _on_close_pressed():
 	visible=false

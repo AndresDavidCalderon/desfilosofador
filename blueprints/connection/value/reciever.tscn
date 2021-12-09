@@ -8,6 +8,9 @@ margin_right = 18.0
 margin_bottom = 19.0
 rect_min_size = Vector2( 18, 0 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="icon" type="TextureRect" parent="."]
 modulate = Color( 0.827451, 0.768627, 0.137255, 1 )

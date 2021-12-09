@@ -33,7 +33,7 @@ __meta__ = {
 }
 
 [node name="line" type="Line2D" parent="."]
-points = PoolVector2Array( 20.0583, 23.696, 5.33337, 8.063 )
+points = PoolVector2Array( 161.534, 44.2431, 5.33337, 8.063 )
 width = 4.0
 width_curve = SubResource( 1 )
 default_color = Color( 0.870588, 0.905882, 0.278431, 1 )
