@@ -8,7 +8,7 @@ func getsave(data):
 	data["name"]=$name.text
 	data["index"]=saveindex
 func _on_open_pressed():
-	get_parent().root.get_node("bottom/dir").text+="/"+$name.text
+	get_parent().root.get_node("dir").text+="/"+$name.text
 	get_parent().savecurrent()
 	get_parent().openfolder(saveindex)
 func fromfile(data):

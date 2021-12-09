@@ -13,3 +13,7 @@ func _process(_delta):
 		rect_size.y=get_global_mouse_position().y-rect_global_position.y
 	if $right.pressed or $downright.pressed or $upright.pressed:
 		rect_size.x=get_global_mouse_position().x-rect_global_position.x
+
+
+func _on_close_pressed():
+	visible=false

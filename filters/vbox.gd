@@ -1,6 +1,6 @@
 extends VBoxContainer
 export(Dictionary) var scenebytype
-onready var root=get_parent().get_parent().get_parent()
+onready var root=get_parent().get_parent()
 func compile(text:String):
 	root.refresh()
 	for i in globals.filterbyphrase.keys():

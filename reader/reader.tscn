@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=12]
 [ext_resource path="res://reader/tools/tools.gd" type="Script" id=13]
 [ext_resource path="res://reader/settings.gd" type="Script" id=14]
-[ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
 [ext_resource path="res://UI/search.png" type="Texture" id=16]
 [ext_resource path="res://UI/settings.png" type="Texture" id=17]
 
@@ -307,7 +306,6 @@ margin_bottom = 74.0
 text = "ajustar texto a la pantalla"
 
 [node name="librarycontainer" type="Node2D" parent="."]
-visible = false
 position = Vector2( 509.909, 281.651 )
 script = ExtResource( 2 )
 sety = true
@@ -321,19 +319,6 @@ margin_right = 556.503
 margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
 custom_styles/panel = SubResource( 7 )
-scriptonfound = {
-"filter": ExtResource( 15 )
-}
-
-[node name="close" type="Button" parent="librarycontainer"]
-margin_left = -479.255
-margin_top = -266.6
-margin_right = -460.255
-margin_bottom = -246.6
-text = "x"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="center" type="Node2D" parent="."]
 position = Vector2( 509.944, 282.705 )
@@ -361,6 +346,5 @@ margin_bottom = 50.7223
 [connection signal="value_changed" from="readparams/readersets/scroll/list/font/font" to="readparams/readersets/scroll" method="_on_font_value_changed"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/fullscreen" to="readparams/readersets/scroll" method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/wrap" to="readparams/readersets/scroll" method="_on_wrap_toggled"]
-[connection signal="pressed" from="librarycontainer/close" to="." method="_on_close_pressed"]
 
 [editable path="readparams/readersets"]

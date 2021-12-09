@@ -1,4 +1,4 @@
-extends Panel
+extends window
 export(PackedScene) var filter
 export(PackedScene) var folder
 export(Dictionary) var scriptonfound
@@ -8,7 +8,7 @@ var filtertree:Array=defaulttree
 var fileman=File.new()
 var filedir
 var index=1
-onready var box=$upcenter/scroll/vbox
+onready var box=$scroll/vbox
 func _ready():
 	if onexe:
 		filedir=OS.get_executable_path()+"/filters.json"
@@ -77,8 +77,8 @@ func _on_folderup_pressed():
 	box.savecurrent()
 	if index==1:return
 	box.openfolder(filtertree[index]["origin"])
-	var text=$bottom/dir.text
-	$bottom/dir.text=stringfunc.cutright(text.find_last("/")+1,text)
+	var text=$dir.text
+	$dir.text=stringfunc.cutright(text.find_last("/")+1,text)
 
 
 func _on_excludequotes_toggled(button_pressed):

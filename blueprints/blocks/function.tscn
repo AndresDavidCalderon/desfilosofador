@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
 [ext_resource path="res://blueprints/connection/output.tscn" type="PackedScene" id=2]
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/connection/reciever.png" type="Texture" id=4]
+[ext_resource path="res://blueprints/blocks/reciever.gd" type="Script" id=5]
 
 [node name="blockbase" type="Panel"]
 anchor_left = 0.178
@@ -36,10 +38,10 @@ anchor_left = 0.995
 anchor_top = 1.0
 anchor_right = 0.995
 anchor_bottom = 1.0
-margin_left = -6.53661
-margin_top = -4.39532
-margin_right = 6.46339
-margin_bottom = 15.6047
+margin_left = -6.59
+margin_top = -4.0
+margin_right = 6.41
+margin_bottom = 12.0
 
 [node name="funcname" type="LineEdit" parent="."]
 margin_left = 60.0
@@ -56,9 +58,10 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 9.0
 margin_top = -27.0
-margin_right = 113.0
+margin_right = 111.0
 margin_bottom = -11.0
 max_value = 10.0
+rounded = true
 suffix = "argumentos"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,3 +75,9 @@ margin_bottom = 59.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="reciever" type="Button" parent="args"]
+margin_right = 15.0
+margin_bottom = 19.0
+icon = ExtResource( 4 )
+script = ExtResource( 5 )

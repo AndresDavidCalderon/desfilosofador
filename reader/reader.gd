@@ -7,15 +7,12 @@ func _ready():
 func setsize():
 	rect_size=get_viewport_rect().size
 
-func _on_close_pressed():
-	$librarycontainer.visible=false
-
 func _on_library_pressed():
-	$librarycontainer.visible=true
+	$librarycontainer/filtersearch.visible=true
 	
 
 onready var reader=$read/center/text
-onready var compiler=$librarycontainer/filtersearch/upcenter/scroll/vbox
+onready var compiler=$librarycontainer/filtersearch/scroll/vbox
 func _on_read_pressed():
 	globals.reader=$read/center/text
 	reader.text=compiler.compile($new/center/text.text)
