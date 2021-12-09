@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -78,6 +78,8 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
+
+[sub_resource type="Theme" id=12]
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0666667, 0.054902, 0.109804, 1 )
@@ -318,6 +320,7 @@ margin_top = -256.49
 margin_right = 556.503
 margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
+theme = SubResource( 12 )
 custom_styles/panel = SubResource( 7 )
 
 [node name="center" type="Node2D" parent="."]

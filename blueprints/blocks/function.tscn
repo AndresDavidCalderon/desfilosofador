@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
-[ext_resource path="res://blueprints/connection/output.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=2]
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
-[ext_resource path="res://blueprints/connection/reciever.png" type="Texture" id=4]
-[ext_resource path="res://blueprints/blocks/reciever.gd" type="Script" id=5]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=4]
+[ext_resource path="res://blueprints/connection/event/eventget.tscn" type="PackedScene" id=5]
 
 [node name="blockbase" type="Panel"]
 anchor_left = 0.178
@@ -42,9 +42,10 @@ margin_left = -6.59
 margin_top = -4.0
 margin_right = 6.41
 margin_bottom = 12.0
+hint_tooltip = "the function´s return"
 
 [node name="funcname" type="LineEdit" parent="."]
-margin_left = 60.0
+margin_left = 82.0
 margin_top = 9.0
 margin_right = 265.0
 margin_bottom = 33.0
@@ -69,15 +70,31 @@ __meta__ = {
 
 [node name="args" type="HBoxContainer" parent="."]
 margin_left = 9.0
-margin_top = 40.0
+margin_top = 46.9449
 margin_right = 263.0
-margin_bottom = 59.0
+margin_bottom = 65.9449
+hint_tooltip = "function´s arguments"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="reciever" type="Button" parent="args"]
-margin_right = 15.0
-margin_bottom = 19.0
-icon = ExtResource( 4 )
-script = ExtResource( 5 )
+[node name="reciever" parent="args" instance=ExtResource( 4 )]
+toblock = NodePath("../..")
+
+[node name="event" parent="." instance=ExtResource( 5 )]
+hint_tooltip = "when to execute
+"
+
+[node name="reciever" parent="." instance=ExtResource( 4 )]
+margin_left = 34.0
+margin_top = 9.0
+margin_right = 52.0
+margin_bottom = 28.0
+
+[node name="icon" parent="reciever" index="0"]
+hint_tooltip = "the function´s executer."
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]
+
+[editable path="reciever"]

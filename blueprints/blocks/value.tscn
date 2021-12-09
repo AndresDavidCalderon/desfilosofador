@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=1]
 [ext_resource path="res://blueprints/blocks/value.gd" type="Script" id=2]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/downsmall.png" type="Texture" id=4]
 [ext_resource path="res://blueprints/blocks/type.gd" type="Script" id=5]
 
@@ -60,20 +61,26 @@ __meta__ = {
 
 [node name="float" type="Button" parent="type/box"]
 margin_right = 73.0
-margin_bottom = 16.0
+margin_bottom = 17.0
 text = "float"
 
 [node name="string" type="Button" parent="type/box"]
-margin_top = 20.0
+margin_top = 21.0
 margin_right = 73.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 text = "string"
 
 [node name="bool" type="Button" parent="type/box"]
-margin_top = 40.0
+margin_top = 42.0
 margin_right = 73.0
-margin_bottom = 56.0
+margin_bottom = 59.0
 text = "bool"
+
+[node name="sender" parent="." instance=ExtResource( 3 )]
+margin_left = 194.968
+margin_top = 31.1631
+margin_right = 207.968
+margin_bottom = 51.1631
 
 [connection signal="button_down" from="select" to="." method="_on_select_button_down"]
 [connection signal="button_up" from="select" to="." method="_on_select_button_up"]

@@ -19,7 +19,7 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
-margin_top = 32.0
+margin_top = 41.0
 margin_right = -23.0
 margin_bottom = -36.0
 stretch = true
@@ -28,7 +28,7 @@ __meta__ = {
 }
 
 [node name="workspace" type="Viewport" parent="view" index="0"]
-size = Vector2( 978, 528 )
+size = Vector2( 978, 519 )
 world = SubResource( 1 )
 handle_input_locally = false
 usage = 0
@@ -36,12 +36,19 @@ render_target_update_mode = 3
 script = ExtResource( 2 )
 
 [node name="camera" type="Camera2D" parent="view/workspace" index="0"]
-visible = false
 current = true
 script = ExtResource( 4 )
-zoomspeed = 1.0
+zoomspeed = 2.0
 minzoom = 0.1
 maxzoom = 3.0
+
+[node name="background" type="Node2D" parent="view/workspace/camera" index="0"]
+z_index = -10
+
+[node name="move" type="Button" parent="view/workspace/camera/background" index="0"]
+margin_right = 12.0
+margin_bottom = 20.0
+flat = true
 
 [node name="add" type="HBoxContainer" parent="." index="9"]
 margin_left = 23.0
@@ -53,20 +60,23 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="add" index="0"]
-margin_right = 84.0
-margin_bottom = 16.0
+margin_right = 108.0
+margin_bottom = 17.0
 text = "añadir nodo:"
 
 [node name="value" type="Button" parent="add" index="1"]
-margin_left = 88.0
-margin_right = 123.0
-margin_bottom = 16.0
+margin_left = 112.0
+margin_right = 157.0
+margin_bottom = 17.0
 text = "valor"
 
 [node name="method" type="Button" parent="add" index="2"]
-margin_left = 127.0
-margin_right = 176.0
-margin_bottom = 16.0
+margin_left = 161.0
+margin_right = 224.0
+margin_bottom = 17.0
 text = "función"
 
+[connection signal="button_down" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_down"]
+[connection signal="button_up" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_up"]
 [connection signal="pressed" from="add/value" to="view/workspace" method="_on_value_pressed"]
+[connection signal="pressed" from="add/method" to="view/workspace" method="_on_method_pressed"]

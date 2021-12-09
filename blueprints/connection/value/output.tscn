@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://blueprints/connection/sender.png" type="Texture" id=1]
-[ext_resource path="res://blueprints/connection/output.gd" type="Script" id=2]
+[ext_resource path="res://blueprints/connection/value/output.gd" type="Script" id=2]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.545455 ), 0.0, 0.0, 0, 0, Vector2( 0.898089, 0.654545 ), 0.0, 0.0, 0, 0 ]

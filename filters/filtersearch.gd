@@ -78,7 +78,7 @@ func _on_folderup_pressed():
 	if index==1:return
 	box.openfolder(filtertree[index]["origin"])
 	var text=$dir.text
-	$dir.text=stringfunc.cutright(text.find_last("/")+1,text)
+	$dir.text=stringfunc.cutright(text.find_last("/"),text)
 
 
 func _on_excludequotes_toggled(button_pressed):

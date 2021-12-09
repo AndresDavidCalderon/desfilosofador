@@ -152,3 +152,4 @@ margin_bottom = 516.0
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]
+[connection signal="pressed" from="folderup" to="." method="_on_folderup_pressed"]
