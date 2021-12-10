@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
@@ -9,12 +9,18 @@
 [ext_resource path="res://filters/folder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/folderout.png" type="Texture" id=8]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
+[ext_resource path="res://filters/filteronfind.gd" type="Script" id=10]
 [ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 3 )
+filter = ExtResource( 2 )
+folder = ExtResource( 7 )
+scriptonfound = {
+"filter": ExtResource( 10 )
+}
 
 [node name="new" type="VBoxContainer" parent="." index="9"]
 margin_left = 9.12035
