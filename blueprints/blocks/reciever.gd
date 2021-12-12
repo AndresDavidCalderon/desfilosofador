@@ -1,5 +1,6 @@
 extends Button
 export(NodePath) var toblock=".."
+export(String) var selectname
 var block:blockbase
 var target:Button
 func _ready():
@@ -7,8 +8,8 @@ func _ready():
 		block=get_node(toblock)
 
 func _pressed():
-	if block.base.selectedset==null:
-		block.base.selectedget=self
+	if block.base.selected[selectname]["out"]==null:
+		block.base.selected[selectname]["in"]=self
 	else:
-		block.base.selectedset.connectto(self)
+		block.base.selected[selectname]["out"].connectto(self)
 	

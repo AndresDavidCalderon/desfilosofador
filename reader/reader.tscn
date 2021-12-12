@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://reader/readtext.gd" type="Script" id=1]
 [ext_resource path="res://UI/aligner.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=12]
 [ext_resource path="res://reader/tools/tools.gd" type="Script" id=13]
 [ext_resource path="res://reader/settings.gd" type="Script" id=14]
+[ext_resource path="res://filters/filteronfind.gd" type="Script" id=15]
 [ext_resource path="res://UI/search.png" type="Texture" id=16]
 [ext_resource path="res://UI/settings.png" type="Texture" id=17]
 
@@ -322,6 +323,9 @@ margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
 theme = SubResource( 12 )
 custom_styles/panel = SubResource( 7 )
+scriptonfound = {
+"filter": ExtResource( 15 )
+}
 
 [node name="center" type="Node2D" parent="."]
 position = Vector2( 509.944, 282.705 )

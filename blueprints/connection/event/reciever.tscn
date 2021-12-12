@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=1]
+
+[node name="reciever" instance=ExtResource( 1 )]
+selectname = "event"
+
+[node name="icon" parent="." index="0"]
+modulate = Color( 0.0392157, 0.0392157, 0.0392157, 1 )

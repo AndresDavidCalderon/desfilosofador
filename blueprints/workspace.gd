@@ -1,9 +1,10 @@
 extends Viewport
-var selectedget:Button
-var selectedset:Button
-var selectedevent:Button
-var selectedping:Button
-
+var selected={}
+export(PoolStringArray) var connections
+func _ready():
+	_on_window_visibility_changed()
+	for i in connections:
+		selected[i]={"in":null,"out":null}
 
 func _on_value_pressed():
 	addblock(preload("res://blueprints/blocks/value.tscn").instance())

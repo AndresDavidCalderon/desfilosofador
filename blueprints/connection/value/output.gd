@@ -1,5 +1,6 @@
 extends Button
 export(NodePath) var toblock=".."
+export(String) var connectname
 signal needsvalue
 var block:blockbase
 var value
@@ -12,14 +13,14 @@ func _ready():
 	if block==null:
 		block=get_node(toblock)
 func _pressed():
-	if block.base.selectedget==null:
-		block.base.selectedset=self
+	if block.base.selected[connectname]["in"]==null:
+		block.base.selected[connectname]["out"]=self
 	else:
-		connectto(block.base.selectedget)
+		connectto(block.base.selected[connectname]["in"])
 func connectto(to:Button):
 	if to.block!=block:
 		target=to
-		block.base.selectedset=null
-		block.base.selectedget=null
+		block.base.selected[connectname]["out"]=null
+		block.base.selected[connectname]["in"]=null
 	else:
 		globals.popuper.popup("you cant connect 2 signals within the same block")

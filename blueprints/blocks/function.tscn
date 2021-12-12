@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://blueprints/blocks/function.gd" type="Script" id=1]
 [ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=2]
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
 [ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=4]
-[ext_resource path="res://blueprints/connection/event/eventget.tscn" type="PackedScene" id=5]
+[ext_resource path="res://blueprints/connection/event/reciever.tscn" type="PackedScene" id=5]
+[ext_resource path="res://blueprints/connection/event/sender.tscn" type="PackedScene" id=6]
 
-[node name="blockbase" type="Panel"]
+[node name="func" type="Panel"]
 anchor_left = 0.178
 anchor_top = 0.115
 anchor_right = 0.178
@@ -41,7 +42,7 @@ anchor_bottom = 1.0
 margin_left = -6.59
 margin_top = -4.0
 margin_right = 6.41
-margin_bottom = 12.0
+margin_bottom = 13.0
 hint_tooltip = "the function´s return"
 
 [node name="funcname" type="LineEdit" parent="."]
@@ -82,6 +83,10 @@ __meta__ = {
 toblock = NodePath("../..")
 
 [node name="event" parent="." instance=ExtResource( 5 )]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 27.0
+margin_bottom = 28.0
 hint_tooltip = "when to execute
 "
 
@@ -93,6 +98,16 @@ margin_bottom = 28.0
 
 [node name="icon" parent="reciever" index="0"]
 hint_tooltip = "the function´s executer."
+
+[node name="sender" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -29.4166
+margin_top = -4.0
+margin_right = -14.4166
+margin_bottom = 13.0
 
 [connection signal="button_down" from="select" to="." method="_on_select_button_down"]
 [connection signal="button_up" from="select" to="." method="_on_select_button_up"]
