@@ -77,7 +77,7 @@ margin_right = 224.0
 margin_bottom = 17.0
 text = "función"
 
-[connection signal="visibility_changed" from="." to="view/workspace" method="_on_window_visibility_changed"]
+[connection signal="visibility_changed" from="." to="view/workspace" method="vis"]
 [connection signal="button_down" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_down"]
 [connection signal="button_up" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_up"]
 [connection signal="pressed" from="add/value" to="view/workspace" method="_on_value_pressed"]

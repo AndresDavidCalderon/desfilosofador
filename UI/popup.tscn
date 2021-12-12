@@ -31,7 +31,6 @@ custom_fonts/font = ExtResource( 2 )
 text = "popup!"
 align = 1
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -68,4 +67,3 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
-[connection signal="sort_children" from="vorder" to="." method="_on_vorder_sort_children"]

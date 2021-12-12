@@ -29,24 +29,23 @@ func popup(title:String,desc="",fields:Array=[],canout=true,error:bool=false):
 	if visible:
 		unpopup()
 	visible=true
-	var added=0
 	$title.text=title
 	if error:
 		$title.set("custom_colors/font_color",errorcolor)
 	var font=$title.get("custom_fonts/font") as DynamicFont
+	var looped=false
 	while font.get_string_size(title).x>$title.rect_size.x:
 		font.size-=1
+		looped=true
+	if looped:
+		font.size+=10
 	var desclabel=$vorder/description
 	desclabel.text=desc
 	var instanced=[]
-	while added<fields.size():
-		var new=fields[added].new() as Control
+	for i in fields:
+		var new=i.new() as Control
 		instanced.append(new)
 		$vorder.add_child(new)
 		addedchild.append(new)
 		new.set("custom_fonts/font",preload("res://UI/font/text.tres"))
-		added+=1
 	return instanced
-
-func _on_vorder_sort_children():
-	rect_size.y=($vorder.rect_position.y+$vorder.rect_size.y)+5

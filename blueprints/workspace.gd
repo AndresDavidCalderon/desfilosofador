@@ -2,10 +2,10 @@ extends Viewport
 var selected={}
 export(PoolStringArray) var connections
 func _ready():
-	_on_window_visibility_changed()
+	vis()
 	for i in connections:
 		selected[i]={"in":null,"out":null}
-
+	globals.popuper.connect("visibility_changed",self,"vis")
 func _on_value_pressed():
 	addblock(preload("res://blueprints/blocks/value.tscn").instance())
 func addblock(block:Panel):
@@ -15,6 +15,9 @@ func _on_method_pressed():
 	addblock(preload("res://blueprints/blocks/function.tscn").instance())
 
 
-func _on_window_visibility_changed():
+func vis():
 	for i in get_children():
-		i.visible=get_parent().get_parent().visible
+		if globals.popuper.visible:
+			i.visible=false
+		else:
+			i.visible=get_parent().get_parent().visible
