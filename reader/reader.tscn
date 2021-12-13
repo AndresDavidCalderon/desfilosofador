@@ -81,6 +81,7 @@ corner_radius_bottom_left = 4
 anti_aliasing = false
 
 [sub_resource type="Theme" id=12]
+default_font = ExtResource( 12 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.0666667, 0.054902, 0.109804, 1 )
@@ -323,6 +324,7 @@ margin_bottom = 341.51
 rect_scale = Vector2( 0.898282, 0.898282 )
 theme = SubResource( 12 )
 custom_styles/panel = SubResource( 7 )
+obfuscateback = true
 scriptonfound = {
 "filter": ExtResource( 15 )
 }

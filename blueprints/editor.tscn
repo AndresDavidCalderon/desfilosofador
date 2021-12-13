@@ -9,8 +9,10 @@
 [sub_resource type="World" id=1]
 
 [node name="window" instance=ExtResource( 1 )]
-margin_right = 1024.0
-margin_bottom = 596.0
+margin_left = 184.0
+margin_top = 118.921
+margin_right = 1208.0
+margin_bottom = 714.921
 rect_pivot_offset = Vector2( -183, -122.5 )
 theme = ExtResource( 5 )
 script = ExtResource( 3 )

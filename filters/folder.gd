@@ -31,8 +31,8 @@ func customdelete():
 					prints("reindexed",j)
 	for i in get_parent().root.filtertree[saveindex]["inside"]:
 		var new=get_parent().scenebytype[i["type"]].instance() as libraryelement
-		new.fromfile(i)
 		get_parent().add_child(new)
+		new.fromfile(i)
 		new.delete()
 	get_parent().root.filtertree.remove(saveindex)
 
