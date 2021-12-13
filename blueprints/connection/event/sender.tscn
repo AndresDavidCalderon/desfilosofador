@@ -9,5 +9,4 @@ connectname = "event"
 modulate = Color( 0, 0, 0, 1 )
 
 [node name="line" parent="." index="1"]
-points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.239216, 0.105882, 0.105882, 1 )

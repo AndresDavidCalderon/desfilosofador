@@ -3,7 +3,10 @@
 [ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=1]
 
 [node name="reciever" instance=ExtResource( 1 )]
-selectname = "event"
+connectname = "event"
 
 [node name="icon" parent="." index="0"]
 modulate = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+
+[node name="line" parent="." index="1"]
+default_color = Color( 0.12549, 0.133333, 0.0313726, 1 )

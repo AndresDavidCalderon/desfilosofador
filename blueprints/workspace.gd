@@ -1,10 +1,7 @@
 extends Viewport
-var selected={}
-export(PoolStringArray) var connections
+var lastselected:Button
 func _ready():
 	vis()
-	for i in connections:
-		selected[i]={"in":null,"out":null}
 	globals.popuper.connect("visibility_changed",self,"vis")
 func _on_value_pressed():
 	addblock(preload("res://blueprints/blocks/value.tscn").instance())

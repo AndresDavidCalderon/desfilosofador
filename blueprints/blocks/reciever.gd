@@ -1,15 +1,33 @@
 extends Button
 export(NodePath) var toblock=".."
-export(String) var selectname
+export(String) var connectname
 var block:blockbase
+var type=1
 var target:Button
 func _ready():
 	if block==null:
 		block=get_node(toblock)
-
+func _process(_delta):
+	if target!=null:
+		$line.points[1]=(target.rect_global_position+target.rect_size/2)-rect_global_position
+		$line.points[0]=rect_size/2
 func _pressed():
-	if block.base.selected[selectname]["out"]==null:
-		block.base.selected[selectname]["in"]=self
+	var last=block.base.lastselected
+	if last==null or last.type==type or last.connectname!=connectname:
+		if last!=null:
+			last.pressed=false
+		block.base.lastselected=self
 	else:
-		block.base.selected[selectname]["out"].connectto(self)
-	
+		connectto(last)
+
+func connectto(to:Button):
+	if to.block!=block:
+		block.base.lastselected=null
+		target=to
+		to.pressed=false
+		pressed=false
+	else:
+		to.pressed=false
+		pressed=false
+		block.base.lastselected=null
+		globals.popuper.popup("you cant connect 2 signals within the same block")
