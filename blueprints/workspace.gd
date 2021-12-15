@@ -18,3 +18,9 @@ func vis():
 			i.visible=false
 		else:
 			i.visible=get_parent().get_parent().visible
+
+
+func _on_compile_pressed():
+	var blocks=[]
+	for i in get_children():
+		blocks.append(i.getsave())

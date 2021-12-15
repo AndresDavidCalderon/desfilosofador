@@ -21,6 +21,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+argument = ExtResource( 4 )
 
 [node name="select" type="Button" parent="."]
 anchor_right = 1.0
@@ -39,11 +40,12 @@ anchor_left = 0.995
 anchor_top = 1.0
 anchor_right = 0.995
 anchor_bottom = 1.0
-margin_left = -6.59
-margin_top = -4.0
-margin_right = 6.41
-margin_bottom = 13.0
+margin_left = -15.59
+margin_top = -20.6248
+margin_right = -2.59
+margin_bottom = -3.6248
 hint_tooltip = "the function´s return"
+savename = "return"
 
 [node name="funcname" type="LineEdit" parent="."]
 margin_left = 82.0
@@ -63,6 +65,7 @@ margin_top = -27.0
 margin_right = 111.0
 margin_bottom = -11.0
 max_value = 10.0
+value = 1.0
 rounded = true
 suffix = "argumentos"
 __meta__ = {
@@ -81,6 +84,7 @@ __meta__ = {
 
 [node name="reciever" parent="args" instance=ExtResource( 4 )]
 toblock = NodePath("../..")
+savename = "arg0"
 
 [node name="event" parent="." instance=ExtResource( 5 )]
 margin_left = 9.0
@@ -89,12 +93,14 @@ margin_right = 27.0
 margin_bottom = 28.0
 hint_tooltip = "when to execute
 "
+savename = "executeon"
 
 [node name="reciever" parent="." instance=ExtResource( 4 )]
 margin_left = 34.0
 margin_top = 9.0
 margin_right = 52.0
 margin_bottom = 28.0
+savename = "executer"
 
 [node name="icon" parent="reciever" index="0"]
 hint_tooltip = "the function´s executer."
@@ -104,12 +110,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -29.4166
-margin_top = -4.0
-margin_right = -14.4166
-margin_bottom = 13.0
+margin_left = -35.7298
+margin_top = -20.6248
+margin_right = -20.7298
+margin_bottom = -3.6248
+savename = "continue"
 
 [connection signal="button_down" from="select" to="." method="_on_select_button_down"]
 [connection signal="button_up" from="select" to="." method="_on_select_button_up"]
+[connection signal="value_changed" from="argcount" to="." method="_on_argcount_value_changed"]
 
 [editable path="reciever"]

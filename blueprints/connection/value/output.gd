@@ -1,6 +1,7 @@
 extends Button
 export(NodePath) var toblock=".."
 export(String) var connectname
+export(String) var savename
 var type=0
 signal needsvalue
 var block:blockbase

@@ -1,12 +1,14 @@
 extends Button
 export(NodePath) var toblock=".."
 export(String) var connectname
+export(String) var savename
 var block:blockbase
 var type=1
 var target:Button
 func _ready():
 	if block==null:
 		block=get_node(toblock)
+	block.connections.append(self)
 func _process(_delta):
 	if target!=null:
 		$line.points[1]=(target.rect_global_position+target.rect_size/2)-rect_global_position

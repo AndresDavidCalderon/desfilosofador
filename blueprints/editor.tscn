@@ -21,7 +21,7 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 23.0
-margin_top = 41.0
+margin_top = 122.0
 margin_right = -23.0
 margin_bottom = -36.0
 stretch = true
@@ -30,7 +30,7 @@ __meta__ = {
 }
 
 [node name="workspace" type="Viewport" parent="view" index="0"]
-size = Vector2( 978, 519 )
+size = Vector2( 978, 438 )
 world = SubResource( 1 )
 handle_input_locally = false
 usage = 0
@@ -78,8 +78,47 @@ margin_right = 224.0
 margin_bottom = 17.0
 text = "función"
 
+[node name="testcontainer" type="Control" parent="." index="11"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -262.0
+margin_top = 18.0
+margin_right = -23.0
+margin_bottom = 97.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="from" type="TextEdit" parent="testcontainer" index="0"]
+margin_left = -182.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="to" type="TextEdit" parent="testcontainer" index="1"]
+margin_left = 44.0
+margin_right = 231.0
+margin_bottom = 87.0
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="compile" type="Button" parent="testcontainer" index="2"]
+margin_left = 9.23291
+margin_top = 31.9673
+margin_right = 26.2329
+margin_bottom = 48.9673
+hint_tooltip = "convertir"
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="visibility_changed" from="." to="view/workspace" method="vis"]
 [connection signal="button_down" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_down"]
 [connection signal="button_up" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_up"]
 [connection signal="pressed" from="add/value" to="view/workspace" method="_on_value_pressed"]
 [connection signal="pressed" from="add/method" to="view/workspace" method="_on_method_pressed"]
+[connection signal="pressed" from="testcontainer/compile" to="view/workspace" method="_on_compile_pressed"]
