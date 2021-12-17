@@ -13,12 +13,12 @@ func fromfile(dict:Dictionary):
 			register=find
 		else:
 			register=stringfunc.findnotbracketed(find,"(",")")
-		if not globals.filterbyphrase.has(register):
-			globals.filterbyphrase[register]=[]
-		globals.filterbyphrase[register].append(self)
+		if not compiler.filterbyphrase.has(register):
+			 compiler.filterbyphrase[register]=[]
+		compiler.filterbyphrase[register].append(self)
 
 
-func found(pos:int,text:String):
+func found(pos:int,text:String,_what:String):
 	if not (stringfunc.withinquotes(pos,text) and globals.skipquotes):
 		if not usesintax:
 			text=stringfunc.replacefind(find,replace,text,pos-1)

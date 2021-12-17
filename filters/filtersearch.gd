@@ -19,12 +19,6 @@ func deleteall():
 	filtertree=defaulttree
 func refresh():
 	box.savecurrent()
-	globals.filterbyphrase={}
-	for i in filtertree:
-		if i["enabled"]:
-			for j in i["inside"]:
-				if scriptonfound.has(j["type"]):
-					scriptonfound[j["type"]].new().fromfile(j)
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)

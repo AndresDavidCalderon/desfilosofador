@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://filters/compiler.gd" type="Script" id=1]
+[ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
+
+[node name="compiler" type="Node"]
+script = ExtResource( 1 )
+onfind = {
+"filter": ExtResource( 2 )
+}

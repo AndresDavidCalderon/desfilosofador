@@ -4,7 +4,7 @@ export(NodePath) onready var enabler=get_node(enabler) as CheckBox
 var index:int
 class_name libraryelement,"res://filters/element.png"
 func _ready():
-	if not get_parent().root.filtertree[get_parent().root.index]["enabled"]:
+	if not compiler.isenabled(get_parent().root.index,get_parent().root.filtertree):
 		enabler.disabled=true
 func getsavedata():
 	var data={"type":type}

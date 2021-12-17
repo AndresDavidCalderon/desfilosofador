@@ -20,7 +20,15 @@ func vis():
 			i.visible=get_parent().get_parent().visible
 
 
-func _on_compile_pressed():
+func get_save_array():
 	var blocks=[]
 	for i in get_children():
-		blocks.append(i.getsave())
+		if i is blockbase:
+			blocks.append(i.getsave())
+	return blocks
+
+onready var tests=get_parent().get_parent().get_node("testcontainer")
+func _on_compile_pressed():
+	var tree=[{"enabled":true,"origin":-1,"inside":[]}]
+	tree[0]["inside"].append({"type":"blueprint","enabled":true,"code":get_save_array()})
+	tests.get_node("to").text=compiler.compile(tests.get_node("from").text,tree)
