@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/connection/event/sender.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=4]
+[ext_resource path="res://blueprints/connection/value/textinput.tscn" type="PackedScene" id=5]
+
+[node name="blockbase" type="Panel"]
+margin_right = 189.0
+margin_bottom = 59.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = "find"
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.14828
+margin_top = -4.50077
+margin_right = 7.85172
+margin_bottom = 7.49923
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sender" parent="." instance=ExtResource( 2 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.0747
+margin_top = -24.4753
+margin_right = -4.07466
+margin_bottom = -4.47531
+hint_tooltip = "when found"
+savename = "found"
+
+[node name="text2" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 5.3609
+margin_top = -24.4753
+margin_right = 18.3609
+margin_bottom = -4.47535
+hint_tooltip = "where it was found"
+align = 0
+expand_icon = true
+savename = "text"
+
+[node name="Label" type="Label" parent="text2"]
+margin_left = 16.625
+margin_top = 1.875
+margin_right = 56.625
+margin_bottom = 18.875
+text = "texto"
+
+[node name="where" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 70.3429
+margin_top = -24.4753
+margin_right = 83.3429
+margin_bottom = -4.47535
+hint_tooltip = "where it was found"
+align = 0
+expand_icon = true
+savename = "where"
+
+[node name="Label" type="Label" parent="where"]
+margin_left = 16.625
+margin_top = 1.875
+margin_right = 56.625
+margin_bottom = 18.875
+text = "donde"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tofind" parent="." instance=ExtResource( 5 )]
+margin_left = 5.3609
+margin_top = 8.56288
+margin_right = 23.3609
+margin_bottom = 27.5629
+savename = "phrase"
+
+[node name="optionalval" parent="tofind" index="2"]
+margin_left = 22.0
+margin_right = 176.0
+placeholder_text = "texto a encontrar"
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]
+
+[editable path="text2"]
+[editable path="where"]
+[editable path="tofind"]

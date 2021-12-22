@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://stringfuncs.gd"
 }, {
+"base": "Resource",
+"class": "virtualblock",
+"language": "GDScript",
+"path": "res://blueprints/blocks/interpret/virtualblock.gd"
+}, {
 "base": "Panel",
 "class": "window",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "libraryelement": "res://filters/element.png",
 "popup": "res://UI/popupicon.png",
 "stringfunc": "",
+"virtualblock": "",
 "window": "res://UI/window/icon.png"
 }
 

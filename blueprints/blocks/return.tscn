@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://blueprints/blocks/return.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/connection/event/reciever.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+export(NodePath) var toblock=\"..\"
+export(String) var connectname
+export(String) var savename
+var block:blockbase
+var type=1
+var target:Button
+func _ready():
+	if block==null:
+		block=get_node(toblock)
+	block.connections.append(self)
+func _process(_delta):
+	if target!=null:
+		$line.points[1]=(target.rect_global_position+target.rect_size/2)-rect_global_position
+		$line.points[0]=rect_size/2
+func _pressed():
+	var last=block.base.lastselected
+	if last==null or last.type==type or last.connectname!=connectname:
+		if last!=null:
+			last.pressed=false
+		block.base.lastselected=self
+	else:
+		connectto(last)
+
+func connectto(to:Button):
+	if to.block!=block:
+		block.base.lastselected=null
+		target=to
+		to.pressed=false
+		pressed=false
+	else:
+		to.pressed=false
+		pressed=false
+		block.base.lastselected=null
+		globals.popuper.popup(\"you cant connect 2 signals within the same block\")
+"
+
+[node name="returnal" type="Panel"]
+margin_right = 120.0
+margin_bottom = 70.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -7.0
+margin_right = 11.0
+margin_bottom = 8.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reciever" parent="." instance=ExtResource( 2 )]
+margin_left = 63.0
+margin_top = 36.0
+margin_right = 81.0
+margin_bottom = 55.0
+savename = "text"
+
+[node name="desc" type="Label" parent="."]
+margin_left = 15.1361
+margin_top = 10.7214
+margin_right = 105.136
+margin_bottom = 27.7214
+text = "final text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="send" parent="." instance=ExtResource( 4 )]
+margin_left = 37.4721
+margin_top = 35.8142
+margin_right = 55.4721
+margin_bottom = 54.8142
+script = SubResource( 1 )
+savename = "send"
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]

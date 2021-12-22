@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://filters/compiler.gd" type="Script" id=1]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
 [ext_resource path="res://blueprints/interpret.gd" type="Script" id=3]
+[ext_resource path="res://blueprints/blocks/interpret/findontext.gd" type="Script" id=4]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )
 onfind = {
 "blueprint": ExtResource( 3 ),
 "filter": ExtResource( 2 )
+}
+virtualblocks = {
+"findontext": ExtResource( 4 )
 }

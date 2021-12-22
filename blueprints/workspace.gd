@@ -1,6 +1,7 @@
 extends Viewport
 var lastselected:Button
 func _ready():
+	addblock(preload("res://blueprints/blocks/return.tscn").instance())
 	vis()
 	globals.popuper.connect("visibility_changed",self,"vis")
 func _on_value_pressed():
@@ -32,3 +33,11 @@ func _on_compile_pressed():
 	var tree=[{"enabled":true,"origin":-1,"inside":[]}]
 	tree[0]["inside"].append({"type":"blueprint","enabled":true,"code":get_save_array()})
 	tests.get_node("to").text=compiler.compile(tests.get_node("from").text,tree)
+
+
+func _on_find_pressed():
+	addblock(preload("res://blueprints/blocks/actions/find.tscn").instance())
+
+
+func _on_addinside_pressed():
+	addblock(preload("res://blueprints/blocks/stringfuncs/addinside.tscn").instance())

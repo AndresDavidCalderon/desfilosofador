@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=2]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=3]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=4]
+[ext_resource path="res://blueprints/connection/value/textinput.tscn" type="PackedScene" id=5]
+
+[node name="addinside" type="Panel"]
+margin_right = 191.0
+margin_bottom = 82.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = "addinside"
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -6.0
+margin_right = 14.0
+margin_bottom = 10.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reciever" parent="." instance=ExtResource( 5 )]
+margin_left = 15.0777
+margin_top = 55.0644
+margin_right = 33.0777
+margin_bottom = 74.0644
+savename = "what"
+
+[node name="optionalval" parent="reciever" index="2"]
+placeholder_text = "a añadir"
+
+[node name="sender" parent="." instance=ExtResource( 4 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.838
+margin_top = -26.9356
+margin_right = -6.838
+margin_bottom = -6.93558
+savename = "return"
+
+[node name="where" parent="." instance=ExtResource( 3 )]
+margin_left = 15.0777
+margin_top = 31.6916
+margin_right = 33.0777
+margin_bottom = 50.6916
+savename = "where"
+
+[node name="text" parent="." instance=ExtResource( 3 )]
+margin_left = 15.0777
+margin_top = 9.18464
+margin_right = 33.0777
+margin_bottom = 28.1846
+savename = "where"
+
+[node name="title" type="Label" parent="."]
+margin_left = 37.3277
+margin_top = 9.18464
+margin_right = 163.328
+margin_bottom = 26.1846
+text = "texto original"
+
+[node name="title2" type="Label" parent="."]
+margin_left = 37.3277
+margin_top = 31.6916
+margin_right = 163.328
+margin_bottom = 48.6916
+text = "donde añadir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]
+
+[editable path="reciever"]

@@ -7,6 +7,3 @@ connectname = "event"
 
 [node name="icon" parent="." index="0"]
 modulate = Color( 0, 0, 0, 1 )
-
-[node name="line" parent="." index="1"]
-default_color = Color( 0.239216, 0.105882, 0.105882, 1 )

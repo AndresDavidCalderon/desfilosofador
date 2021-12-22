@@ -1,5 +1,6 @@
 extends Node
 export(Dictionary) var onfind
+export(Dictionary) var virtualblocks
 var filterbyphrase={}
 
 func compile(text:String,filtertree:Array):

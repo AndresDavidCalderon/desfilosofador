@@ -1,10 +1,30 @@
 extends Node
 var set:Array
+var blocks:Array=[]
+var ready=false
+var answertext:String
 func fromfile(dict:Dictionary):
-	set=parse_json(dict["code"])
+	set=dict["code"]
 	for i in set:
 		match i["type"]:
 			"find":
 				globals.filterbyphrase[i["phrase"]].append(self)
 func found(where:int,text:String,what:String):
-	pass
+	answertext=text
+	onexecution()
+	for idx in set.size():
+		var i=set[idx]
+		if i["type"]=="find":
+			if i["phrase"]==what:
+				blocks[idx].setvar("where",where)
+				blocks[idx].setvar("text",text)
+				blocks[idx].doevent("found")
+	return answertext
+func onexecution():
+	if ready:return
+	for i in set:
+		var new=compiler.virtualblocks[i["type"]].new() as virtualblock
+		blocks.append(new)
+		new.data=i
+		new.interpreter=self
+	ready=true
