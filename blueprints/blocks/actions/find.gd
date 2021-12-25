@@ -1,3 +1,4 @@
 extends blockbase
+
 func customsave(dict):
-	dict["vartype"]=$type.text
+	dict["phrase"]=$phrase.text

@@ -1,49 +1,45 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=1]
 [ext_resource path="res://blueprints/blocks/value.gd" type="Script" id=2]
 [ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/downsmall.png" type="Texture" id=4]
 [ext_resource path="res://blueprints/blocks/type.gd" type="Script" id=5]
+[ext_resource path="res://blueprints/connection/value/textinput.tscn" type="PackedScene" id=6]
 
 [node name="value" type="Panel"]
 margin_left = 9.0
 margin_top = 6.0
-margin_right = 208.0
+margin_right = 240.0
 margin_bottom = 46.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+type = "var"
 
 [node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -8.0
 margin_top = -4.0
-margin_right = 211.0
-margin_bottom = 45.0
+margin_right = 12.0
+margin_bottom = 5.0
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="val" type="LineEdit" parent="."]
-margin_left = 8.0
-margin_top = 9.0
-margin_right = 108.0
-margin_bottom = 30.0
-placeholder_text = "valor"
-caret_blink = true
-caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="type" type="Button" parent="."]
-margin_left = 118.0
-margin_top = 9.0
-margin_right = 191.0
-margin_bottom = 30.0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -81.0
+margin_top = -11.0
+margin_right = -8.0
+margin_bottom = 10.0
 text = "string"
 icon = ExtResource( 4 )
 script = ExtResource( 5 )
@@ -77,10 +73,22 @@ margin_bottom = 59.0
 text = "bool"
 
 [node name="sender" parent="." instance=ExtResource( 3 )]
-margin_left = 194.968
-margin_top = 31.1631
-margin_right = 207.968
-margin_bottom = 51.1631
+anchor_left = 1.012
+anchor_top = 1.0
+anchor_right = 1.012
+anchor_bottom = 1.0
+margin_left = -6.42001
+margin_top = -8.8369
+margin_right = 6.57999
+margin_bottom = 11.1631
+savename = "return"
+
+[node name="reciever" parent="." instance=ExtResource( 6 )]
+margin_left = 7.34284
+margin_top = 9.65132
+margin_right = 25.3428
+margin_bottom = 28.6513
+savename = "content"
 
 [connection signal="button_down" from="select" to="." method="_on_select_button_down"]
 [connection signal="button_up" from="select" to="." method="_on_select_button_up"]

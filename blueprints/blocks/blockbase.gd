@@ -35,6 +35,8 @@ func _input(event):
 					"cancel":
 						return
 		queue_free()
+
+
 func getsave()->Dictionary:
 	var dict={}
 	dict["type"]=type
@@ -43,11 +45,23 @@ func getsave()->Dictionary:
 	for i in connections:
 		connectionlist[i.savename]={}
 		var connection=connectionlist[i.savename]
-		if i.target!=null:
-			connection["toidx"]=i.target.get_index()
-			connection["toname"]=i.target.savename
-		if i.impliedvalue!=null:
-			connection["impliedvalue"]=i.impliedvalue
+		match i.type:
+			1:
+				if i.target!=null:
+					connection["toidx"]=i.target.get_index()
+					connection["toname"]=i.target.savename
+				else:
+					if i.connectname=="value" and i.impliedvalue!=null:
+						 connection["impliedvalue"]=i.impliedvalue
+					else:
+						connection["toidx"]=null
+			0:
+				connection["targets"]=[]
+				for j in i.targets:
+					var new={}
+					new["toidx"]=j.get_index()
+					new["toname"]=j.savename
+					connection["targets"].append(new)
 		connection["type"]=i.connectname
 	if has_method("customsave"):
 		call("customsave",dict)

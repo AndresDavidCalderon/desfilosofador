@@ -18,7 +18,7 @@ func _ready():
 		block=get_node(toblock)
 	block.connections.append(self)
 func _process(_delta):
-	if target!=null:
+	if is_instance_valid(target):
 		$line.points[1]=(target.rect_global_position+target.rect_size/2)-rect_global_position
 		$line.points[0]=rect_size/2
 func _pressed():
@@ -51,6 +51,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+type = "return_text"
 
 [node name="select" type="Button" parent="."]
 anchor_right = 1.0

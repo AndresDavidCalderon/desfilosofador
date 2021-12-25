@@ -1,14 +1,17 @@
 extends Button
+signal connected(to)
+signal disconnected()
 export(NodePath) var toblock=".."
 export(String) var connectname
 export(String) var savename
+var targets=[]
 var type=0
-signal needsvalue
 var block:blockbase
-var value
+var impliedvalue
 func _ready():
 	if block==null:
 		block=get_node(toblock)
+	get_parent().connections.append(self)
 func _pressed():
 	var last=block.base.lastselected
 	if last==null or last.type==type or last.connectname!=connectname:
@@ -17,3 +20,4 @@ func _pressed():
 		block.base.lastselected=self
 	else:
 		last.connectto(self)
+		emit_signal("connected",last)

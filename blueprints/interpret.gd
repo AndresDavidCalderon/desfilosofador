@@ -7,17 +7,17 @@ func fromfile(dict:Dictionary):
 	set=dict["code"]
 	for i in set:
 		match i["type"]:
-			"find":
-				globals.filterbyphrase[i["phrase"]].append(self)
+			"findontext":
+				compiler.wait_for_phrase(self,i["phrase"])
 func found(where:int,text:String,what:String):
 	answertext=text
 	onexecution()
 	for idx in set.size():
 		var i=set[idx]
-		if i["type"]=="find":
+		if i["type"]=="findontext":
 			if i["phrase"]==what:
-				blocks[idx].setvar("where",where)
-				blocks[idx].setvar("text",text)
+				blocks[idx].values["where"]=where
+				blocks[idx].values["text"]=where
 				blocks[idx].doevent("found")
 	return answertext
 func onexecution():
