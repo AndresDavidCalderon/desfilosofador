@@ -12,6 +12,12 @@ func addblock(block:Panel):
 func _on_method_pressed():
 	addblock(preload("res://blueprints/blocks/function.tscn").instance())
 
+func set_indexes():
+	var idx=0
+	for i in get_children():
+		if i is blockbase:
+			i.blockindex=idx
+			idx+=1
 
 func vis():
 	for i in get_children():

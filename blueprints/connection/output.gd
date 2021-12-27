@@ -20,4 +20,3 @@ func _pressed():
 		block.base.lastselected=self
 	else:
 		last.connectto(self)
-		emit_signal("connected",last)

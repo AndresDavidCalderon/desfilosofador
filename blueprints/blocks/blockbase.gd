@@ -5,7 +5,7 @@ var following:bool=false
 var offset:Vector2
 var base:Viewport
 var connections=[]
-
+var blockindex 
 func _ready():
 	if base==null:
 		base=get_parent()
@@ -48,7 +48,7 @@ func getsave()->Dictionary:
 		match i.type:
 			1:
 				if i.target!=null:
-					connection["toidx"]=i.target.get_index()
+					connection["toidx"]=i.target.block.blockindex
 					connection["toname"]=i.target.savename
 				else:
 					if i.connectname=="value" and i.impliedvalue!=null:
@@ -59,7 +59,7 @@ func getsave()->Dictionary:
 				connection["targets"]=[]
 				for j in i.targets:
 					var new={}
-					new["toidx"]=j.get_index()
+					new["toidx"]=j.block.blockindex
 					new["toname"]=j.savename
 					connection["targets"].append(new)
 		connection["type"]=i.connectname

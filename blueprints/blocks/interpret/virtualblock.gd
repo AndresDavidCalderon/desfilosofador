@@ -7,7 +7,6 @@ func doevent(name):
 	if data["connections"].has(name):
 		var connection=data["connections"][name]
 		if connection["type"]=="event":
-			print(connection)
 			if connection["targets"].size()>0:
 				for i in connection["targets"]:
 					interpreter.blocks[i["toidx"]].onevent(i["toname"])
@@ -24,7 +23,7 @@ func getvar(name):
 		if connection["type"]=="value":
 			if connection.has("impliedvalue"):
 				return connection["impliedvalue"]
-			return connection["toidx"].setvar(connection["toname"])
+			return interpreter.blocks[connection["toidx"]].setvar(connection["toname"])
 		else:
 			compiler.addlog("getting invalid value")
 			return null
