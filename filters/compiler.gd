@@ -3,6 +3,7 @@ export(Dictionary) var onfind
 export(Dictionary) var virtualblocks
 var filterbyphrase={}
 var compilelog=[]
+var pos
 func compile(text:String,filtertree:Array):
 	compilelog.clear()
 	filterbyphrase.clear()
@@ -13,16 +14,15 @@ func compile(text:String,filtertree:Array):
 				if onfind.has(j["type"]):
 					onfind[j["type"]].new().fromfile(j)
 	for i in filterbyphrase.keys():
-		var pos=0
+		pos=0
 		var timesfound=0
 		while true:
 			pos=text.find(i,pos)
 			if pos!=-1:
-				pos+=1
 				timesfound+=1
-				prints("se encontró la redundancia:",i,"por ves #",timesfound)
 				for j in filterbyphrase[i].size():
-					text=filterbyphrase[i][j].found(pos-1,text,i)
+					var newtext=filterbyphrase[i][j].found(pos,text,i) as String
+					pos+=(newtext.length()-text.length())+i.length()
 			else:
 				break
 	return text

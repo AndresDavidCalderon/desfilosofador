@@ -3,6 +3,8 @@ class_name virtualblock
 var interpreter
 var data:Dictionary
 var values={}
+
+"""triggers an event output"""
 func doevent(name):
 	if data["connections"].has(name):
 		var connection=data["connections"][name]
@@ -17,6 +19,7 @@ func doevent(name):
 	else:
 		printerr("connection ",name," doesnt exist")
 
+#returns the value in this block
 func getvar(name):
 	if data["connections"].has(name):
 		var connection=data["connections"][name]
@@ -31,6 +34,9 @@ func getvar(name):
 		compiler.addlog(["connection ",name," doesnt exist"])
 		return null
 
+"""to ask another block for the 
+value,name should be the name of 
+the value in the other block"""
 func setvar(name):
 	if values.has(name):
 		return values[name]

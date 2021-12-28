@@ -17,7 +17,7 @@ func found(where:int,text:String,what:String):
 		if i["type"]=="findontext":
 			if i["phrase"]==what:
 				blocks[idx].values["where"]=where
-				blocks[idx].values["text"]=where
+				blocks[idx].values["text"]=text
 				blocks[idx].doevent("found")
 	return answertext
 func onexecution():

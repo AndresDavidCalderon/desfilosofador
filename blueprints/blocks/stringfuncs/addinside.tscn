@@ -33,7 +33,7 @@ margin_left = 15.0777
 margin_top = 55.0644
 margin_right = 33.0777
 margin_bottom = 74.0644
-savename = "what"
+savename = "toadd"
 
 [node name="optionalval" parent="reciever" index="2"]
 placeholder_text = "a añadir"
@@ -61,7 +61,7 @@ margin_left = 15.0777
 margin_top = 9.18464
 margin_right = 33.0777
 margin_bottom = 28.1846
-savename = "where"
+savename = "text"
 
 [node name="title" type="Label" parent="."]
 margin_left = 37.3277
