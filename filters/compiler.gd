@@ -23,6 +23,7 @@ func compile(text:String,filtertree:Array):
 				for j in filterbyphrase[i].size():
 					var newtext=filterbyphrase[i][j].found(pos,text,i) as String
 					pos+=(newtext.length()-text.length())+i.length()
+					text=newtext
 			else:
 				break
 	return text

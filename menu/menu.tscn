@@ -33,14 +33,14 @@ __meta__ = {
 }
 
 [node name="use" type="Button" parent="."]
-anchor_left = 0.431446
-anchor_top = 0.692171
-anchor_right = 0.602345
-anchor_bottom = 0.715504
-margin_left = -54.4232
-margin_top = -12.2711
-margin_right = 54.5768
-margin_bottom = 12.7289
+anchor_left = 0.525
+anchor_top = 0.705
+anchor_right = 0.525
+anchor_bottom = 0.705
+margin_left = -150.223
+margin_top = -19.9685
+margin_right = 133.778
+margin_bottom = 19.0313
 custom_fonts/font = ExtResource( 1 )
 text = "Convertir y leer"
 __meta__ = {

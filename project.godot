@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://reader/element.gd"
 }, {
+"base": "Node",
+"class": "math",
+"language": "GDScript",
+"path": "res://notext.gd"
+}, {
 "base": "Panel",
 "class": "popup",
 "language": "GDScript",
@@ -37,7 +42,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "virtualblock",
 "language": "GDScript",
-"path": "res://blueprints/blocks/interpret/virtualblock.gd"
+"path": "res://blueprints/blocks/virtual/virtualblock.gd"
 }, {
 "base": "Panel",
 "class": "window",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "aligner": "res://ui/extendericon.png",
 "blockbase": "res://blueprints/blockbase.png",
 "libraryelement": "res://filters/element.png",
+"math": "",
 "popup": "res://UI/popupicon.png",
 "stringfunc": "",
 "virtualblock": "",

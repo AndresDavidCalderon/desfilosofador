@@ -7,9 +7,9 @@
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=5]
 [ext_resource path="res://filters/vbox.gd" type="Script" id=6]
 [ext_resource path="res://filters/folder.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/folderout.png" type="Texture" id=8]
+[ext_resource path="res://UI/images/folderout.png" type="Texture" id=8]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
-[ext_resource path="res://filters/filteronfind.gd" type="Script" id=10]
+[ext_resource path="res://filters/blueprintrep.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
 
 [node name="window" instance=ExtResource( 1 )]
@@ -18,9 +18,7 @@ margin_bottom = 600.0
 script = ExtResource( 3 )
 filter = ExtResource( 2 )
 folder = ExtResource( 7 )
-scriptonfound = {
-"filter": ExtResource( 10 )
-}
+blueprint = ExtResource( 10 )
 
 [node name="new" type="VBoxContainer" parent="." index="9"]
 margin_left = 9.12035
@@ -88,6 +86,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 scenebytype = {
+"blueprint": ExtResource( 10 ),
 "filter": ExtResource( 2 ),
 "folder": ExtResource( 7 )
 }
@@ -161,3 +160,4 @@ margin_bottom = -62.0
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]
 [connection signal="pressed" from="folderup" to="." method="_on_folderup_pressed"]
+[connection signal="save" from="blueprints" to="." method="_on_blueprints_save"]

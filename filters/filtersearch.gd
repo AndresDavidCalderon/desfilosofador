@@ -1,7 +1,6 @@
 extends window
 export(PackedScene) var filter
 export(PackedScene) var folder
-export(Dictionary) var scriptonfound
 export(bool) var onexe
 var defaulttree=[{"origin":-1,"enabled":true,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"enabled":true,"inside":[]}]
 var filtertree:Array=defaulttree
@@ -45,7 +44,7 @@ func savefilters():
 	else:
 		globals.popuper.popup("error guardando!","error "+str(error))
 func _on_newfilter_pressed():
-	addelement(filter)
+	addelement(filter.instance())
 func _on_save_pressed():
 	savefilters()
 	globals.popuper.popup("guardado!")
@@ -53,8 +52,7 @@ func _notification(what):
 	if what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		savefilters()
 
-func addelement(scene:PackedScene):
-	var new=scene.instance() as libraryelement
+func addelement(new:libraryelement):
 	new.index=filtertree[index]["inside"].size()
 	box.add_child(new)
 	var data:Dictionary
@@ -65,7 +63,7 @@ func addelement(scene:PackedScene):
 	filtertree[index]["inside"].append(data)
 
 func _on_newfolder_pressed():
-	addelement(folder)
+	addelement(folder.instance())
 
 func _on_folderup_pressed():
 	box.savecurrent()
@@ -81,3 +79,18 @@ func _on_excludequotes_toggled(button_pressed):
 
 func _on_blueprint_pressed():
 	$blueprints.visible=true
+	editing=null
+
+var editing=null
+export(PackedScene) var blueprint
+func _on_blueprints_save(dict):
+	var new=blueprint.instance() as libraryelement
+	if editing==null :
+		addelement(new)
+		new.fromfile(dict)
+	else:
+		editing.code=dict["code"]
+func editblue(who:libraryelement):
+	editing=who
+	$blueprints.visible=true
+	$blueprints.addcode(who.code)

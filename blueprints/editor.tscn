@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blueprints/workspace.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=5]
 [ext_resource path="res://blueprints/editor/expandable.gd" type="Script" id=6]
 [ext_resource path="res://blueprints/output.gd" type="Script" id=7]
+[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=8]
+[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=9]
+[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=10]
+[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=11]
 
 [sub_resource type="World" id=1]
 
@@ -14,13 +18,19 @@
 bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
 [node name="window" instance=ExtResource( 1 )]
-margin_left = 184.0
-margin_top = 119.0
-margin_right = 1208.0
-margin_bottom = 803.0
+margin_left = 154.0
+margin_top = 131.0
+margin_right = 1178.0
+margin_bottom = 815.0
 rect_pivot_offset = Vector2( -183, -122.5 )
 theme = ExtResource( 5 )
 script = ExtResource( 3 )
+block_by_name = {
+"addinside": ExtResource( 11 ),
+"findontext": ExtResource( 10 ),
+"return_text": ExtResource( 9 ),
+"var": ExtResource( 8 )
+}
 
 [node name="view" type="ViewportContainer" parent="." index="8"]
 anchor_right = 1.0
@@ -156,13 +166,27 @@ anchor_top = 0.966
 anchor_right = 0.996
 anchor_bottom = 0.966
 margin_left = 23.0
-margin_top = -99.5428
+margin_top = -99.744
 margin_right = -18.9041
-margin_bottom = 8.45721
+margin_bottom = -6.74402
 custom_styles/normal = SubResource( 2 )
 text = "output goes here..."
 scroll_following = true
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="." index="13"]
+anchor_left = 0.996
+anchor_top = 1.0
+anchor_right = 0.996
+anchor_bottom = 1.0
+margin_left = -282.773
+margin_top = -23.0
+margin_right = -30.7733
+margin_bottom = -6.0
+text = "add to the library and close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,3 +199,4 @@ __meta__ = {
 [connection signal="pressed" from="add/integrated/options/find" to="view/workspace" method="_on_find_pressed"]
 [connection signal="pressed" from="add/integrated/options/addinside" to="view/workspace" method="_on_addinside_pressed"]
 [connection signal="pressed" from="testcontainer/compile" to="." method="_on_compile_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

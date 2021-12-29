@@ -3,10 +3,10 @@
 [ext_resource path="res://filters/compiler.gd" type="Script" id=1]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
 [ext_resource path="res://blueprints/interpret.gd" type="Script" id=3]
-[ext_resource path="res://blueprints/blocks/interpret/findontext.gd" type="Script" id=4]
-[ext_resource path="res://blueprints/blocks/interpret/return.gd" type="Script" id=5]
-[ext_resource path="res://blueprints/blocks/interpret/var.gd" type="Script" id=6]
-[ext_resource path="res://blueprints/blocks/actions/addinside.gd" type="Script" id=7]
+[ext_resource path="res://blueprints/blocks/virtual/findontext.gd" type="Script" id=4]
+[ext_resource path="res://blueprints/blocks/virtual/return.gd" type="Script" id=5]
+[ext_resource path="res://blueprints/blocks/virtual/var.gd" type="Script" id=6]
+[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.gd" type="Script" id=7]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )

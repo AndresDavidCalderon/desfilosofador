@@ -35,12 +35,17 @@ func _input(event):
 					"cancel":
 						return
 		queue_free()
-
+func fromfile(dict):
+	rect_position.x=dict["pos"[0]]
+	rect_position.y=dict["pos"[1]]
+	if has_method("_fromfile"):
+		call("_fromfile",dict)
 
 func getsave()->Dictionary:
 	var dict={}
 	dict["type"]=type
 	dict["connections"]={}
+	dict["pos"]=[rect_position.x,rect_position.y]
 	var connectionlist=dict["connections"]
 	for i in connections:
 		connectionlist[i.savename]={}

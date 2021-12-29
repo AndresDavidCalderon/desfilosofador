@@ -13,7 +13,7 @@ func _on_library_pressed():
 onready var reader=$read/center/text
 func _on_read_pressed():
 	globals.reader=$read/center/text
-	reader.text=compiler.compile($new/center/text.text,$librarycontainer/filtersearch.filtertree)
+	reader.text=getcompile()
 	$new.visible=false
 	$read.visible=true
 
@@ -24,3 +24,6 @@ func _on_change_pressed():
 	globals.reader=$new/center/text
 	$new.visible=true
 	$read.visible=false
+
+func getcompile():
+	return compiler.compile($new/center/text.text,$librarycontainer/filtersearch.filtertree)
