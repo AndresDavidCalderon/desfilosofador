@@ -22,11 +22,17 @@ signal save(dict)
 func _on_save_pressed():
 	emit_signal("save",{"type":"blueprint","enabled":true,"name":"unnamed","code":get_save_array()})
 	_on_close_pressed()
-
-func addcode(blocks:Array):
-	for i in blocks:
+var blocks=[]
+func addcode(newblocks:Array):
+	for i in newblocks:
 		if block_by_name.has(i["type"]):
 			var new=block_by_name[i["type"]].instance()
+			new.base=$view/workspace
 			$view/workspace.add_child(new)
+			blocks.append(new)
 		else:
 			globals.popuper.popup("error loading, invalid type "+i["type"])
+	var idx=0
+	for i in blocks:
+		i.fromfile(newblocks[idx])
+		idx+=1

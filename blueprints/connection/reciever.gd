@@ -11,6 +11,7 @@ func _ready():
 	if block==null:
 		block=get_node(toblock)
 	block.connections.append(self)
+	block.connection_by_name[savename]=self
 func _process(_delta):
 	if is_instance_valid(target):
 		$line.points[1]=(target.rect_global_position+target.rect_size/2)-rect_global_position

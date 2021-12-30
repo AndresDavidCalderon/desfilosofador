@@ -4,7 +4,9 @@ export(String) var type
 var following:bool=false
 var offset:Vector2
 var base:Viewport
+onready var editor=base.get_parent().get_parent()
 var connections=[]
+var connection_by_name={}
 var blockindex 
 func _ready():
 	if base==null:
@@ -15,16 +17,21 @@ func _ready():
 		new.rect_size=Vector2(20,20)+rect_size
 		new.connect("button_down",self,"_on_select_button_down")
 		new.connect("button_down",self,"_on_select_button_up")
+
+
 func _on_select_button_down():
 	following=true
 	offset=rect_position-get_global_mouse_position()
 
+
 func _on_select_button_up():
 	following=false
+
 
 func _process(_delta):
 	if following:
 		rect_position=get_global_mouse_position()+offset
+
 
 func _input(event):
 	if event.is_action_pressed("delete") and following:
@@ -35,11 +42,22 @@ func _input(event):
 					"cancel":
 						return
 		queue_free()
+
+
 func fromfile(dict):
-	rect_position.x=dict["pos"[0]]
-	rect_position.y=dict["pos"[1]]
+	rect_position.x=dict["pos"][0]
+	rect_position.y=dict["pos"][1]
 	if has_method("_fromfile"):
 		call("_fromfile",dict)
+	for i in dict["connections"].keys():
+		var ref= dict["connections"][i]
+		if connection_by_name.has(i):
+			var connection=connection_by_name[i]
+			if connection.type==1 and ref.has("toidx") and ref["toidx"]!=null:
+				connection.connectto(editor.blocks[ref["toidx"]].connection_by_name(ref["toname"]))
+	if has_method("customload"):
+		call("customload",dict)
+
 
 func getsave()->Dictionary:
 	var dict={}
@@ -68,6 +86,7 @@ func getsave()->Dictionary:
 					new["toname"]=j.savename
 					connection["targets"].append(new)
 		connection["type"]=i.connectname
+		connection["isout"]=i.type==0
 	if has_method("customsave"):
 		call("customsave",dict)
 	return dict
