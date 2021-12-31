@@ -83,11 +83,14 @@ static func getuntilback(idx:int,text:String,until:String)->String:
 		else:
 			break
 	return word
+static func lengthidx(string:String)->int:
+	return string.length()-1
 static func getuntil(idx:int,text:String,until:String)->String:
 	var word=""
 	if text[idx]==until:
 		prints("started search on the carachter, text",text,"carachter",idx,"is",text[idx])
 		idx+=1
+	#length retorna 1 más
 	while idx<text.length():
 		if text[idx]!=until:
 			word=word+text[idx]

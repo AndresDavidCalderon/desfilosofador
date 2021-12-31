@@ -3,11 +3,15 @@ var impliedvalue=null
 export(NodePath) var toblock=".."
 export(String) var connectname
 export(String) var savename
+export(NodePath) var toprovider
+var val_provider
 var block:blockbase
 var type=1
 var target:Button
 signal connected
 func _ready():
+	if val_provider==null:
+		val_provider=get_node_or_null(toprovider)
 	if block==null:
 		block=get_node(toblock)
 	block.connections.append(self)

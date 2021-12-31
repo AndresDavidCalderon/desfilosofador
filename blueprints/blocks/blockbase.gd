@@ -35,13 +35,17 @@ func _process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("delete") and following:
-		if has_method("ondelete"):
-			var answer=call("ondelete")
-			if answer!=null:
-				match answer:
-					"cancel":
+		delete()
+
+func delete(extra:Array=[]):
+	if has_method("ondelete"):
+		var answer=call("ondelete")
+		if answer!=null:
+			match answer:
+				"cancel":
+					if not extra.has("force"):
 						return
-		queue_free()
+	queue_free()
 
 
 func fromfile(dict):
@@ -53,8 +57,15 @@ func fromfile(dict):
 		var ref= dict["connections"][i]
 		if connection_by_name.has(i):
 			var connection=connection_by_name[i]
-			if connection.type==1 and ref.has("toidx") and ref["toidx"]!=null:
-				connection.connectto(editor.blocks[ref["toidx"]].connection_by_name(ref["toname"]))
+			if connection.type==1 :
+				if ref.has("toidx") and ref["toidx"]!=null:
+					connection.connectto(editor.blocks[ref["toidx"]].connection_by_name[ref["toname"]])
+				if ref.has("impliedvalue") and connection.val_provider!=null:
+					match connection.val_provider.get_class():
+						"LineEdit":
+							connection.val_provider.text=ref["impliedvalue"]
+						"CheckBox":
+							connection.val_provider.pressed=ref["impliedvalue"]
 	if has_method("customload"):
 		call("customload",dict)
 

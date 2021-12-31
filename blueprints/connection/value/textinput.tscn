@@ -7,6 +7,7 @@
 [node name="reciever" instance=ExtResource( 1 )]
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
+toprovider = NodePath("optionalval")
 
 [node name="optionalval" type="LineEdit" parent="." index="2"]
 margin_left = 22.25

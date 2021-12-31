@@ -12,6 +12,7 @@ func _on_compile_pressed():
 
 
 func get_save_array():
+	$view/workspace.set_indexes()
 	var blocks=[]
 	for i in $view/workspace.get_children():
 		if i is blockbase:
@@ -23,7 +24,10 @@ func _on_save_pressed():
 	emit_signal("save",{"type":"blueprint","enabled":true,"name":"unnamed","code":get_save_array()})
 	_on_close_pressed()
 var blocks=[]
+
 func addcode(newblocks:Array):
+	blocks.clear()
+	$view/workspace.clear()
 	for i in newblocks:
 		if block_by_name.has(i["type"]):
 			var new=block_by_name[i["type"]].instance()

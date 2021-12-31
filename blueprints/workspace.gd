@@ -28,6 +28,10 @@ func vis():
 		else:
 			i.visible=get_parent().get_parent().visible
 
+func clear():
+	for i in get_children():
+		if i is blockbase:
+			i.delete(["force"])
 
 func _on_find_pressed():
 	addblock(preload("res://blueprints/blocks/actions/find.tscn").instance())

@@ -5,8 +5,9 @@
 [ext_resource path="res://UI/images/edit.png" type="Texture" id=3]
 
 [node name="libraryelement" type="Panel"]
-margin_right = 392.0
-margin_bottom = 42.0
+margin_right = 368.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 368, 85 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,12 +16,10 @@ type = "blueprint"
 enabler = NodePath("enabled")
 
 [node name="name" type="LineEdit" parent="."]
-anchor_top = 0.455
-anchor_bottom = 0.455
 margin_left = 7.05025
-margin_top = -14.9949
+margin_top = 10.1721
 margin_right = 319.05
-margin_bottom = 17.0051
+margin_bottom = 42.1721
 custom_fonts/font = ExtResource( 2 )
 text = "unnamed blueprint"
 __meta__ = {
@@ -29,29 +28,40 @@ __meta__ = {
 
 [node name="enabled" type="CheckBox" parent="."]
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -27.1373
-margin_top = -16.8849
-margin_right = -3.13727
-margin_bottom = 15.1151
+anchor_bottom = 1.0
+margin_left = -40.4991
+margin_top = -37.3056
+margin_right = -13.4991
+margin_bottom = -5.30562
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="edit" type="Button" parent="."]
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -69.0
-margin_top = -15.0
-margin_right = -36.0
-margin_bottom = 13.0
+margin_left = -40.4991
+margin_top = 10.1721
+margin_right = -7.49915
+margin_bottom = 38.1721
 icon = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="delete" type="Button" parent="."]
+anchor_top = 0.938
+anchor_bottom = 0.938
+margin_left = 7.05025
+margin_top = -25.1677
+margin_right = 26.0503
+margin_bottom = -5.16766
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="delete" to="." method="delete"]

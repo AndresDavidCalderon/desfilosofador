@@ -21,7 +21,7 @@ func fromfile(dict:Dictionary):
 func found(pos:int,text:String,_what:String):
 	if not (stringfunc.withinquotes(pos,text) and globals.skipquotes):
 		if not usesintax:
-			text=stringfunc.replacefind(find,replace,text,pos-1)
+			text=stringfunc.replacefind(find,replace,text,pos)
 		else:
 			var from=find.find(register)
 			while from>0:
@@ -29,23 +29,24 @@ func found(pos:int,text:String,_what:String):
 					var options=stringfunc.getuntilback(from-3,find,"(")
 					from-=options.length()+2
 					options=stringfunc.countlist(options,"/")
-					var prefix=stringfunc.getuntilback(pos-3,text," ")
+					var prefix=stringfunc.getuntilback(pos-2,text," ")
 					if not options.has(prefix):
 						prints("wrong prefix",prefix)
 						return text
 					else:
+						#length returns 1 more that compensates the space
 						pos-=prefix.length()
 				from-=1
 			from=find.find(register)+stringfunc.getuntil(find.find(register),find," ").length()+1
-			var frontpos=pos+stringfunc.getuntil(pos,text," ").length()+1
-			if frontpos>text.length()-1:
+			var frontpos=pos+stringfunc.getuntil(pos+1,text," ").length()+2
+			if frontpos>stringfunc.lengthidx(text):
 				print("reached end")
 				return text
 			print("looping through from")
 			while from<find.length()-1:
 				match find[from+1]:
 					"(":
-						var options=stringfunc.getuntil(from+3,find,")")
+						var options=stringfunc.getuntil(from+1,find,")")
 						from+=options.length()+3
 						options=stringfunc.countlist(options,"/")
 						var suffix=stringfunc.getuntil(frontpos,text," ")
@@ -67,12 +68,11 @@ func found(pos:int,text:String,_what:String):
 						print("found constant")
 						var next=stringfunc.getuntil(from,find," ")
 						var ontext=stringfunc.getuntil(frontpos,text," ")
-						
 						if next!=ontext:
 							prints("wrong constant suffix",ontext,"had to be",next)
 							return text
 						from+=next.length()
 						frontpos+=ontext.length()
-			text=stringfunc.cutout(pos-2,frontpos,text)
-			text=stringfunc.addbetween(text,replace,pos-2)
+			text=stringfunc.cutout(pos-1,frontpos,text)
+			text=stringfunc.addbetween(text,replace,pos-1)
 	return text

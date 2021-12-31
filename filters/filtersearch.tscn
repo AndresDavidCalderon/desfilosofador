@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://filters/blueprintrep.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
+[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=12]
+[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=13]
+[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=14]
+[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=15]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
@@ -155,6 +159,12 @@ margin_left = 131.0
 margin_top = 72.0
 margin_right = -99.0961
 margin_bottom = -62.0
+block_by_name = {
+"addinside": ExtResource( 15 ),
+"findontext": ExtResource( 12 ),
+"return_text": ExtResource( 13 ),
+"var": ExtResource( 14 )
+}
 
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]

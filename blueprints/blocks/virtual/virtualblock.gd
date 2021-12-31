@@ -11,7 +11,8 @@ func doevent(name):
 		if connection["type"]=="event":
 			if connection["targets"].size()>0:
 				for i in connection["targets"]:
-					interpreter.blocks[i["toidx"]].onevent(i["toname"])
+					if i["toidx"]!=null:
+						interpreter.blocks[i["toidx"]].onevent(i["toname"])
 			else:
 				compiler.addlog(["signal",name,"not connected"])
 		else:
