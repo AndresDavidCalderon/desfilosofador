@@ -1,6 +1,7 @@
 extends "res://blueprints/connection/reciever.gd"
 
-
+func _ready():
+	impliedvalue=""
 
 func _on_reciever_connected():
 	$optionalval.editable=false

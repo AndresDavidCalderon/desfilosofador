@@ -4,6 +4,7 @@ var blocks:Array=[]
 var ready=false
 var answertext:String
 func fromfile(dict:Dictionary):
+	if not dict["enabled"]:return
 	set=dict["code"]
 	for i in set:
 		match i["type"]:

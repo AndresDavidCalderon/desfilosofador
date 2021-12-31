@@ -84,8 +84,8 @@ func _on_blueprint_pressed():
 var editing=null
 export(PackedScene) var blueprint
 func _on_blueprints_save(dict):
-	var new=blueprint.instance() as libraryelement
 	if editing==null :
+		var new=blueprint.instance() as libraryelement
 		addelement(new)
 		new.fromfile(dict)
 	else:

@@ -25,11 +25,15 @@ func getvar(name):
 	if data["connections"].has(name):
 		var connection=data["connections"][name]
 		if connection["type"]=="value":
-			if connection.has("impliedvalue"):
+			if not connection.has("impliedvalue"):
+				if connection.has("toidx") and connection["toidx"]!=null:
+					return interpreter.blocks[connection["toidx"]].setvar(connection["toname"])
+				else:
+					compiler.addlog(["value",name,"isnt connected and seems needed"])
+			else:
 				return connection["impliedvalue"]
-			return interpreter.blocks[connection["toidx"]].setvar(connection["toname"])
 		else:
-			compiler.addlog("getting invalid value")
+			compiler.addlog(["connection",name,"isnt value"])
 			return null
 	else:
 		compiler.addlog(["connection ",name," doesnt exist"])

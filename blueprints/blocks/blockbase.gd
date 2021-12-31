@@ -66,6 +66,7 @@ func fromfile(dict):
 							connection.val_provider.text=ref["impliedvalue"]
 						"CheckBox":
 							connection.val_provider.pressed=ref["impliedvalue"]
+					connection.impliedvalue=ref["impliedvalue"]
 	if has_method("customload"):
 		call("customload",dict)
 
