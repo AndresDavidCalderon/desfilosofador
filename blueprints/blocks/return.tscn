@@ -38,17 +38,22 @@ __meta__ = {
 }
 
 [node name="reciever" parent="." instance=ExtResource( 2 )]
-margin_left = 63.1045
+anchor_left = 0.493
+anchor_right = 0.493
+margin_left = 3.9445
 margin_top = 36.0858
-margin_right = 81.1045
+margin_right = 21.9445
 margin_bottom = 55.0858
 savename = "text"
 
 [node name="send" parent="." instance=ExtResource( 4 )]
-margin_left = 37.6199
-margin_top = 35.1419
-margin_right = 55.6199
-margin_bottom = 54.1419
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -22.3801
+margin_top = 36.0858
+margin_right = -4.3801
+margin_bottom = 55.0858
+button_mask = 1
 savename = "send"
 
 [connection signal="button_down" from="select" to="." method="_on_select_button_down"]
