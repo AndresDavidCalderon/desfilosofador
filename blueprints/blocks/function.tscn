@@ -21,6 +21,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+type = "func"
 argument = ExtResource( 4 )
 
 [node name="select" type="Button" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blueprints/workspace.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=9]
 [ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=11]
+[ext_resource path="res://blueprints/editor/add.gd" type="Script" id=12]
 
 [sub_resource type="World" id=1]
 
@@ -72,6 +73,7 @@ margin_left = 23.0
 margin_top = 5.83363
 margin_right = 107.0
 margin_bottom = 21.8336
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,12 +104,14 @@ text = "otra acción.."
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="add/integrated" index="0"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -58.5
-margin_top = 23.0
-margin_right = 130.5
-margin_bottom = 111.0
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -45.9871
+margin_top = 6.0
+margin_right = 53.0129
+margin_bottom = 94.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,6 +126,81 @@ margin_top = 21.0
 margin_right = 216.0
 margin_bottom = 38.0
 text = "agregar dentro del texto"
+
+[node name="condit" type="Button" parent="add" index="4"]
+margin_left = 349.0
+margin_right = 448.0
+margin_bottom = 17.0
+text = "condiciones"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="add/condit" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.40973
+margin_top = 6.0
+margin_right = 9.59027
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="follows" type="Button" parent="add/condit/options" index="0"]
+margin_right = 117.0
+margin_bottom = 17.0
+text = "si le sigue"
+
+[node name="precede" type="Button" parent="add/condit/options" index="1"]
+margin_top = 21.0
+margin_right = 117.0
+margin_bottom = 38.0
+text = "si le precede"
+
+[node name="operators" type="Button" parent="add" index="5"]
+margin_left = 452.0
+margin_right = 542.0
+margin_bottom = 17.0
+text = "operadores"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="add/operators" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 6.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="if" type="Button" parent="add/operators/options" index="0"]
+margin_right = 90.0
+margin_bottom = 17.0
+text = "sí"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="or" type="Button" parent="add/operators/options" index="1"]
+margin_top = 21.0
+margin_right = 90.0
+margin_bottom = 38.0
+text = "o"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="and" type="Button" parent="add/operators/options" index="2"]
+margin_top = 42.0
+margin_right = 90.0
+margin_bottom = 59.0
+text = "y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="testcontainer" type="Control" parent="." index="11"]
 anchor_left = 1.0

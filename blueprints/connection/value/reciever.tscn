@@ -39,6 +39,7 @@ margin_left = 21.9414
 margin_right = 40.9414
 margin_bottom = 20.0
 rect_clip_content = true
+mouse_filter = 2
 disabled = true
 flat = true
 __meta__ = {
