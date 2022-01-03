@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://blueprints/connection/value/textinput.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/images/threelines.png" type="Texture" id=2]
+[ext_resource path="res://blueprints/editor/expandable.gd" type="Script" id=3]
+[ext_resource path="res://blueprints/connection/value/smarttextinput.gd" type="Script" id=4]
+
+[node name="reciever" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+toprovider = NodePath("")
+
+[node name="more" type="Button" parent="." index="4"]
+anchor_left = 7.236
+anchor_top = 1.053
+anchor_right = 7.236
+anchor_bottom = 1.053
+margin_left = -4.81221
+margin_top = -4.63087
+margin_right = 12.1878
+margin_bottom = 12.3691
+icon = ExtResource( 2 )
+expand_icon = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="VBoxContainer" parent="more" index="0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -26.9376
+margin_top = 2.91921
+margin_right = 27.0624
+margin_bottom = 42.9192
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="verb" type="Button" parent="more/options" index="0"]
+margin_right = 90.0
+margin_bottom = 17.0
+text = "verbo"
+
+[node name="subject" type="Button" parent="more/options" index="1"]
+margin_top = 21.0
+margin_right = 90.0
+margin_bottom = 38.0
+text = "sujeto"
+
+[node name="value" type="Button" parent="more/options" index="2"]
+margin_top = 42.0
+margin_right = 90.0
+margin_bottom = 59.0
+text = "valor fijo"
+
+[connection signal="pressed" from="more/options/verb" to="." method="_on_verb_pressed"]
+[connection signal="pressed" from="more/options/subject" to="." method="_on_subject_pressed"]
+[connection signal="pressed" from="more/options/value" to="." method="_on_value_pressed"]

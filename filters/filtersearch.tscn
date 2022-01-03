@@ -19,6 +19,7 @@
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
 margin_bottom = 600.0
+rect_min_size = Vector2( 700, 200 )
 script = ExtResource( 3 )
 filter = ExtResource( 2 )
 folder = ExtResource( 7 )
@@ -34,13 +35,13 @@ __meta__ = {
 }
 
 [node name="title" type="Label" parent="new" index="0"]
-margin_right = 138.0
+margin_right = 228.0
 margin_bottom = 14.0
 text = "nuevo:"
 
 [node name="newfilter" type="Button" parent="new" index="1"]
 margin_top = 18.0
-margin_right = 138.0
+margin_right = 228.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 5 )
 text = "filtro"
@@ -50,7 +51,7 @@ __meta__ = {
 
 [node name="newfolder" type="Button" parent="new" index="2"]
 margin_top = 62.0
-margin_right = 138.0
+margin_right = 228.0
 margin_bottom = 102.0
 custom_fonts/font = ExtResource( 5 )
 text = "carpeta"
@@ -60,13 +61,20 @@ __meta__ = {
 
 [node name="blueprint" type="Button" parent="new" index="3"]
 margin_top = 106.0
-margin_right = 138.0
+margin_right = 228.0
 margin_bottom = 146.0
 custom_fonts/font = ExtResource( 5 )
 text = "plano"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="lang" type="Button" parent="new" index="4"]
+margin_top = 150.0
+margin_right = 228.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 9 )
+text = "elemento de idioma"
 
 [node name="scroll" type="ScrollContainer" parent="." index="10"]
 anchor_left = 0.5

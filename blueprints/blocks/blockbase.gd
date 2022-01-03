@@ -57,7 +57,7 @@ func fromfile(dict):
 		var ref= dict["connections"][i]
 		if connection_by_name.has(i):
 			var connection=connection_by_name[i]
-			if connection.type==1 :
+			if connection.type==compiler.CONNECTION_IN :
 				if ref.has("toidx") and ref["toidx"]!=null:
 					connection.connectto(editor.blocks[ref["toidx"]].connection_by_name[ref["toname"]])
 				if ref.has("impliedvalue") and connection.val_provider!=null:

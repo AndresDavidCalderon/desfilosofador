@@ -10,6 +10,8 @@ func fromfile(dict:Dictionary):
 		match i["type"]:
 			"findontext":
 				compiler.wait_for_phrase(self,i["phrase"])
+
+
 func found(where:int,text:String,what:String):
 	answertext=text
 	onexecution()
@@ -21,6 +23,8 @@ func found(where:int,text:String,what:String):
 				blocks[idx].values["text"]=text
 				blocks[idx].doevent("found")
 	return answertext
+
+
 func onexecution():
 	if ready:return
 	for i in set:

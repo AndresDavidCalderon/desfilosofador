@@ -267,7 +267,7 @@ texture_normal = ExtResource( 17 )
 
 [node name="scroll" type="ScrollContainer" parent="readparams/readersets"]
 margin_left = 15.0
-margin_top = 22.0
+margin_top = 19.0
 margin_right = 632.0
 margin_bottom = 390.0
 script = ExtResource( 14 )
@@ -277,7 +277,7 @@ __meta__ = {
 
 [node name="list" type="VBoxContainer" parent="readparams/readersets/scroll"]
 margin_right = 587.0
-margin_bottom = 74.0
+margin_bottom = 100.0
 
 [node name="font" type="HBoxContainer" parent="readparams/readersets/scroll/list"]
 margin_right = 587.0
@@ -307,6 +307,12 @@ margin_top = 52.0
 margin_right = 587.0
 margin_bottom = 74.0
 text = "ajustar texto a la pantalla"
+
+[node name="map" type="CheckBox" parent="readparams/readersets/scroll/list"]
+margin_top = 78.0
+margin_right = 587.0
+margin_bottom = 100.0
+text = "minimapa en el lector"
 
 [node name="librarycontainer" type="Node2D" parent="."]
 position = Vector2( 509.909, 281.651 )
@@ -351,5 +357,6 @@ margin_bottom = 50.7223
 [connection signal="value_changed" from="readparams/readersets/scroll/list/font/font" to="readparams/readersets/scroll" method="_on_font_value_changed"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/fullscreen" to="readparams/readersets/scroll" method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="readparams/readersets/scroll/list/wrap" to="readparams/readersets/scroll" method="_on_wrap_toggled"]
+[connection signal="toggled" from="readparams/readersets/scroll/list/map" to="readparams/readersets/scroll" method="_on_map_toggled"]
 
 [editable path="readparams/readersets"]

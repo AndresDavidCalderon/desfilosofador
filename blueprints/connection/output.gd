@@ -5,7 +5,7 @@ export(NodePath) var toblock=".."
 export(String) var connectname
 export(String) var savename
 var targets=[]
-var type=0
+var type=compiler.CONNECTION_OUT
 var block:blockbase
 var impliedvalue
 func _ready():

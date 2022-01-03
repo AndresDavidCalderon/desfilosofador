@@ -6,7 +6,7 @@ export(String) var savename
 export(NodePath) var toprovider
 var val_provider
 var block:blockbase
-var type=1
+var type=compiler.CONNECTION_IN
 var target:Button
 signal connected
 func _ready():

@@ -131,6 +131,7 @@ text = "agregar dentro del texto"
 margin_left = 349.0
 margin_right = 448.0
 margin_bottom = 17.0
+toggle_mode = true
 text = "condiciones"
 script = ExtResource( 6 )
 
@@ -277,5 +278,6 @@ __meta__ = {
 [connection signal="pressed" from="add/method" to="view/workspace" method="_on_method_pressed"]
 [connection signal="pressed" from="add/integrated/options/find" to="view/workspace" method="_on_find_pressed"]
 [connection signal="pressed" from="add/integrated/options/addinside" to="view/workspace" method="_on_addinside_pressed"]
+[connection signal="pressed" from="add/condit/options/follows" to="add" method="_on_follows_pressed"]
 [connection signal="pressed" from="testcontainer/compile" to="." method="_on_compile_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]

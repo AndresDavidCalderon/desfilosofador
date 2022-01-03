@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://filters/compiler.gd" type="Script" id=1]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://blueprints/blocks/virtual/return.gd" type="Script" id=5]
 [ext_resource path="res://blueprints/blocks/virtual/var.gd" type="Script" id=6]
 [ext_resource path="res://blueprints/blocks/stringfuncs/addinside.gd" type="Script" id=7]
+[ext_resource path="res://blueprints/blocks/conditionals/followsv.gd" type="Script" id=8]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )
@@ -17,6 +18,7 @@ onfind = {
 virtualblocks = {
 "addinside": ExtResource( 7 ),
 "findontext": ExtResource( 4 ),
+"follows": ExtResource( 8 ),
 "return_text": ExtResource( 5 ),
 "var": ExtResource( 6 )
 }

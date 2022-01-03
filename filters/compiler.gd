@@ -1,6 +1,14 @@
 extends Node
 export(Dictionary) var onfind
 export(Dictionary) var virtualblocks
+enum{
+	CONNECTION_OUT,
+	CONNECTION_IN
+}
+enum{
+	SUBJECT,
+	VERB
+}
 var filterbyphrase={}
 var compilelog=[]
 var pos

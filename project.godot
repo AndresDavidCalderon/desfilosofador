@@ -68,8 +68,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-globals="*res://globals.gd"
 compiler="*res://filters/compiler.tscn"
+globals="*res://globals.tscn"
 
 [importer_defaults]
 
