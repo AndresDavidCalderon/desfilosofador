@@ -1,7 +1,7 @@
 extends HBoxContainer
 export(float) var margin
 var reader:Control
-onready var result=get_parent().get_parent().get_node("read/center/text")
+onready var result=get_parent().get_parent().get_node("read/text")
 onready var input=get_parent().get_parent().get_node("new/center/text")
 func _ready():
 	get_viewport().connect("size_changed",self,"resize")
@@ -14,6 +14,7 @@ func _on_text_visibility_changed():
 		reader=input
 	else:
 		reader=result
+
 func gettext()->String:
 	if reader is RichTextLabel:
 		return reader.bbcode_text

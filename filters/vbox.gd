@@ -6,9 +6,12 @@ func openfolder(index:int):
 		i.queue_free()
 	root.index=index
 	for i in getcurrent():
-		var new=scenebytype[i["type"]].instance() as libraryelement
-		add_child(new)
-		new.fromfile(i)
+		if scenebytype.has(i["type"]):
+			var new=scenebytype[i["type"]].instance() as libraryelement
+			add_child(new)
+			new.fromfile(i)
+		else:
+			printerr("invalid element")
 signal beforesave
 func savecurrent():
 	getcurrent().clear()

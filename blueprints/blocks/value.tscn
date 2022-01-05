@@ -46,6 +46,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selected = 1
 
 [node name="box" type="VBoxContainer" parent="type"]
 margin_top = 25.0

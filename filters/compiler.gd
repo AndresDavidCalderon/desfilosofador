@@ -12,6 +12,8 @@ enum{
 var filterbyphrase={}
 var compilelog=[]
 var pos
+
+
 func compile(text:String,filtertree:Array):
 	compilelog.clear()
 	filterbyphrase.clear()
@@ -35,6 +37,8 @@ func compile(text:String,filtertree:Array):
 			else:
 				break
 	return text
+
+
 func isenabled(folderidx:int,tree:Array):
 	while true:
 		if folderidx==-1:
@@ -42,6 +46,8 @@ func isenabled(folderidx:int,tree:Array):
 		if not tree[folderidx]["enabled"]:
 			return false
 		folderidx=tree[folderidx]["origin"]
+
+
 func addlog(messages):
 	var final=""
 	if messages is Array:
@@ -52,6 +58,8 @@ func addlog(messages):
 	else:
 		final=str(messages)
 	compilelog.append(final)
+
+
 func wait_for_phrase(who:Object,phrase:String):
 	if not filterbyphrase.has(phrase):
 		filterbyphrase[phrase]=[]

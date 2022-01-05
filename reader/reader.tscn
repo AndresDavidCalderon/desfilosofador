@@ -101,18 +101,11 @@ __meta__ = {
 
 [node name="read" type="Node2D" parent="."]
 
-[node name="center" type="Node2D" parent="read"]
-position = Vector2( 509.424, 277.187 )
-script = ExtResource( 2 )
-sety = true
-setx = true
-scaleview = Vector2( 0.5, 0.5 )
-
-[node name="text" type="TextEdit" parent="read/center"]
-margin_left = -400.0
-margin_top = -177.0
-margin_right = 400.0
-margin_bottom = 232.0
+[node name="text" type="TextEdit" parent="read"]
+margin_left = 109.424
+margin_top = 100.187
+margin_right = 909.424
+margin_bottom = 509.187
 theme = ExtResource( 9 )
 custom_styles/read_only = SubResource( 1 )
 custom_styles/normal = SubResource( 1 )
@@ -157,9 +150,9 @@ istool = true
 userect = NodePath("..")
 
 [node name="tools" type="HBoxContainer" parent="aligner"]
-margin_left = -406.0
+margin_left = -405.0
 margin_top = -16.0
-margin_right = 399.0
+margin_right = 395.0
 margin_bottom = 22.0
 mouse_filter = 2
 alignment = 1
@@ -169,8 +162,8 @@ __meta__ = {
 }
 
 [node name="search" type="Button" parent="aligner/tools"]
-margin_left = 383.0
-margin_right = 421.0
+margin_left = 381.0
+margin_right = 419.0
 margin_bottom = 38.0
 toggle_mode = true
 icon = ExtResource( 16 )
@@ -322,6 +315,7 @@ setx = true
 scaleview = Vector2( 0.5, 0.5 )
 
 [node name="filtersearch" parent="librarycontainer" instance=ExtResource( 3 )]
+visible = false
 margin_left = -464.497
 margin_top = -256.49
 margin_right = 556.503
@@ -346,7 +340,7 @@ margin_right = 153.557
 margin_bottom = 50.7223
 
 [connection signal="visibility_changed" from="read" to="options" method="setvis"]
-[connection signal="visibility_changed" from="read/center/text" to="aligner/tools" method="_on_text_visibility_changed"]
+[connection signal="visibility_changed" from="read/text" to="aligner/tools" method="_on_text_visibility_changed"]
 [connection signal="visibility_changed" from="new" to="options" method="setvis"]
 [connection signal="visibility_changed" from="new/center/text" to="aligner/tools" method="_on_text_visibility_changed"]
 [connection signal="text_changed" from="aligner/tools/search/options/terms" to="aligner/tools/search" method="_on_terms_text_changed"]

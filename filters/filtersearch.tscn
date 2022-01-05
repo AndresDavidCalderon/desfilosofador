@@ -1,25 +1,30 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
-[ext_resource path="res://filters/filterinstance.tscn" type="PackedScene" id=2]
+[ext_resource path="res://filters/elements/filterinstance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://filters/filtersearch.gd" type="Script" id=3]
 [ext_resource path="res://filters/scroll.gd" type="Script" id=4]
 [ext_resource path="res://UI/font/normal title.tres" type="DynamicFont" id=5]
 [ext_resource path="res://filters/vbox.gd" type="Script" id=6]
-[ext_resource path="res://filters/folder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://filters/elements/folder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/images/folderout.png" type="Texture" id=8]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
-[ext_resource path="res://filters/blueprintrep.tscn" type="PackedScene" id=10]
+[ext_resource path="res://filters/elements/blueprintrep.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=12]
 [ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=13]
 [ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=14]
 [ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UI/expandable.gd" type="Script" id=16]
+[ext_resource path="res://filters/new.gd" type="Script" id=17]
+[ext_resource path="res://filters/filtersearch.tres" type="Theme" id=18]
+[ext_resource path="res://filters/elements/verb.tscn" type="PackedScene" id=19]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 700, 200 )
+theme = ExtResource( 18 )
 script = ExtResource( 3 )
 filter = ExtResource( 2 )
 folder = ExtResource( 7 )
@@ -30,19 +35,21 @@ margin_left = 9.12035
 margin_top = 10.0
 margin_right = 140.12
 margin_bottom = 161.0
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+verb = ExtResource( 19 )
 
 [node name="title" type="Label" parent="new" index="0"]
 margin_right = 228.0
-margin_bottom = 14.0
+margin_bottom = 22.0
 text = "nuevo:"
 
 [node name="newfilter" type="Button" parent="new" index="1"]
-margin_top = 18.0
+margin_top = 26.0
 margin_right = 228.0
-margin_bottom = 58.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 5 )
 text = "filtro"
 __meta__ = {
@@ -50,9 +57,9 @@ __meta__ = {
 }
 
 [node name="newfolder" type="Button" parent="new" index="2"]
-margin_top = 62.0
+margin_top = 70.0
 margin_right = 228.0
-margin_bottom = 102.0
+margin_bottom = 110.0
 custom_fonts/font = ExtResource( 5 )
 text = "carpeta"
 __meta__ = {
@@ -60,9 +67,9 @@ __meta__ = {
 }
 
 [node name="blueprint" type="Button" parent="new" index="3"]
-margin_top = 106.0
+margin_top = 114.0
 margin_right = 228.0
-margin_bottom = 146.0
+margin_bottom = 154.0
 custom_fonts/font = ExtResource( 5 )
 text = "plano"
 __meta__ = {
@@ -70,21 +77,39 @@ __meta__ = {
 }
 
 [node name="lang" type="Button" parent="new" index="4"]
-margin_top = 150.0
+margin_top = 158.0
 margin_right = 228.0
-margin_bottom = 178.0
-custom_fonts/font = ExtResource( 9 )
+margin_bottom = 186.0
 text = "elemento de idioma"
+script = ExtResource( 16 )
+
+[node name="options" type="VBoxContainer" parent="new/lang" index="0"]
+anchor_left = 1.0
+anchor_top = 0.036
+anchor_right = 1.0
+anchor_bottom = 0.036
+margin_left = 9.0
+margin_top = -0.00800002
+margin_right = 99.0
+margin_bottom = 101.992
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="verb" type="Button" parent="new/lang/options" index="0"]
+margin_right = 90.0
+margin_bottom = 28.0
+text = "verb"
 
 [node name="scroll" type="ScrollContainer" parent="." index="10"]
-anchor_left = 0.5
-anchor_top = -0.006
-anchor_right = 0.516
+anchor_left = -0.004
+anchor_right = 0.996
 anchor_bottom = 1.0
-margin_left = -207.0
-margin_top = 45.4121
-margin_right = 183.616
+margin_left = 309.096
+margin_top = 41.8121
+margin_right = -307.904
 margin_bottom = -57.1879
+mouse_filter = 2
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -100,7 +125,8 @@ __meta__ = {
 scenebytype = {
 "blueprint": ExtResource( 10 ),
 "filter": ExtResource( 2 ),
-"folder": ExtResource( 7 )
+"folder": ExtResource( 7 ),
+"verb": ExtResource( 19 )
 }
 
 [node name="folderup" type="Button" parent="." index="11"]
@@ -133,10 +159,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -138.611
-margin_top = -54.5809
-margin_right = -7.61096
-margin_bottom = -15.5809
+margin_left = -160.835
+margin_top = -50.176
+margin_right = -22.8346
+margin_bottom = -10.176
 custom_fonts/font = ExtResource( 5 )
 text = "guardar"
 __meta__ = {
@@ -177,5 +203,6 @@ block_by_name = {
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]
+[connection signal="pressed" from="new/lang/options/verb" to="new" method="_on_verb_pressed"]
 [connection signal="pressed" from="folderup" to="." method="_on_folderup_pressed"]
 [connection signal="save" from="blueprints" to="." method="_on_blueprints_save"]

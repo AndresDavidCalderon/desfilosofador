@@ -1,20 +1,24 @@
 extends Panel
 class_name window,"res://UI/window/icon.png"
 export var obfuscateback:bool
-var offset=Vector2()
 func _process(_delta):
+	var dragging=false
 	if $up.pressed or $topleft.pressed or $upright.pressed:
 		var before=rect_global_position.y
 		rect_global_position.y=get_global_mouse_position().y
 		rect_size.y+=before-rect_global_position.y
+		dragging=true
 	if $left.pressed or $topleft.pressed or $downleft.pressed:
 		var before=rect_global_position.x
 		rect_global_position.x=get_global_mouse_position().x
 		rect_size.x+=before-rect_global_position.x
+		dragging=true
 	if $down.pressed or $downright.pressed or $downleft.pressed:
 		rect_size.y=get_global_mouse_position().y-rect_global_position.y
+		dragging=true
 	if $right.pressed or $downright.pressed or $upright.pressed:
 		rect_size.x=get_global_mouse_position().x-rect_global_position.x
+		dragging=true
 func _on_close_pressed():
 	visible=false
 var back=ColorRect.new()

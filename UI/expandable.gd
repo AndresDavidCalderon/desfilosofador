@@ -1,4 +1,6 @@
 extends Button
+class_name expandable,"res://UI/images/expandable.png"
+
 func _ready():
 	toggle_mode=true
 	_toggled(pressed)

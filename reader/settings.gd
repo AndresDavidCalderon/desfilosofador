@@ -1,5 +1,5 @@
 extends ScrollContainer
-onready var reader=get_parent().get_parent().get_parent().get_node("read/center/text") as TextEdit
+onready var reader=get_parent().get_parent().get_parent().get_node("read/text") as TextEdit
 func _ready():
 	globals.connect("newreader",self,"readerchange")
 

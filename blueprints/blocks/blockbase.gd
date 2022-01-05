@@ -75,7 +75,7 @@ func getsave()->Dictionary:
 	var dict={}
 	dict["type"]=type
 	dict["connections"]={}
-	dict["pos"]=[rect_position.x,rect_position.y]
+	dict["pos"]=[round(rect_position.x),round(rect_position.y)]
 	var connectionlist=dict["connections"]
 	for i in connections:
 		connectionlist[i.savename]={}

@@ -1,0 +1,274 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://filters/elements/verb.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/blocks/type.gd" type="Script" id=2]
+[ext_resource path="res://filters/filtersearch.tres" type="Theme" id=3]
+[ext_resource path="res://UI/font/uimini.tres" type="DynamicFont" id=4]
+
+[node name="verb" type="Panel"]
+margin_right = 367.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 210 )
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type = "verb"
+
+[node name="lang" type="Button" parent="."]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 72.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 4 )
+text = "español"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="box" type="VBoxContainer" parent="lang"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 10.4677
+margin_right = 50.4677
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spanish" type="Button" parent="lang/box"]
+margin_right = 61.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 4 )
+text = "español"
+
+[node name="english" type="Button" parent="lang/box"]
+margin_top = 23.0
+margin_right = 61.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 4 )
+text = "ingles"
+
+[node name="ES" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 11.0
+margin_top = 59.3446
+margin_right = 353.0
+margin_bottom = 199.345
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infinitive" type="HBoxContainer" parent="ES"]
+margin_right = 342.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ES/infinitive"]
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 27.0
+text = "voy a"
+
+[node name="val" type="LineEdit" parent="ES/infinitive"]
+margin_left = 64.0
+margin_right = 304.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 240, 0 )
+placeholder_text = "infinitivo (hacer)"
+
+[node name="past" type="HBoxContainer" parent="ES"]
+margin_top = 36.0
+margin_right = 342.0
+margin_bottom = 68.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ES/past"]
+margin_top = 5.0
+margin_right = 24.0
+margin_bottom = 27.0
+text = "el"
+
+[node name="val" type="LineEdit" parent="ES/past"]
+margin_left = 28.0
+margin_right = 268.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 240, 0 )
+placeholder_text = "pasado (hizo)"
+
+[node name="yest" type="Label" parent="ES/past"]
+margin_left = 272.0
+margin_top = 5.0
+margin_right = 332.0
+margin_bottom = 27.0
+text = "ayer."
+
+[node name="pastself" type="HBoxContainer" parent="ES"]
+margin_top = 72.0
+margin_right = 342.0
+margin_bottom = 104.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ES/pastself"]
+margin_top = 5.0
+margin_right = 24.0
+margin_bottom = 27.0
+text = "yo"
+
+[node name="val" type="LineEdit" parent="ES/pastself"]
+margin_left = 28.0
+margin_right = 278.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 250, 0 )
+placeholder_text = "pasado propio (hize)"
+
+[node name="yest" type="Label" parent="ES/pastself"]
+margin_left = 282.0
+margin_top = 5.0
+margin_right = 342.0
+margin_bottom = 27.0
+text = "ayer."
+
+[node name="process" type="HBoxContainer" parent="ES"]
+margin_top = 108.0
+margin_right = 342.0
+margin_bottom = 140.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ES/process"]
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 27.0
+text = "estoy"
+
+[node name="val" type="LineEdit" parent="ES/process"]
+margin_left = 64.0
+margin_right = 304.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 240, 0 )
+placeholder_text = "proceso (haciendo)"
+
+[node name="EN" type="VBoxContainer" parent="."]
+margin_left = 11.0
+margin_top = 59.3446
+margin_right = 365.0
+margin_bottom = 199.345
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="infinitive" type="HBoxContainer" parent="EN"]
+margin_right = 354.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EN/infinitive"]
+margin_top = 5.0
+margin_right = 72.0
+margin_bottom = 27.0
+text = "i will"
+
+[node name="val" type="LineEdit" parent="EN/infinitive"]
+margin_left = 76.0
+margin_right = 346.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 270, 0 )
+placeholder_text = "infinitive (do)"
+
+[node name="past" type="HBoxContainer" parent="EN"]
+margin_top = 36.0
+margin_right = 354.0
+margin_bottom = 68.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EN/past"]
+margin_top = 5.0
+margin_right = 12.0
+margin_bottom = 27.0
+text = "i"
+
+[node name="val" type="LineEdit" parent="EN/past"]
+margin_left = 16.0
+margin_right = 206.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 190, 0 )
+placeholder_text = "past (did)"
+
+[node name="yest" type="Label" parent="EN/past"]
+margin_left = 210.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 27.0
+text = "that already"
+
+[node name="process" type="HBoxContainer" parent="EN"]
+margin_top = 72.0
+margin_right = 354.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="EN/process"]
+margin_top = 5.0
+margin_right = 24.0
+margin_bottom = 27.0
+text = "im"
+
+[node name="val" type="LineEdit" parent="EN/process"]
+margin_left = 28.0
+margin_right = 348.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 320, 0 )
+placeholder_text = "process (doing) optional"
+
+[node name="process2" type="HBoxContainer" parent="EN"]
+margin_top = 108.0
+margin_right = 354.0
+margin_bottom = 140.0
+
+[node name="Label" type="Label" parent="EN/process2"]
+margin_top = 5.0
+margin_right = 24.0
+margin_bottom = 27.0
+text = "he"
+
+[node name="val" type="LineEdit" parent="EN/process2"]
+margin_left = 28.0
+margin_right = 182.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 120, 0 )
+placeholder_text = "(does) "
+
+[node name="Label2" type="Label" parent="EN/process2"]
+margin_left = 186.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 27.0
+text = "that sometimes"
+
+[node name="del" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -38.2045
+margin_top = 10.0
+margin_right = -14.2045
+margin_bottom = 38.0
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="selected" from="lang" to="." method="_on_lang_selected"]
+[connection signal="pressed" from="del" to="." method="delete"]

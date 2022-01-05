@@ -98,6 +98,21 @@ static func getuntil(idx:int,text:String,until:String)->String:
 		else:
 			break
 	return word
+
+static func get_until_opts(idx:int,text:String,until:Array)->String:
+	var word=""
+	if until.has(text[idx]):
+		prints("started search on the carachter, text",text,"carachter",idx,"is",text[idx])
+		idx+=1
+	#length retorna 1 más
+	while idx<text.length():
+		if not until.has(text[idx]):
+			word=word+text[idx]
+			idx+=1
+		else:
+			break
+	return word
+
 static func countlist(text:String,separator:String)->Array:
 	var list=[]
 	var from=0
