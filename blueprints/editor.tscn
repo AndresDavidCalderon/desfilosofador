@@ -21,7 +21,7 @@ bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 [node name="window" instance=ExtResource( 1 )]
 margin_left = 154.0
 margin_top = 131.0
-margin_right = 1178.0
+margin_right = 1308.0
 margin_bottom = 815.0
 rect_pivot_offset = Vector2( -183, -122.5 )
 theme = ExtResource( 5 )
@@ -46,7 +46,7 @@ __meta__ = {
 }
 
 [node name="workspace" type="Viewport" parent="view" index="0"]
-size = Vector2( 978, 423 )
+size = Vector2( 1108, 423 )
 world = SubResource( 1 )
 handle_input_locally = false
 usage = 0
@@ -136,7 +136,6 @@ text = "condiciones"
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="add/condit" index="0"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,16 +147,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="follows" type="Button" parent="add/condit/options" index="0"]
+[node name="equals" type="Button" parent="add/condit/options" index="0"]
 margin_right = 117.0
 margin_bottom = 17.0
-text = "si le sigue"
-
-[node name="precede" type="Button" parent="add/condit/options" index="1"]
-margin_top = 21.0
-margin_right = 117.0
-margin_bottom = 38.0
-text = "si le precede"
+text = "=="
 
 [node name="operators" type="Button" parent="add" index="5"]
 margin_left = 452.0
@@ -167,7 +160,6 @@ text = "operadores"
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="add/operators" index="0"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -185,23 +177,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="or" type="Button" parent="add/operators/options" index="1"]
+[node name="not" type="Button" parent="add/operators/options" index="1"]
 margin_top = 21.0
 margin_right = 90.0
 margin_bottom = 38.0
-text = "o"
+text = "sí no"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="and" type="Button" parent="add/operators/options" index="2"]
-margin_top = 42.0
-margin_right = 90.0
-margin_bottom = 59.0
-text = "y"
+[node name="other" type="Button" parent="add" index="6"]
+margin_left = 546.0
+margin_right = 663.0
+margin_bottom = 17.0
+text = "otros valores"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="add/other" index="0"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 6.0
+margin_bottom = 65.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="follow" type="Button" parent="add/other/options" index="0"]
+margin_right = 117.0
+margin_bottom = 17.0
+text = "le sige"
 
 [node name="testcontainer" type="Control" parent="." index="11"]
 anchor_left = 1.0
@@ -278,6 +283,7 @@ __meta__ = {
 [connection signal="pressed" from="add/method" to="view/workspace" method="_on_method_pressed"]
 [connection signal="pressed" from="add/integrated/options/find" to="view/workspace" method="_on_find_pressed"]
 [connection signal="pressed" from="add/integrated/options/addinside" to="view/workspace" method="_on_addinside_pressed"]
-[connection signal="pressed" from="add/condit/options/follows" to="add" method="_on_follows_pressed"]
+[connection signal="pressed" from="add/condit/options/equals" to="add" method="_on_equals_pressed"]
+[connection signal="pressed" from="add/other/options/follow" to="add" method="_on_follow_pressed"]
 [connection signal="pressed" from="testcontainer/compile" to="." method="_on_compile_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]

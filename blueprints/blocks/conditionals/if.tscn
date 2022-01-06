@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://blueprints/blocks/conditionals/if.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/connection/event/reciever.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=4]
+[ext_resource path="res://blueprints/connection/event/sender.tscn" type="PackedScene" id=5]
+[ext_resource path="res://blueprints/blocks/conditionals/conditions.gd" type="Script" id=6]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=7]
+
+[node name="blockbase" type="Panel"]
+margin_right = 77.0
+margin_bottom = 77.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -11.0
+margin_right = 13.0
+margin_bottom = 11.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reciever" parent="." instance=ExtResource( 2 )]
+margin_left = 5.06193
+margin_top = 4.77255
+margin_right = 23.0619
+margin_bottom = 24.7725
+toblock = NodePath("../conditions/if")
+
+[node name="conditions" type="HBoxContainer" parent="."]
+margin_left = 5.0
+margin_top = 30.0
+margin_right = 73.0
+margin_bottom = 47.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="if" type="Label" parent="conditions"]
+margin_right = 27.0
+margin_bottom = 17.0
+text = "if:"
+
+[node name="first" parent="conditions" instance=ExtResource( 4 )]
+margin_left = 31.0
+margin_right = 49.0
+margin_bottom = 17.0
+
+[node name="add" type="Button" parent="conditions"]
+margin_left = 53.0
+margin_right = 68.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 15, 0 )
+text = "+"
+
+[node name="sender" parent="." instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -18.6427
+margin_top = -26.1615
+margin_right = -5.64273
+margin_bottom = -6.16139
+
+[node name="sender2" parent="." instance=ExtResource( 7 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -37.9893
+margin_top = -26.1615
+margin_right = -24.9893
+margin_bottom = -6.16144
+toblock = NodePath("../reciever")
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]
+[connection signal="resized" from="conditions" to="conditions" method="_on_conditions_resized"]
+[connection signal="pressed" from="conditions/add" to="conditions" method="_on_add_pressed"]

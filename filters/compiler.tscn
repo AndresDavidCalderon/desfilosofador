@@ -7,7 +7,7 @@
 [ext_resource path="res://blueprints/blocks/virtual/return.gd" type="Script" id=5]
 [ext_resource path="res://blueprints/blocks/virtual/var.gd" type="Script" id=6]
 [ext_resource path="res://blueprints/blocks/stringfuncs/addinside.gd" type="Script" id=7]
-[ext_resource path="res://blueprints/blocks/conditionals/followsv.gd" type="Script" id=8]
+[ext_resource path="res://blueprints/blocks/virtual/values/followsv.gd" type="Script" id=8]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )

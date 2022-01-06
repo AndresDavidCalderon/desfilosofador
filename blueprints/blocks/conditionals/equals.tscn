@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=1]
+[ext_resource path="res://blueprints/connection/value/textinput.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=4]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=5]
+
+[node name="blockbase" type="Panel"]
+margin_right = 202.0
+margin_bottom = 57.0
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -8.0
+margin_right = 9.0
+margin_bottom = 6.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="simbol" type="Label" parent="."]
+margin_left = 37.5
+margin_top = 10.0
+margin_right = 55.5
+margin_bottom = 27.0
+text = "=="
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="val2" parent="." instance=ExtResource( 2 )]
+margin_left = 65.2763
+margin_top = 10.0652
+margin_right = 83.2763
+margin_bottom = 29.0652
+savename = "val2"
+
+[node name="val" parent="." instance=ExtResource( 1 )]
+margin_left = 10.2633
+margin_top = 9.17429
+margin_right = 28.2633
+margin_bottom = 29.1743
+savename = "val"
+
+[node name="result" parent="." instance=ExtResource( 5 )]
+margin_left = 90.8287
+margin_top = 31.8786
+margin_right = 103.829
+margin_bottom = 51.8786
+savename = "result"
+
+[connection signal="button_down" from="select" to="." method="_on_select_button_down"]
+[connection signal="button_up" from="select" to="." method="_on_select_button_up"]
