@@ -8,3 +8,7 @@ func _on_follow_pressed():
 
 func _on_equals_pressed():
 	workspace.addblock(preload("res://blueprints/blocks/conditionals/equals.tscn").instance())
+
+
+func _on_if_pressed():
+	workspace.addblock(preload("res://blueprints/blocks/conditionals/if.tscn").instance())

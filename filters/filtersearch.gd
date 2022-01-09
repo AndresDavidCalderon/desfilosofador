@@ -48,6 +48,7 @@ func _on_newfilter_pressed():
 func _on_save_pressed():
 	savefilters()
 	globals.popuper.popup("guardado!")
+
 func _notification(what):
 	if what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		savefilters()

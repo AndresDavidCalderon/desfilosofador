@@ -93,10 +93,13 @@ func getsave()->Dictionary:
 			0:
 				connection["targets"]=[]
 				for j in i.targets:
-					var new={}
-					new["toidx"]=j.block.blockindex
-					new["toname"]=j.savename
-					connection["targets"].append(new)
+					if is_instance_valid(j):
+						var new={}
+						new["toidx"]=j.block.blockindex
+						new["toname"]=j.savename
+						connection["targets"].append(new)
+					else:
+						compiler.addlog(["internal error, output target not valid on output",i.savename])
 		connection["type"]=i.connectname
 		connection["isout"]=i.type==0
 	if has_method("customsave"):

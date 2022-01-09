@@ -67,5 +67,11 @@ func cut():
 		$linebutton.mouse_filter=Control.MOUSE_FILTER_IGNORE
 		$linebutton.disabled=true
 
+func delete():
+	cut()
+	block.connections.erase(self)
+	block.connection_by_name.erase(savename)
+	queue_free()
+
 func _on_linebutton_pressed():
 	cut()

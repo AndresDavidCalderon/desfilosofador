@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://filters/elements/filterinstance.tscn" type="PackedScene" id=2]
@@ -11,14 +11,16 @@
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://filters/elements/blueprintrep.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=12]
-[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=13]
-[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=14]
-[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=15]
+[ext_resource path="res://blueprints/blocks/conditionals/if.tscn" type="PackedScene" id=12]
+[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=13]
+[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=14]
+[ext_resource path="res://blueprints/blocks/conditionals/equals.tscn" type="PackedScene" id=15]
 [ext_resource path="res://UI/expandable.gd" type="Script" id=16]
 [ext_resource path="res://filters/new.gd" type="Script" id=17]
 [ext_resource path="res://filters/filtersearch.tres" type="Theme" id=18]
 [ext_resource path="res://filters/elements/verb.tscn" type="PackedScene" id=19]
+[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=20]
+[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=21]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
@@ -84,14 +86,14 @@ text = "elemento de idioma"
 script = ExtResource( 16 )
 
 [node name="options" type="VBoxContainer" parent="new/lang" index="0"]
-anchor_left = 1.0
-anchor_top = 0.036
-anchor_right = 1.0
-anchor_bottom = 0.036
-margin_left = 9.0
-margin_top = -0.00800002
-margin_right = 99.0
-margin_bottom = 101.992
+anchor_left = 0.165
+anchor_top = 1.0
+anchor_right = 0.165
+anchor_bottom = 1.0
+margin_left = -27.7404
+margin_top = 209.0
+margin_right = 62.2596
+margin_bottom = 311.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -194,10 +196,12 @@ margin_top = 72.0
 margin_right = -99.0961
 margin_bottom = -62.0
 block_by_name = {
-"addinside": ExtResource( 15 ),
-"findontext": ExtResource( 12 ),
-"return_text": ExtResource( 13 ),
-"var": ExtResource( 14 )
+"addinside": ExtResource( 14 ),
+"equals": ExtResource( 15 ),
+"findontext": ExtResource( 13 ),
+"if": ExtResource( 12 ),
+"return_text": ExtResource( 21 ),
+"var": ExtResource( 20 )
 }
 
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
@@ -205,4 +209,5 @@ block_by_name = {
 [connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]
 [connection signal="pressed" from="new/lang/options/verb" to="new" method="_on_verb_pressed"]
 [connection signal="pressed" from="folderup" to="." method="_on_folderup_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="save" from="blueprints" to="." method="_on_blueprints_save"]

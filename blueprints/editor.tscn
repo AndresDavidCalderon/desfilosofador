@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blueprints/workspace.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=10]
 [ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=11]
 [ext_resource path="res://blueprints/editor/add.gd" type="Script" id=12]
+[ext_resource path="res://blueprints/blocks/conditionals/if.tscn" type="PackedScene" id=13]
+[ext_resource path="res://blueprints/blocks/conditionals/equals.tscn" type="PackedScene" id=14]
 
 [sub_resource type="World" id=1]
 
@@ -28,7 +30,9 @@ theme = ExtResource( 5 )
 script = ExtResource( 3 )
 block_by_name = {
 "addinside": ExtResource( 11 ),
+"equals": ExtResource( 14 ),
 "findontext": ExtResource( 10 ),
+"if": ExtResource( 13 ),
 "return_text": ExtResource( 9 ),
 "var": ExtResource( 8 )
 }
@@ -104,7 +108,6 @@ text = "otra acción.."
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="add/integrated" index="0"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -139,16 +142,16 @@ script = ExtResource( 6 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -8.40973
+margin_left = 21.3611
 margin_top = 6.0
-margin_right = 9.59027
+margin_right = -23.6389
 margin_bottom = 48.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="equals" type="Button" parent="add/condit/options" index="0"]
-margin_right = 117.0
+margin_right = 54.0
 margin_bottom = 17.0
 text = "=="
 
@@ -163,25 +166,18 @@ script = ExtResource( 6 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 18.8013
 margin_top = 6.0
+margin_right = -26.1987
 margin_bottom = 46.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="if" type="Button" parent="add/operators/options" index="0"]
-margin_right = 90.0
+margin_right = 45.0
 margin_bottom = 17.0
 text = "sí"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="not" type="Button" parent="add/operators/options" index="1"]
-margin_top = 21.0
-margin_right = 90.0
-margin_bottom = 38.0
-text = "sí no"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -197,16 +193,27 @@ script = ExtResource( 6 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 15.893
 margin_top = 6.0
+margin_right = -20.107
 margin_bottom = 65.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="follow" type="Button" parent="add/other/options" index="0"]
-margin_right = 117.0
+margin_right = 81.0
 margin_bottom = 17.0
 text = "le sige"
+
+[node name="not" type="Button" parent="add/other/options" index="1"]
+margin_top = 21.0
+margin_right = 81.0
+margin_bottom = 38.0
+text = "contrario"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="testcontainer" type="Control" parent="." index="11"]
 anchor_left = 1.0
@@ -284,6 +291,7 @@ __meta__ = {
 [connection signal="pressed" from="add/integrated/options/find" to="view/workspace" method="_on_find_pressed"]
 [connection signal="pressed" from="add/integrated/options/addinside" to="view/workspace" method="_on_addinside_pressed"]
 [connection signal="pressed" from="add/condit/options/equals" to="add" method="_on_equals_pressed"]
+[connection signal="pressed" from="add/operators/options/if" to="add" method="_on_if_pressed"]
 [connection signal="pressed" from="add/other/options/follow" to="add" method="_on_follow_pressed"]
 [connection signal="pressed" from="testcontainer/compile" to="." method="_on_compile_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
