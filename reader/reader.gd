@@ -10,9 +10,9 @@ func setsize():
 func _on_library_pressed():
 	$librarycontainer/filtersearch.visible=true
 	
-onready var reader=$read/text
+onready var reader=$read
 func _on_read_pressed():
-	globals.reader=$read/text
+	globals.reader=$read
 	reader.text=getcompile()
 	$new.visible=false
 	$read.visible=true
