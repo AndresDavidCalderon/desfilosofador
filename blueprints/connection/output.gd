@@ -11,7 +11,7 @@ var impliedvalue
 func _ready():
 	if block==null:
 		block=get_node(toblock)
-	get_parent().connections.append(self)
+	block.connections.append(self)
 	block.connection_by_name[savename]=self
 func _pressed():
 	var last=block.base.lastselected

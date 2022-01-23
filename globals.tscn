@@ -4,3 +4,4 @@
 
 [node name="globals" type="Node"]
 script = ExtResource( 1 )
+finishers = PoolStringArray( ".", ",", " " )

@@ -13,11 +13,11 @@ func _on_compile_pressed():
 
 func get_save_array():
 	$view/workspace.set_indexes()
-	var blocks=[]
+	var regblocks=[]
 	for i in $view/workspace.get_children():
 		if i is blockbase:
-			blocks.append(i.getsave())
-	return blocks
+			regblocks.append(i.getsave())
+	return regblocks
 
 signal save(dict)
 func _on_save_pressed():
@@ -36,6 +36,7 @@ func addcode(newblocks:Array):
 			blocks.append(new)
 		else:
 			globals.popuper.popup("error loading, invalid type "+i["type"])
+			return
 	var idx=0
 	for i in blocks:
 		i.fromfile(newblocks[idx])

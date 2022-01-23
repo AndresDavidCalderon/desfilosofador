@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://blueprints/connection/reciever.gd" type="Script" id=1]
+[ext_resource path="res://blueprints/blocks/multinput.gd" type="Script" id=2]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=3]
+
+[node name="conditions" type="HBoxContainer"]
+margin_left = 5.0
+margin_top = 30.0
+margin_right = 73.0
+margin_bottom = 47.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+prefix = "cond"
+
+[node name="if" type="Label" parent="."]
+margin_right = 27.0
+margin_bottom = 17.0
+text = "if:"
+
+[node name="first" type="Button" parent="." instance=ExtResource( 3 )]
+margin_left = 31.0
+margin_right = 49.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 18, 0 )
+toggle_mode = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+toblock = NodePath("../..")
+connectname = "value"
+savename = "cond1"
+
+[node name="add" type="Button" parent="."]
+margin_left = 53.0
+margin_right = 68.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 15, 0 )
+text = "+"
+
+[node name="del" type="Button" parent="."]
+margin_left = 72.0
+margin_right = 88.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 16, 0 )
+disabled = true
+text = "-"
+
+[connection signal="resized" from="." to="." method="_on_conditions_resized"]
+[connection signal="pressed" from="add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="del" to="." method="_on_del_pressed"]

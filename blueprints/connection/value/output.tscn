@@ -4,10 +4,11 @@
 [ext_resource path="res://blueprints/connection/output.gd" type="Script" id=2]
 
 [node name="sender" type="Button"]
-margin_left = -9.01254
-margin_top = -8.89133
-margin_right = 3.98746
-margin_bottom = 11.1087
+margin_left = -9.0
+margin_top = -9.0
+margin_right = 5.0
+margin_bottom = 11.0
+rect_min_size = Vector2( 14, 20 )
 toggle_mode = true
 script = ExtResource( 2 )
 __meta__ = {

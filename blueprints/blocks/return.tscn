@@ -2,7 +2,7 @@
 
 [ext_resource path="res://blueprints/blocks/return.gd" type="Script" id=1]
 [ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=2]
-[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/editor/bluetheme.tres" type="Theme" id=3]
 [ext_resource path="res://blueprints/connection/event/reciever.tscn" type="PackedScene" id=4]
 
 [node name="returnal" type="Panel"]

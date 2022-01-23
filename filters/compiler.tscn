@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://filters/compiler.gd" type="Script" id=1]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://blueprints/blocks/virtual/values/followsv.gd" type="Script" id=8]
 [ext_resource path="res://blueprints/blocks/virtual/conditions/if.gd" type="Script" id=9]
 [ext_resource path="res://blueprints/blocks/virtual/conditions/equals.gd" type="Script" id=10]
+[ext_resource path="res://blueprints/blocks/virtual/values/preceedv.gd" type="Script" id=11]
+[ext_resource path="res://blueprints/blocks/virtual/conditions/ifntot.gd" type="Script" id=12]
+[ext_resource path="res://blueprints/blocks/virtual/debug/print.gd" type="Script" id=13]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )
@@ -19,10 +22,13 @@ onfind = {
 }
 virtualblocks = {
 "addinside": ExtResource( 7 ),
+"contrary": ExtResource( 12 ),
 "equals": ExtResource( 10 ),
 "findontext": ExtResource( 4 ),
 "follows": ExtResource( 8 ),
 "if": ExtResource( 9 ),
+"preceeds": ExtResource( 11 ),
+"print": ExtResource( 13 ),
 "return_text": ExtResource( 5 ),
 "var": ExtResource( 6 )
 }

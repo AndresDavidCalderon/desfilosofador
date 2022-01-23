@@ -8,16 +8,22 @@ onready var editor=base.get_parent().get_parent()
 var connections=[]
 var connection_by_name={}
 var blockindex 
+
+signal fromfile(dict)
 func _ready():
 	if base==null:
 		base=get_parent()
-	if get_node_or_null("select"):
+	if get_node_or_null("select")==null:
 		var new=Button.new()
+		add_child(new)
+		new.flat=true
+		move_child(new,0)
 		new.rect_position=Vector2(-10,-10)
 		new.rect_size=Vector2(20,20)+rect_size
 		new.connect("button_down",self,"_on_select_button_down")
-		new.connect("button_down",self,"_on_select_button_up")
-
+		new.connect("button_up",self,"_on_select_button_up")
+	else:
+		$select.visible=true
 
 func _on_select_button_down():
 	following=true
@@ -53,13 +59,18 @@ func fromfile(dict):
 	rect_position.y=dict["pos"][1]
 	if has_method("_fromfile"):
 		call("_fromfile",dict)
+		emit_signal("fromfile",dict)
 	for i in dict["connections"].keys():
 		var ref= dict["connections"][i]
 		if connection_by_name.has(i):
 			var connection=connection_by_name[i]
 			if connection.type==compiler.CONNECTION_IN :
 				if ref.has("toidx") and ref["toidx"]!=null:
-					connection.connectto(editor.blocks[ref["toidx"]].connection_by_name[ref["toname"]])
+					var external_connections=editor.blocks[ref["toidx"]].connection_by_name
+					if external_connections.has(ref["toname"]):
+						connection.connectto(external_connections[ref["toname"]])
+					else:
+						compiler.addlog(["block with id",ref["toidx"],"doesnt have connection",ref["toname"]])
 				if ref.has("impliedvalue") and connection.val_provider!=null:
 					match connection.val_provider.get_class():
 						"LineEdit":

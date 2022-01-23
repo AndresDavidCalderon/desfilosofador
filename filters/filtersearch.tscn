@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://filters/elements/filterinstance.tscn" type="PackedScene" id=2]
@@ -10,17 +10,11 @@
 [ext_resource path="res://UI/images/folderout.png" type="Texture" id=8]
 [ext_resource path="res://UI/font/uismall.tres" type="DynamicFont" id=9]
 [ext_resource path="res://filters/elements/blueprintrep.tscn" type="PackedScene" id=10]
-[ext_resource path="res://blueprints/editor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://blueprints/blocks/conditionals/if.tscn" type="PackedScene" id=12]
-[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=13]
-[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=14]
-[ext_resource path="res://blueprints/blocks/conditionals/equals.tscn" type="PackedScene" id=15]
+[ext_resource path="res://blueprints/editor/editor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/expandable.gd" type="Script" id=16]
 [ext_resource path="res://filters/new.gd" type="Script" id=17]
 [ext_resource path="res://filters/filtersearch.tres" type="Theme" id=18]
 [ext_resource path="res://filters/elements/verb.tscn" type="PackedScene" id=19]
-[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=20]
-[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=21]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
@@ -195,14 +189,6 @@ margin_left = 131.0
 margin_top = 72.0
 margin_right = -99.0961
 margin_bottom = -62.0
-block_by_name = {
-"addinside": ExtResource( 14 ),
-"equals": ExtResource( 15 ),
-"findontext": ExtResource( 13 ),
-"if": ExtResource( 12 ),
-"return_text": ExtResource( 21 ),
-"var": ExtResource( 20 )
-}
 
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]

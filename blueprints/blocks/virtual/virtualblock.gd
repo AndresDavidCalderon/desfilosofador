@@ -13,8 +13,6 @@ func doevent(name):
 				for i in connection["targets"]:
 					if i["toidx"]!=null:
 						interpreter.blocks[i["toidx"]].onevent(i["toname"])
-			else:
-				compiler.addlog(["signal",name,"not connected"])
 		else:
 			printerr("connection ",name," isnt an event")
 	else:

@@ -1,0 +1,348 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
+[ext_resource path="res://blueprints/editor/workspace.gd" type="Script" id=2]
+[ext_resource path="res://blueprints/editor/editor.gd" type="Script" id=3]
+[ext_resource path="res://blueprints/editor/camera.gd" type="Script" id=4]
+[ext_resource path="res://blueprints/editor/bluetheme.tres" type="Theme" id=5]
+[ext_resource path="res://UI/expandable.gd" type="Script" id=6]
+[ext_resource path="res://blueprints/editor/output.gd" type="Script" id=7]
+[ext_resource path="res://blueprints/blocks/value.tscn" type="PackedScene" id=8]
+[ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=9]
+[ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=10]
+[ext_resource path="res://blueprints/blocks/stringfuncs/addinside.tscn" type="PackedScene" id=11]
+[ext_resource path="res://blueprints/editor/add.gd" type="Script" id=12]
+[ext_resource path="res://blueprints/blocks/conditionals/if.tscn" type="PackedScene" id=13]
+[ext_resource path="res://blueprints/blocks/conditionals/equals.tscn" type="PackedScene" id=14]
+[ext_resource path="res://blueprints/blocks/stringfuncs/follows.tscn" type="PackedScene" id=15]
+[ext_resource path="res://blueprints/blocks/conditionals/ifnot.tscn" type="PackedScene" id=16]
+[ext_resource path="res://blueprints/blocks/debug/print.tscn" type="PackedScene" id=17]
+[ext_resource path="res://blueprints/blocks/stringfuncs/preceeds.tscn" type="PackedScene" id=18]
+
+[sub_resource type="World" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="window" instance=ExtResource( 1 )]
+margin_left = 154.0
+margin_top = 131.0
+margin_right = 1308.0
+margin_bottom = 815.0
+rect_min_size = Vector2( 939, 388 )
+rect_pivot_offset = Vector2( -183, -122.5 )
+theme = ExtResource( 5 )
+script = ExtResource( 3 )
+block_by_name = {
+"addinside": ExtResource( 11 ),
+"contrary": ExtResource( 16 ),
+"equals": ExtResource( 14 ),
+"findontext": ExtResource( 10 ),
+"follows": ExtResource( 15 ),
+"if": ExtResource( 13 ),
+"preceeds": ExtResource( 18 ),
+"print": ExtResource( 17 ),
+"return_text": ExtResource( 9 ),
+"var": ExtResource( 8 )
+}
+
+[node name="view" type="ViewportContainer" parent="." index="8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 23.0
+margin_top = 128.0
+margin_right = -23.0
+margin_bottom = -133.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="workspace" type="Viewport" parent="view" index="0"]
+size = Vector2( 1108, 423 )
+world = SubResource( 1 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+script = ExtResource( 2 )
+
+[node name="camera" type="Camera2D" parent="view/workspace" index="0"]
+current = true
+script = ExtResource( 4 )
+zoomspeed = 2.0
+minzoom = 0.1
+maxzoom = 3.0
+
+[node name="background" type="Node2D" parent="view/workspace/camera" index="0"]
+z_index = -10
+
+[node name="move" type="Button" parent="view/workspace/camera/background" index="0"]
+margin_right = 12.0
+margin_bottom = 20.0
+flat = true
+
+[node name="testcontainer" type="Control" parent="." index="10"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -262.0
+margin_top = 18.0
+margin_right = -23.0
+margin_bottom = 97.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="from" type="TextEdit" parent="testcontainer" index="0"]
+margin_left = -182.0
+margin_bottom = 87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="to" type="TextEdit" parent="testcontainer" index="1"]
+margin_left = 44.0
+margin_right = 231.0
+margin_bottom = 87.0
+readonly = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="compile" type="Button" parent="testcontainer" index="2"]
+margin_left = 9.0
+margin_top = 32.0
+margin_right = 27.0
+margin_bottom = 49.0
+hint_tooltip = "convertir"
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="output" type="RichTextLabel" parent="." index="11"]
+anchor_top = 0.966
+anchor_right = 0.996
+anchor_bottom = 0.966
+margin_left = 23.0
+margin_top = -99.744
+margin_right = -18.9041
+margin_bottom = -6.74402
+custom_styles/normal = SubResource( 2 )
+text = "output goes here..."
+scroll_following = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="." index="12"]
+anchor_left = 0.996
+anchor_top = 1.0
+anchor_right = 0.996
+anchor_bottom = 1.0
+margin_left = -282.773
+margin_top = -23.0
+margin_right = -30.7733
+margin_bottom = -6.0
+text = "add to the library and close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbox" type="HBoxContainer" parent="." index="13"]
+margin_left = 38.0
+margin_top = 33.0
+margin_right = 464.0
+margin_bottom = 73.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="hbox" index="0"]
+margin_top = 21.0
+margin_right = 108.0
+margin_bottom = 38.0
+text = "añadir nodo:"
+
+[node name="add" type="GridContainer" parent="hbox" index="1"]
+margin_left = 112.0
+margin_right = 426.0
+margin_bottom = 59.0
+columns = 3
+script = ExtResource( 12 )
+
+[node name="value" type="Button" parent="hbox/add" index="0"]
+margin_right = 99.0
+margin_bottom = 17.0
+text = "valor"
+
+[node name="method" type="Button" parent="hbox/add" index="1"]
+margin_left = 103.0
+margin_right = 193.0
+margin_bottom = 17.0
+text = "función"
+
+[node name="integrated" type="Button" parent="hbox/add" index="2"]
+margin_left = 197.0
+margin_right = 314.0
+margin_bottom = 17.0
+toggle_mode = true
+text = "otra acción.."
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="hbox/add/integrated" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -45.9871
+margin_top = 6.0
+margin_right = 53.0129
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="find" type="Button" parent="hbox/add/integrated/options" index="0"]
+margin_right = 216.0
+margin_bottom = 17.0
+text = "encontrar en el texto"
+
+[node name="addinside" type="Button" parent="hbox/add/integrated/options" index="1"]
+margin_top = 21.0
+margin_right = 216.0
+margin_bottom = 38.0
+text = "agregar dentro del texto"
+
+[node name="condit" type="Button" parent="hbox/add" index="3"]
+margin_top = 21.0
+margin_right = 99.0
+margin_bottom = 38.0
+toggle_mode = true
+text = "condiciones"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="hbox/add/condit" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.3611
+margin_top = 6.0
+margin_right = -23.6389
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equals" type="Button" parent="hbox/add/condit/options" index="0"]
+margin_right = 54.0
+margin_bottom = 17.0
+text = "=="
+
+[node name="operators" type="Button" parent="hbox/add" index="4"]
+margin_left = 103.0
+margin_top = 21.0
+margin_right = 193.0
+margin_bottom = 38.0
+text = "operadores"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="hbox/add/operators" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.8013
+margin_top = 6.0
+margin_right = -26.1987
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="if" type="Button" parent="hbox/add/operators/options" index="0"]
+margin_right = 45.0
+margin_bottom = 17.0
+text = "sí"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="other" type="Button" parent="hbox/add" index="5"]
+margin_left = 197.0
+margin_top = 21.0
+margin_right = 314.0
+margin_bottom = 38.0
+text = "otros valores"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="hbox/add/other" index="0"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.893
+margin_top = 6.0
+margin_right = -20.107
+margin_bottom = 65.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="follow" type="Button" parent="hbox/add/other/options" index="0"]
+margin_right = 90.0
+margin_bottom = 17.0
+text = "le sige"
+
+[node name="preceed" type="Button" parent="hbox/add/other/options" index="1"]
+margin_top = 21.0
+margin_right = 90.0
+margin_bottom = 38.0
+text = "le precede"
+
+[node name="not" type="Button" parent="hbox/add/other/options" index="2"]
+margin_top = 42.0
+margin_right = 90.0
+margin_bottom = 59.0
+text = "contrario"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="debug" type="Button" parent="hbox/add" index="6"]
+margin_top = 42.0
+margin_right = 99.0
+margin_bottom = 59.0
+text = "depurar"
+script = ExtResource( 6 )
+
+[node name="options" type="VBoxContainer" parent="hbox/add/debug" index="0"]
+margin_left = 7.0
+margin_top = 22.0
+margin_right = 79.0
+margin_bottom = 39.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="print" type="Button" parent="hbox/add/debug/options" index="0"]
+margin_right = 72.0
+margin_bottom = 17.0
+text = "imprimir"
+
+[connection signal="visibility_changed" from="." to="view/workspace" method="vis"]
+[connection signal="button_down" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_down"]
+[connection signal="button_up" from="view/workspace/camera/background/move" to="view/workspace/camera" method="_on_move_button_up"]
+[connection signal="pressed" from="testcontainer/compile" to="." method="_on_compile_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="hbox/add/value" to="view/workspace" method="_on_value_pressed"]
+[connection signal="pressed" from="hbox/add/method" to="view/workspace" method="_on_method_pressed"]
+[connection signal="pressed" from="hbox/add/integrated/options/find" to="view/workspace" method="_on_find_pressed"]
+[connection signal="pressed" from="hbox/add/integrated/options/addinside" to="view/workspace" method="_on_addinside_pressed"]
+[connection signal="pressed" from="hbox/add/condit/options/equals" to="hbox/add" method="_on_equals_pressed"]
+[connection signal="pressed" from="hbox/add/operators/options/if" to="hbox/add" method="_on_if_pressed"]
+[connection signal="pressed" from="hbox/add/other/options/follow" to="hbox/add" method="_on_follow_pressed"]
+[connection signal="pressed" from="hbox/add/other/options/preceed" to="hbox/add" method="_on_preceed_pressed"]
+[connection signal="pressed" from="hbox/add/other/options/not" to="hbox/add" method="_on_not_pressed"]
+[connection signal="pressed" from="hbox/add/debug/options/print" to="hbox/add" method="_on_print_pressed"]

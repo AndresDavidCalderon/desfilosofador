@@ -74,10 +74,10 @@ static func removebetween(text:String,open:String,close:String)->String:
 		from=1
 	return text
 #gets words until the until argument is found, goes backwards.
-static func getuntilback(idx:int,text:String,until:String)->String:
+static func getuntilback(idx:int,text:String,until)->String:
 	var word=""
 	while idx>-1:
-		if text[idx]!=until:
+		if (until is String and text[idx]!=until) or (until is Array and not until.has(text[idx])):
 			word=text[idx]+word
 			idx-=1
 		else:

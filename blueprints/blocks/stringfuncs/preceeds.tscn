@@ -1,22 +1,23 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://blueprints/blocks/blockbase.gd" type="Script" id=1]
-[ext_resource path="res://blueprints/bluetheme.tres" type="Theme" id=3]
-[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=5]
-[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=7]
+[ext_resource path="res://blueprints/connection/value/reciever.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blueprints/editor/bluetheme.tres" type="Theme" id=3]
+[ext_resource path="res://blueprints/connection/value/output.tscn" type="PackedScene" id=4]
 
 [node name="blockbase" type="Panel"]
-margin_right = 157.0
-margin_bottom = 56.0
+margin_right = 166.0
+margin_bottom = 55.0
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 0.0, 0.0 ],
 "_edit_use_anchors_": false
 }
-type = "follows"
+type = "preceeds"
 
 [node name="select" type="Button" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -11.0
@@ -28,7 +29,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="result" parent="." instance=ExtResource( 5 )]
+[node name="result" parent="." instance=ExtResource( 4 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -44,16 +45,16 @@ anchor_left = 0.807
 anchor_top = 0.754
 anchor_right = 0.807
 anchor_bottom = 0.754
-margin_left = -99.1338
-margin_top = -15.08
-margin_right = -18.1338
-margin_bottom = 1.91996
-text = "le sigue:"
+margin_left = -110.908
+margin_top = -15.3222
+margin_right = -11.9079
+margin_bottom = 1.67776
+text = "le precede:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="where" parent="." instance=ExtResource( 7 )]
+[node name="where" parent="." instance=ExtResource( 2 )]
 margin_left = 9.69151
 margin_top = 5.224
 margin_right = 27.6915
@@ -66,7 +67,7 @@ margin_right = 61.9414
 margin_bottom = 17.0
 text = "donde"
 
-[node name="text" parent="." instance=ExtResource( 7 )]
+[node name="text" parent="." instance=ExtResource( 2 )]
 margin_left = 87.2335
 margin_top = 5.224
 margin_right = 105.234
