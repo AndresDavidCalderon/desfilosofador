@@ -191,7 +191,6 @@ text = "otra acción.."
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="hbox/add/integrated" index="0"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -213,6 +212,12 @@ margin_top = 21.0
 margin_right = 216.0
 margin_bottom = 38.0
 text = "agregar dentro del texto"
+
+[node name="replace" type="Button" parent="hbox/add/integrated/options" index="2"]
+margin_top = 42.0
+margin_right = 216.0
+margin_bottom = 59.0
+text = "reemplazar"
 
 [node name="condit" type="Button" parent="hbox/add" index="3"]
 margin_top = 21.0
