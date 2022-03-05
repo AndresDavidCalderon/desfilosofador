@@ -13,7 +13,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 type = "blueprint"
-enabler = NodePath("enabled")
 
 [node name="name" type="LineEdit" parent="."]
 margin_left = 7.05025

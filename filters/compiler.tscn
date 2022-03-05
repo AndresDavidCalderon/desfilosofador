@@ -32,3 +32,5 @@ virtualblocks = {
 "return_text": ExtResource( 5 ),
 "var": ExtResource( 6 )
 }
+line_endings = [ ".", "?", "!", ":" ]
+phrase_endings = [ ",", ";" ]

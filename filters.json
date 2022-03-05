@@ -103,6 +103,20 @@
 				"to": "este",
 				"enabled": true,
 				"sintax": true
+			},
+			{
+				"type": "filter",
+				"of": "desavenencia",
+				"to": "desacuerdo",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": "sumamente",
+				"to": "muy",
+				"enabled": true,
+				"sintax": false
 			}
 		],
 		"enabled": true,
@@ -180,6 +194,27 @@
 				"type": "filter",
 				"of": "justamente",
 				"to": "",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": ", pues,",
+				"to": "",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": ", precisamente,",
+				"to": "",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": " por el hecho de",
+				"to": " por",
 				"enabled": true,
 				"sintax": false
 			}

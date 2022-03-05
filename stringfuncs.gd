@@ -4,7 +4,6 @@ class_name stringfunc
 static func cutout(from:int,to:int,text:String)->String:
 	var takeleft=text.left(from)
 	var takeright=text.right(to)
-	prints("taking",takeleft,"on the left",takeright,"on the right")
 	return takeleft+takeright
  #sees if the given index is between carachters
 static func isbetween(idx:int,between:String,text:String):
@@ -88,7 +87,6 @@ static func lengthidx(string:String)->int:
 static func getuntil(idx:int,text:String,until:String)->String:
 	var word=""
 	if text[idx]==until:
-		prints("started search on the carachter, text",text,"carachter",idx,"is",text[idx])
 		idx+=1
 	#length retorna 1 más
 	while idx<text.length():
@@ -102,7 +100,6 @@ static func getuntil(idx:int,text:String,until:String)->String:
 static func get_until_opts(idx:int,text:String,until:Array)->String:
 	var word=""
 	if until.has(text[idx]):
-		prints("started search on the carachter, text",text,"carachter",idx,"is",text[idx])
 		idx+=1
 	#length retorna 1 más
 	while idx<text.length():

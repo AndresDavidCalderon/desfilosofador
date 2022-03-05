@@ -31,7 +31,6 @@ func found(pos:int,text:String,_what:String):
 					options=stringfunc.countlist(options,"/")
 					var prefix=stringfunc.getuntilback(pos-2,text," ")
 					if not options.has(prefix):
-						prints("wrong prefix",prefix)
 						return text
 					else:
 						#length returns 1 more that compensates the space
@@ -40,9 +39,7 @@ func found(pos:int,text:String,_what:String):
 			from=find.find(register)+stringfunc.getuntil(find.find(register),find," ").length()+1
 			var frontpos=pos+stringfunc.getuntil(pos+1,text," ").length()+2
 			if frontpos>stringfunc.lengthidx(text):
-				print("reached end")
 				return text
-			print("looping through from")
 			while from<find.length()-1:
 				match find[from+1]:
 					"(":
@@ -51,17 +48,14 @@ func found(pos:int,text:String,_what:String):
 						options=stringfunc.countlist(options,"/")
 						var suffix=stringfunc.getuntil(frontpos,text," ")
 						if not options.has(suffix):
-							prints("wrong suffix",suffix,"not in",options)
 							return text
 						else:
 							frontpos+=suffix.length()
 					"_":
 						from+=1
 						if frontpos>=text.length()+1:
-							prints("cant fill wildcard, text end.")
 							return text
-						if text[frontpos-1]=="." or text[frontpos-1]==",":
-							prints("cant fill wildcard, sentence end.")
+						if compiler.phrase_endings.has(text[frontpos-1]):
 							return text
 						pos+=1
 					_:
@@ -69,7 +63,6 @@ func found(pos:int,text:String,_what:String):
 						var next=stringfunc.getuntil(from,find," ")
 						var ontext=stringfunc.getuntil(frontpos,text," ")
 						if next!=ontext:
-							prints("wrong constant suffix",ontext,"had to be",next)
 							return text
 						from+=next.length()
 						frontpos+=ontext.length()

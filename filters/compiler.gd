@@ -1,6 +1,9 @@
 extends Node
 export(Dictionary) var onfind
 export(Dictionary) var virtualblocks
+export(Array,String) var line_endings
+export(Array,String) var phrase_endings:Array
+
 enum{
 	CONNECTION_OUT,
 	CONNECTION_IN
@@ -12,7 +15,9 @@ enum{
 var filterbyphrase={}
 var compilelog=[]
 var pos
-
+func _ready():
+	line_endings.append("\n")
+	phrase_endings.append_array(line_endings)
 
 func compile(text:String,filtertree:Array):
 	compilelog.clear()
@@ -36,6 +41,8 @@ func compile(text:String,filtertree:Array):
 					text=newtext
 			else:
 				break
+	for i in line_endings:
+		text=text.replace(i+" \n",i+"\n\n")
 	return text
 
 
