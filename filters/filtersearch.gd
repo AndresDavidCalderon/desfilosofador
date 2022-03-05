@@ -1,7 +1,12 @@
 extends window
 export(PackedScene) var filter
 export(PackedScene) var folder
-export(bool) var onexe
+enum FILEPOS{
+	USER
+	EXECUTABLE
+	RES
+}
+export(FILEPOS) var save_folder
 var defaulttree=[{"origin":-1,"enabled":true,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"enabled":true,"inside":[]}]
 var filtertree:Array=defaulttree
 var fileman=File.new()
@@ -9,10 +14,13 @@ var filedir
 var index=1
 onready var box=$scroll/vbox
 func _ready():
-	if onexe:
-		filedir=OS.get_executable_path()+"/filters.json"
-	else:
-		filedir="user://filters.json"
+	match save_folder:
+		FILEPOS.EXECUTABLE:
+			filedir=OS.get_executable_path()+"/filters.json"
+		FILEPOS.USER:
+			filedir="user://filters.json"
+		FILEPOS.RES:
+			filedir="res://filters.json"
 	openfilters()
 func deleteall():
 	filtertree=defaulttree

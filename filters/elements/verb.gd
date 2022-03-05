@@ -2,6 +2,9 @@ extends libraryelement
 
 onready var selected=$ES
 
+func _ready():
+	_on_lang_selected(0)
+
 func _on_lang_selected(index):
 	selected.visible=false
 	match index:

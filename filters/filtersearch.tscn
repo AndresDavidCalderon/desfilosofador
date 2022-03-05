@@ -34,6 +34,7 @@ theme = ExtResource( 18 )
 script = ExtResource( 3 )
 filter = ExtResource( 2 )
 folder = ExtResource( 7 )
+save_folder = 2
 blueprint = ExtResource( 10 )
 
 [node name="new" type="VBoxContainer" parent="." index="9"]
@@ -103,9 +104,15 @@ __meta__ = {
 }
 
 [node name="verb" type="Button" parent="new/lang/options" index="0"]
-margin_right = 90.0
+margin_right = 120.0
 margin_bottom = 28.0
 text = "verb"
+
+[node name="adjective" type="Button" parent="new/lang/options" index="1"]
+margin_top = 32.0
+margin_right = 120.0
+margin_bottom = 60.0
+text = "adjective"
 
 [node name="scroll" type="ScrollContainer" parent="." index="10"]
 anchor_left = -0.004
@@ -213,6 +220,7 @@ block_by_name = {
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]
 [connection signal="pressed" from="new/blueprint" to="." method="_on_blueprint_pressed"]
 [connection signal="pressed" from="new/lang/options/verb" to="new" method="_on_verb_pressed"]
+[connection signal="pressed" from="new/lang/options/adjective" to="new" method="_on_verb_pressed"]
 [connection signal="pressed" from="folderup" to="." method="_on_folderup_pressed"]
 [connection signal="pressed" from="save" to="." method="_on_save_pressed"]
 [connection signal="save" from="blueprints" to="." method="_on_blueprints_save"]
