@@ -116,19 +116,19 @@ text = "adjective"
 
 [node name="scroll" type="ScrollContainer" parent="." index="10"]
 anchor_left = -0.004
-anchor_right = 0.996
+anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 309.096
-margin_top = 41.8121
-margin_right = -307.904
-margin_bottom = -57.1879
+margin_top = 42.0
+margin_right = -306.0
+margin_bottom = -62.0
 mouse_filter = 2
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vbox" type="VBoxContainer" parent="scroll" index="0"]
+[node name="vbox" type="VBoxContainer" parent="scroll" index="2"]
 custom_constants/separation = 30
 alignment = 2
 script = ExtResource( 6 )
@@ -199,6 +199,7 @@ __meta__ = {
 }
 
 [node name="blueprints" parent="." index="15" instance=ExtResource( 11 )]
+visible = false
 margin_left = 131.0
 margin_top = 72.0
 margin_right = 929.0

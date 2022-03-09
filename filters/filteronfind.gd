@@ -19,6 +19,7 @@ func fromfile(dict:Dictionary):
 
 
 func found(pos:int,text:String,_what:String):
+	var original_text=text
 	if not (stringfunc.withinquotes(pos,text) and globals.skipquotes):
 		if not usesintax:
 			text=stringfunc.replacefind(find,replace,text,pos)
@@ -59,7 +60,6 @@ func found(pos:int,text:String,_what:String):
 							return text
 						pos+=1
 					_:
-						print("found constant")
 						var next=stringfunc.getuntil(from,find," ")
 						var ontext=stringfunc.getuntil(frontpos,text," ")
 						if next!=ontext:
@@ -68,4 +68,6 @@ func found(pos:int,text:String,_what:String):
 						frontpos+=ontext.length()
 			text=stringfunc.cutout(pos-1,frontpos,text)
 			text=stringfunc.addbetween(text,replace,pos-1)
+	if original_text!=text:
+		prints("filter applied",find)
 	return text

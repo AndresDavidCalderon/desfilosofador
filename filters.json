@@ -22,11 +22,10 @@
 				"index": 2
 			},
 			{
-				"type": "filter",
-				"of": "-\\n",
-				"to": "",
+				"type": "folder",
 				"enabled": true,
-				"sintax": false
+				"name": "english",
+				"index": 9
 			}
 		]
 	},
@@ -55,6 +54,12 @@
 				"enabled": true,
 				"name": "enfasis",
 				"index": 7
+			},
+			{
+				"type": "folder",
+				"enabled": true,
+				"name": "terminos mutuamente excluyentes",
+				"index": 11
 			}
 		],
 		"enabled": true,
@@ -99,13 +104,6 @@
 			},
 			{
 				"type": "filter",
-				"of": "el presente _",
-				"to": "este",
-				"enabled": true,
-				"sintax": true
-			},
-			{
-				"type": "filter",
 				"of": "desavenencia",
 				"to": "desacuerdo",
 				"enabled": true,
@@ -117,6 +115,19 @@
 				"to": "muy",
 				"enabled": true,
 				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": "altamente",
+				"to": "muy",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "folder",
+				"enabled": true,
+				"name": "para referirse a mas texto",
+				"index": 8
 			}
 		],
 		"enabled": true,
@@ -221,5 +232,82 @@
 		],
 		"enabled": true,
 		"origin": 2
+	},
+	{
+		"inside": [
+			{
+				"type": "filter",
+				"of": "el presente _",
+				"to": "este",
+				"enabled": true,
+				"sintax": true
+			},
+			{
+				"type": "filter",
+				"of": "esta instancia",
+				"to": "este caso",
+				"enabled": true,
+				"sintax": false
+			}
+		],
+		"enabled": true,
+		"origin": 3
+	},
+	{
+		"inside": [
+			{
+				"type": "folder",
+				"enabled": true,
+				"name": "redundancy",
+				"index": 10
+			}
+		],
+		"enabled": true,
+		"origin": 1
+	},
+	{
+		"inside": [
+			{
+				"type": "folder",
+				"enabled": true,
+				"name": "cover all cases",
+				"index": 12
+			}
+		],
+		"enabled": true,
+		"origin": 9
+	},
+	{
+		"inside": [
+			{
+				"type": "filter",
+				"of": " de forma directa o indirecta",
+				"to": "",
+				"enabled": true,
+				"sintax": false
+			},
+			{
+				"type": "filter",
+				"of": "directa o indirectamente",
+				"to": "",
+				"enabled": true,
+				"sintax": false
+			}
+		],
+		"enabled": true,
+		"origin": 2
+	},
+	{
+		"inside": [
+			{
+				"type": "filter",
+				"of": " directly or indirectly",
+				"to": "",
+				"enabled": true,
+				"sintax": false
+			}
+		],
+		"enabled": true,
+		"origin": 10
 	}
 ]

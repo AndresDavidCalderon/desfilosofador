@@ -191,7 +191,6 @@ text = "otra acción.."
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="hbox/add/integrated" index="0"]
-visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -284,6 +283,7 @@ text = "otros valores"
 script = ExtResource( 6 )
 
 [node name="options" type="VBoxContainer" parent="hbox/add/other" index="0"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
