@@ -24,17 +24,18 @@ func unpopup():
 		$vorder.queue_sort()
 	else:
 		globals.iprint("already unpopuped")
+onready var titlelabel=$vorder/title
 func popup(title:String,desc="",fields:Array=[],canout=true,error:bool=false):
 	$quit.visible=canout
 	if visible:
 		unpopup()
 	visible=true
-	$title.text=title
+	titlelabel.text=title
 	if error:
-		$title.set("custom_colors/font_color",errorcolor)
-	var font=$title.get("custom_fonts/font") as DynamicFont
+		titlelabel.set("custom_colors/font_color",errorcolor)
+	var font=titlelabel.get("custom_fonts/font") as DynamicFont
 	var looped=false
-	while font.get_string_size(title).x>$title.rect_size.x:
+	while font.get_string_size(title).x>titlelabel.rect_size.x:
 		font.size-=1
 		looped=true
 	if looped:

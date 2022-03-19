@@ -69,5 +69,5 @@ func found(pos:int,text:String,_what:String):
 			text=stringfunc.cutout(pos-1,frontpos,text)
 			text=stringfunc.addbetween(text,replace,pos-1)
 	if original_text!=text:
-		prints("filter applied",find)
+		compiler.used.append(self)
 	return text

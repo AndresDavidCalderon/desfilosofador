@@ -19,6 +19,7 @@ func _ready():
 	line_endings.append("\n")
 	phrase_endings.append_array(line_endings)
 
+var used=[]
 func compile(text:String,filtertree:Array):
 	compilelog.clear()
 	filterbyphrase.clear()
@@ -28,6 +29,7 @@ func compile(text:String,filtertree:Array):
 			for j in i["inside"]:
 				if onfind.has(j["type"]):
 					onfind[j["type"]].new().fromfile(j)
+	used.clear()
 	for i in filterbyphrase.keys():
 		pos=0
 		var timesfound=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://UI/window/window.tscn" type="PackedScene" id=1]
 [ext_resource path="res://filters/elements/filterinstance.tscn" type="PackedScene" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://blueprints/blocks/actions/find.tscn" type="PackedScene" id=23]
 [ext_resource path="res://blueprints/blocks/conditionals/if.tscn" type="PackedScene" id=24]
 [ext_resource path="res://blueprints/blocks/return.tscn" type="PackedScene" id=25]
+[ext_resource path="res://UI/images/refresh.png" type="Texture" id=26]
+[ext_resource path="res://filters/refresh.gd" type="Script" id=27]
 
 [node name="window" instance=ExtResource( 1 )]
 margin_right = 1024.0
@@ -128,7 +130,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vbox" type="VBoxContainer" parent="scroll" index="2"]
+[node name="vbox" type="VBoxContainer" parent="scroll" index="0"]
 custom_constants/separation = 30
 alignment = 2
 script = ExtResource( 6 )
@@ -216,6 +218,32 @@ block_by_name = {
 "return_text": ExtResource( 25 ),
 "var": ExtResource( 14 )
 }
+
+[node name="refresh" type="Button" parent="." index="16"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -65.5483
+margin_top = 12.4947
+margin_right = -13.5483
+margin_bottom = 58.4947
+icon = ExtResource( 26 )
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="options" type="VBoxContainer" parent="refresh" index="0"]
+margin_left = -209.67
+margin_right = -5.6698
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="verb" type="Button" parent="refresh/options" index="0"]
+margin_right = 204.0
+margin_bottom = 28.0
+text = "update verb list"
 
 [connection signal="pressed" from="new/newfilter" to="." method="_on_newfilter_pressed"]
 [connection signal="pressed" from="new/newfolder" to="." method="_on_newfolder_pressed"]

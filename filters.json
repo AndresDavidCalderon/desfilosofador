@@ -1,313 +1,318 @@
 [
-	{
-		"origin": -1,
-		"enabled": true,
-		"inside": [
-			{
-				"type": "folder",
-				"name": "root",
-				"enabled": true,
-				"index": 1
-			}
-		]
-	},
-	{
-		"origin": 0,
-		"enabled": true,
-		"inside": [
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "español",
-				"index": 2
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "english",
-				"index": 9
-			}
-		]
-	},
-	{
-		"inside": [
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "terminos elegantes",
-				"index": 3
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "metáforas",
-				"index": 4
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "caracteristicas inherentes",
-				"index": 5
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "enfasis",
-				"index": 7
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "terminos mutuamente excluyentes",
-				"index": 11
-			}
-		],
-		"enabled": true,
-		"origin": 1
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "(la/el) epígrafe",
-				"to": "el titulo",
-				"enabled": true,
-				"sintax": true
-			},
-			{
-				"type": "filter",
-				"of": "la problematicidad",
-				"to": "los problemas",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "aquello que",
-				"to": "lo que",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "una carencia",
-				"to": "un defecto",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "inteligible",
-				"to": "entendible",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "desavenencia",
-				"to": "desacuerdo",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "sumamente",
-				"to": "muy",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "altamente",
-				"to": "muy",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "para referirse a mas texto",
-				"index": 8
-			}
-		],
-		"enabled": true,
-		"origin": 2
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "subraya la importancia",
-				"to": "muestra la importancia",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "idea medular",
-				"to": "idea central",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 2
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "escudo protector",
-				"to": "escudo",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "historia",
-				"index": 6
-			},
-			{
-				"type": "filter",
-				"of": "respuesta posible",
-				"to": "respuesta",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "todo lo demás",
-				"to": "lo demás",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 2
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "descubrimiento de América por Colón",
-				"to": "descubrimiento de América",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 5
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "justamente",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": ", pues,",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": ", precisamente,",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": " por el hecho de",
-				"to": " por",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 2
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": "el presente _",
-				"to": "este",
-				"enabled": true,
-				"sintax": true
-			},
-			{
-				"type": "filter",
-				"of": "esta instancia",
-				"to": "este caso",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 3
-	},
-	{
-		"inside": [
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "redundancy",
-				"index": 10
-			}
-		],
-		"enabled": true,
-		"origin": 1
-	},
-	{
-		"inside": [
-			{
-				"type": "folder",
-				"enabled": true,
-				"name": "cover all cases",
-				"index": 12
-			}
-		],
-		"enabled": true,
-		"origin": 9
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": " de forma directa o indirecta",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			},
-			{
-				"type": "filter",
-				"of": "directa o indirectamente",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 2
-	},
-	{
-		"inside": [
-			{
-				"type": "filter",
-				"of": " directly or indirectly",
-				"to": "",
-				"enabled": true,
-				"sintax": false
-			}
-		],
-		"enabled": true,
-		"origin": 10
-	}
+	[
+		{
+			"origin": -1,
+			"enabled": true,
+			"inside": [
+				{
+					"type": "folder",
+					"name": "root",
+					"enabled": true,
+					"index": 1
+				}
+			]
+		},
+		{
+			"origin": 0,
+			"enabled": true,
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "español",
+					"index": 2
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "english",
+					"index": 9
+				}
+			]
+		},
+		{
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "terminos elegantes",
+					"index": 3
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "metáforas",
+					"index": 4
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "caracteristicas inherentes",
+					"index": 5
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "enfasis",
+					"index": 7
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "terminos mutuamente excluyentes",
+					"index": 11
+				}
+			],
+			"enabled": true,
+			"origin": 1
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "(la/el) epígrafe",
+					"to": "el titulo",
+					"enabled": true,
+					"sintax": true
+				},
+				{
+					"type": "filter",
+					"of": "la problematicidad",
+					"to": "los problemas",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "aquello que",
+					"to": "lo que",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "una carencia",
+					"to": "un defecto",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "inteligible",
+					"to": "entendible",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "desavenencia",
+					"to": "desacuerdo",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "sumamente",
+					"to": "muy",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "altamente",
+					"to": "muy",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "para referirse a mas texto",
+					"index": 8
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "subraya la importancia",
+					"to": "muestra la importancia",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "idea medular",
+					"to": "idea central",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "escudo protector",
+					"to": "escudo",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "historia",
+					"index": 6
+				},
+				{
+					"type": "filter",
+					"of": "respuesta posible",
+					"to": "respuesta",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "todo lo demás",
+					"to": "lo demás",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "descubrimiento de América por Colón",
+					"to": "descubrimiento de América",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 5
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "justamente",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": ", pues,",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": ", precisamente,",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": " por el hecho de",
+					"to": " por",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "el presente _",
+					"to": "este",
+					"enabled": true,
+					"sintax": true
+				},
+				{
+					"type": "filter",
+					"of": "esta instancia",
+					"to": "este caso",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 3
+		},
+		{
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "redundancy",
+					"index": 10
+				}
+			],
+			"enabled": true,
+			"origin": 1
+		},
+		{
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "cover all cases",
+					"index": 12
+				}
+			],
+			"enabled": true,
+			"origin": 9
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": " de forma directa o indirecta",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				},
+				{
+					"type": "filter",
+					"of": "directa o indirectamente",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": " directly or indirectly",
+					"to": "",
+					"enabled": true,
+					"sintax": false
+				}
+			],
+			"enabled": true,
+			"origin": 10
+		}
+	],
+	[
+
+	]
 ]

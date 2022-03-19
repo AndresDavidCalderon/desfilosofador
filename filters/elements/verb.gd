@@ -17,6 +17,7 @@ func _on_lang_selected(index):
 
 func fromfile(dict):
 	$lang.select(dict["lang"])
+	_on_lang_selected(dict["lang"])
 	var idx=0
 	for i in dict["forms"]:
 		selected.get_child(idx).get_node("val").text=i
@@ -29,3 +30,6 @@ func getsave(dict):
 	for i in selected.get_children():
 		dict["forms"].append(i.get_node("val").text)
 
+func getdef(data:Dictionary):
+	data=getsavedata()
+	

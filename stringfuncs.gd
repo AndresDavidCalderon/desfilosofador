@@ -1,11 +1,15 @@
 extends Node
 class_name stringfunc
+
+
 #removes part of the string
 static func cutout(from:int,to:int,text:String)->String:
 	var takeleft=text.left(from)
 	var takeright=text.right(to)
 	return takeleft+takeright
  #sees if the given index is between carachters
+
+
 static func isbetween(idx:int,between:String,text:String):
 	var isopen=false
 	var found=0
@@ -20,6 +24,8 @@ static func isbetween(idx:int,between:String,text:String):
 				return false
 		found+=1
 		isopen=not isopen
+
+
 static func isbracketed(idx:int,open:String,close:String,text:String):
 	var isopen=false
 	var from=0
@@ -40,13 +46,19 @@ static func isbracketed(idx:int,open:String,close:String,text:String):
 				return false
 		from+=1
 		isopen= not isopen
+
+
 static func addbetween(text:String,added:String,where:int):
 	return text.left(where)+added+text.right(where)
+
+
 #replaces the first apeareance of a substring in a text.
 static func replacefind(find:String,to:String,text:String,where:int):
 	text=cutout(where,where+find.length(),text)
 	text=addbetween(text,to,where)
 	return text
+
+
 #finds the last appereance of a substring on a text until the limit.
 static func findlastuntil(text:String,find:String,until:int):
 	var from=0
@@ -55,11 +67,17 @@ static func findlastuntil(text:String,find:String,until:int):
 		from=text.find(find,from)
 		if from==-1 or from>until:
 			return lastfrom
+
+
 static func cutright(until:int,text:String):
 	return cutout(until,text.length()+1,text)
+
+
 #returns if the sentence is a quote "a"=true a=false
 static func withinquotes(idx:int,text:String):
 	return isbetween(idx,"\"",text)
+
+
 #removes carachters between open and close, for example passing [ and ] will remove bbcode
 static func removebetween(text:String,open:String,close:String)->String:
 	var from=0
@@ -72,6 +90,8 @@ static func removebetween(text:String,open:String,close:String)->String:
 			return text.right(from)
 		from=1
 	return text
+
+
 #gets words until the until argument is found, goes backwards.
 static func getuntilback(idx:int,text:String,until)->String:
 	var word=""
@@ -82,8 +102,12 @@ static func getuntilback(idx:int,text:String,until)->String:
 		else:
 			break
 	return word
+
+
 static func lengthidx(string:String)->int:
 	return string.length()-1
+
+
 static func getuntil(idx:int,text:String,until:String)->String:
 	var word=""
 	if text[idx]==until:

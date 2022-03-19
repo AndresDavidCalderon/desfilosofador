@@ -1,9 +1,11 @@
+class_name libraryelement,"res://filters/elements/element.png"
 extends Panel
+
 export(String) var type
 export(NodePath) onready var to_enabler
 var enabler
 var index:int
-class_name libraryelement,"res://filters/elements/element.png"
+
 func _ready():
 	if to_enabler!="":
 		enabler=get_node(to_enabler) as CheckBox
@@ -28,7 +30,7 @@ func delete():
 func exists():
 	return get_parent().root.currentfolder.has(self)
 
-
+#get default data
 func getonnew():
 	var data={"type":type}
 	call("getdef",data)

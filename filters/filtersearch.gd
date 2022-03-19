@@ -7,12 +7,40 @@ enum FILEPOS{
 	RES
 }
 export(FILEPOS) var save_folder
-var defaulttree=[{"origin":-1,"enabled":true,"inside":[{"type":"folder","name":"root","enabled":true,"index":1}]},{"origin":0,"enabled":true,"inside":[]}]
+var defaulttree=[
+	[
+		#subroot, contains root and its never opened.
+		{"origin":-1,
+		"enabled":true,
+		"inside":
+			[
+				{
+				"type":"folder",
+				"name":"root",
+				"enabled":true,
+				"index":1
+				}
+			]
+		},
+		#root, the folder read by default.
+		{
+		"origin":0,
+		"enabled":true,
+		"inside":[]
+		}
+	],
+	#verb section
+	[
+	]
+]
 var filtertree:Array=defaulttree
+var verbs:Array=[]
 var fileman=File.new()
 var filedir
 var index=1
 onready var box=$scroll/vbox
+
+
 func _ready():
 	match save_folder:
 		FILEPOS.EXECUTABLE:
@@ -22,10 +50,12 @@ func _ready():
 		FILEPOS.RES:
 			filedir="res://filters.json"
 	openfilters()
+
+
 func deleteall():
 	filtertree=defaulttree
-func refresh():
-	box.savecurrent()
+
+
 func openfilters():
 	deleteall()
 	var error=fileman.open(filedir,File.READ)
@@ -33,7 +63,8 @@ func openfilters():
 		if fileman.get_as_text()!="":
 			var dict=JSON.parse(fileman.get_as_text())
 			if dict.error==OK:
-				filtertree=dict.result as Array
+				filtertree=dict.result[0] as Array
+				verbs=dict.result[1]
 				box.openfolder(1)
 			else:
 				globals.popuper.popup("error abriendo los filtros","error "+str(dict.error)+"en la linea "+str(dict.error_line))
@@ -43,16 +74,21 @@ func openfilters():
 		fileman.close()
 	else:
 		globals.popuper.popup("error abriendo el archivo","error "+str(error))
+
+
 func savefilters():
 	box.savecurrent()
 	var error=fileman.open(filedir,File.WRITE)
 	if error==OK:
-		fileman.store_string(JSON.print(filtertree,"\t"))
+		fileman.store_string(JSON.print([filtertree,verbs],"\t"))
 		fileman.close()
 	else:
 		globals.popuper.popup("error guardando!","error "+str(error))
+
 func _on_newfilter_pressed():
 	addelement(filter.instance())
+
+
 func _on_save_pressed():
 	savefilters()
 	globals.popuper.popup("guardado!")
@@ -71,8 +107,10 @@ func addelement(new:libraryelement):
 		data=new.getsavedata()
 	filtertree[index]["inside"].append(data)
 
+
 func _on_newfolder_pressed():
 	addelement(folder.instance())
+
 
 func _on_folderup_pressed():
 	box.savecurrent()
@@ -86,12 +124,16 @@ func _on_excludequotes_toggled(button_pressed):
 	globals.skipquotes=button_pressed
 
 
+#blueprints
 func _on_blueprint_pressed():
 	$blueprints.visible=true
 	editing=null
 
+
 var editing=null
 export(PackedScene) var blueprint
+
+
 func _on_blueprints_save(dict):
 	if editing==null :
 		var new=blueprint.instance() as libraryelement
@@ -99,6 +141,7 @@ func _on_blueprints_save(dict):
 		new.fromfile(dict)
 	else:
 		editing.code=dict["code"]
+
 func editblue(who:libraryelement):
 	editing=who
 	$blueprints.visible=true

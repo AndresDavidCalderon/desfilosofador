@@ -7,14 +7,17 @@ func getsave(data):
 	data["enabled"]=$enabled.pressed
 	data["name"]=$name.text
 	data["index"]=saveindex
+
 func _on_open_pressed():
 	get_parent().root.get_node("dir").text+="/"+$name.text
 	get_parent().savecurrent()
 	get_parent().openfolder(saveindex)
+
 func fromfile(data):
 	$name.text=data["name"]
 	saveindex=data["index"]
 	$enabled.pressed=data["enabled"]
+
 func getdef(data):
 	get_parent().root.filtertree.append({"inside":[],"enabled":true,"origin":get_parent().root.index})
 	data["index"]=get_parent().root.filtertree.size()-1
@@ -22,6 +25,7 @@ func getdef(data):
 	print("set index",index)
 	data["enabled"]=$enabled.pressed
 	data["name"]=$name.text
+
 func customdelete():
 	for i in get_parent().root.filtertree:
 		for j in i["inside"]:
