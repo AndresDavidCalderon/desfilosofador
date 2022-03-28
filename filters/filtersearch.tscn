@@ -98,9 +98,9 @@ anchor_top = 1.0
 anchor_right = 0.165
 anchor_bottom = 1.0
 margin_left = -27.7404
-margin_top = 209.0
-margin_right = 62.2596
-margin_bottom = 311.0
+margin_top = 20.0
+margin_right = 92.2596
+margin_bottom = 122.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

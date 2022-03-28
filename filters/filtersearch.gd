@@ -8,7 +8,6 @@ enum FILEPOS{
 }
 export(FILEPOS) var save_folder
 var defaulttree=[
-	[
 		#subroot, contains root and its never opened.
 		{"origin":-1,
 		"enabled":true,
@@ -28,11 +27,7 @@ var defaulttree=[
 		"enabled":true,
 		"inside":[]
 		}
-	],
-	#verb section
-	[
 	]
-]
 var filtertree:Array=defaulttree
 var verbs:Array=[]
 var fileman=File.new()

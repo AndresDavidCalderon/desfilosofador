@@ -26,6 +26,7 @@ func unpopup():
 		globals.iprint("already unpopuped")
 onready var titlelabel=$vorder/title
 func popup(title:String,desc="",fields:Array=[],canout=true,error:bool=false):
+	titlelabel=$vorder/title
 	$quit.visible=canout
 	if visible:
 		unpopup()

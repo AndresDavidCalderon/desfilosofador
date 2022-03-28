@@ -30,7 +30,7 @@ func customdelete():
 	for i in get_parent().root.filtertree:
 		for j in i["inside"]:
 			if j.has("index"):
-				if j["index"]>=saveindex:
+				if j["index"]>saveindex:
 					j["index"]-=1
 					prints("reindexed",j)
 	for i in get_parent().root.filtertree[saveindex]["inside"]:
@@ -38,6 +38,15 @@ func customdelete():
 		get_parent().add_child(new)
 		new.fromfile(i)
 		new.delete()
+		
+	if get_parent().root.index>saveindex:
+		get_parent().root.index-=1
+	
+	for i in get_parent().root.box.get_children():
+		if i.type=="folder":
+			if i.saveindex>saveindex:
+				i.saveindex-=1
+	#refresh
 	get_parent().root.filtertree.remove(saveindex)
 
 
