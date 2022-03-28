@@ -126,7 +126,6 @@ __meta__ = {
 }
 
 [node name="new" type="Node2D" parent="."]
-visible = false
 
 [node name="center" type="Node2D" parent="new"]
 position = Vector2( 509.556, 285.732 )

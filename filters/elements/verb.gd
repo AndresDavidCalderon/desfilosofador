@@ -1,11 +1,11 @@
 extends libraryelement
 
+#where the first element is placed on the verb array
 var verb_index=0
+export(int) var verb_size
+onready var global_verbs=get_parent().root.verbs
+
 onready var selected=$ES
-
-#where the forms are located, on the 2 element of the file.
-var save_array:Array
-
 func _ready():
 	_on_lang_selected(0)
 
@@ -21,24 +21,33 @@ func _on_lang_selected(index):
 
 func fromfile(dict):
 	verb_index=dict["i"]
-	$lang.select(save_array[0])
-	_on_lang_selected(save_array[0])
-	var idx=0
-	for i in save_array:
-		if i==0:i=1
-		selected.get_child(idx).get_node("val").text=i
-		idx+=1
-
+	for i in selected.get_children():
+		i.get_node("val").text=global_verbs[verb_index+i.get_index()]
 
 func getsave(dict):
 	dict["i"]=verb_index
-	save_array.clear()
-	save_array.append($lang.selected)
 	for i in selected.get_children():
-		get_parent().root.verbs.append(i.text)
+		global_verbs[verb_index+i.get_index()]=i.get_node("val").text
 
-func getdef(data:Dictionary):
-	get_parent().root.verbs.append([])
-	verb_index=get_parent().root.verbs.size()-1
-	save_array=get_parent().root.verbs[verb_index]
-	data=getsavedata()
+func getdef(data):
+	verb_index=global_verbs.size()
+	var new=[]
+	new.resize(verb_size)
+	global_verbs.append_array(new)
+
+
+func customdelete():
+	for i in get_parent().root.filtertree:
+		for j in i["inside"]:
+			if j.type=="verb":
+				if j["i"]>verb_index:
+					j["i"]-=verb_size
+					prints("reindexed verb",j)
+	
+	for i in get_parent().root.box.get_children():
+		if i.type=="verb":
+			if i.verb_index>verb_index:
+				i.verb_index-=verb_size
+	
+	for i in verb_size:
+		global_verbs.remove(verb_index)

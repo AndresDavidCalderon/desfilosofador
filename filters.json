@@ -19,7 +19,7 @@
 				{
 					"type": "folder",
 					"enabled": true,
-					"name": "lel",
+					"name": "español",
 					"index": 2
 				}
 			]
@@ -28,10 +28,21 @@
 			"inside": [
 				{
 					"type": "filter",
-					"of": "carpeta 2",
-					"to": "",
+					"of": "el presente (libro/libra/lero) _",
+					"to": "este",
 					"enabled": true,
-					"sintax": false
+					"sintax": true
+				},
+				{
+					"type": "verb",
+					"i": 0
+				},
+				{
+					"type": "filter",
+					"of": "voy a ª",
+					"to": "si",
+					"enabled": true,
+					"sintax": true
 				}
 			],
 			"enabled": true,
@@ -39,6 +50,9 @@
 		}
 	],
 	[
-
+		"ir",
+		"fue",
+		"fui",
+		"llendo"
 	]
 ]

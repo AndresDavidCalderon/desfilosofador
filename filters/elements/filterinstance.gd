@@ -1,6 +1,9 @@
 extends libraryelement
+
 onready var new=$ui/result/new
 onready var from=$ui/of/origin
+
+
 func _ready():
 	$sintax.visible=false
 
@@ -20,7 +23,10 @@ func fromfile(save:Dictionary):
 	from.text=save["of"]
 	_on_origin_text_changed(from.text)
 
+
+
 func _on_origin_text_changed(new_text:String):
-	if new_text.find("_")!=-1 or new_text.find("/")!=-1:
-		$sintax.visible=true
-		rect_min_size.y=100
+	for i in compiler.filter_cases.keys():
+		if new_text.find(i)!=-1:
+			$sintax.visible=true
+			rect_min_size.y=100

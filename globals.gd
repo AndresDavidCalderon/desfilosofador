@@ -4,6 +4,7 @@ export(PoolStringArray) var finishers
 var popuper:popup
 var skipquotes=true
 var reader:Control setget setreader
+var library:window
 signal newreader
 
 func _ready():

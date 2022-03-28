@@ -15,7 +15,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 type = "filter"
-enabler = NodePath("enabled")
 
 [node name="ui" type="VBoxContainer" parent="."]
 margin_left = 6.0

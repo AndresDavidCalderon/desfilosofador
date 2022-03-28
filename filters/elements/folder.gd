@@ -33,6 +33,7 @@ func customdelete():
 				if j["index"]>saveindex:
 					j["index"]-=1
 					prints("reindexed",j)
+	
 	for i in get_parent().root.filtertree[saveindex]["inside"]:
 		var new=get_parent().scenebytype[i["type"]].instance() as libraryelement
 		get_parent().add_child(new)

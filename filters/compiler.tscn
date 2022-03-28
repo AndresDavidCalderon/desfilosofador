@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://filters/compiler.gd" type="Script" id=1]
 [ext_resource path="res://filters/filteronfind.gd" type="Script" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://blueprints/blocks/virtual/values/preceedv.gd" type="Script" id=11]
 [ext_resource path="res://blueprints/blocks/virtual/conditions/ifntot.gd" type="Script" id=12]
 [ext_resource path="res://blueprints/blocks/virtual/debug/print.gd" type="Script" id=13]
+[ext_resource path="res://filters/cases/wildcard.gd" type="Script" id=14]
+[ext_resource path="res://filters/cases/orgate.gd" type="Script" id=15]
+[ext_resource path="res://filters/cases/verb.gd" type="Script" id=16]
 
 [node name="compiler" type="Node"]
 script = ExtResource( 1 )
@@ -34,3 +37,9 @@ virtualblocks = {
 }
 line_endings = [ ".", "?", "!", ":" ]
 phrase_endings = [ ",", ";" ]
+word_endings = [ " " ]
+filter_cases = {
+"(": ExtResource( 15 ),
+"_": ExtResource( 14 ),
+"ª": ExtResource( 16 )
+}

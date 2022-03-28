@@ -8,13 +8,14 @@
 [node name="verb" type="Panel"]
 margin_right = 367.0
 margin_bottom = 200.0
-rect_min_size = Vector2( 0, 210 )
+rect_min_size = Vector2( 367, 210 )
 theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 type = "verb"
+verb_size = 4
 
 [node name="lang" type="Button" parent="."]
 margin_left = 11.0

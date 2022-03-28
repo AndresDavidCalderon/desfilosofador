@@ -37,6 +37,7 @@ onready var box=$scroll/vbox
 
 
 func _ready():
+	globals.library=self
 	match save_folder:
 		FILEPOS.EXECUTABLE:
 			filedir=OS.get_executable_path()+"/filters.json"

@@ -3,6 +3,9 @@ export(Dictionary) var onfind
 export(Dictionary) var virtualblocks
 export(Array,String) var line_endings
 export(Array,String) var phrase_endings:Array
+export(Array,String) var word_endings:Array
+
+export var filter_cases:Dictionary
 
 enum{
 	CONNECTION_OUT,
@@ -17,8 +20,10 @@ var compilelog=[]
 var pos
 func _ready():
 	line_endings.append("\n")
+	
 	phrase_endings.append_array(line_endings)
-
+	word_endings.append_array(line_endings)
+	word_endings.append_array(phrase_endings)
 var used=[]
 func compile(text:String,filtertree:Array):
 	compilelog.clear()

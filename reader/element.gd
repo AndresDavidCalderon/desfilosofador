@@ -33,5 +33,7 @@ func exists():
 #get default data
 func getonnew():
 	var data={"type":type}
-	call("getdef",data)
+	var newdict=call("getdef",data)
+	if newdict!=null:
+		data=newdict
 	return data
