@@ -24,49 +24,72 @@ func found(pos_on_text:int,text:String,_what:String):
 		if not usesintax:
 			text=stringfunc.replacefind(find,replace,text,pos_on_text)
 		else:
+			
 			var pos_on_filter=find.find(register)
-			while pos_on_filter>0:
-				if find[pos_on_filter-2]==")":
-					var options=stringfunc.getuntilback(pos_on_filter-3,find,"(")
-					pos_on_filter-=options.length()+2
-					options=stringfunc.countlist(options,"/")
-					var prefix=stringfunc.getuntilback(pos_on_text-2,text," ")
-					if not options.has(prefix):
-						return text
-					else:
-						#length returns 1 more that compensates the space
-						pos_on_text-=prefix.length()
-				pos_on_filter-=1
-			pos_on_filter=find.find(register)+stringfunc.getuntil(find.find(register),find," ").length()+1
-			var frontpos=pos_on_text+stringfunc.getuntil(pos_on_text+1,text," ").length()+2
-			if frontpos>stringfunc.lengthidx(text):
+			var cut_until=pos_on_text
+			
+			if cut_until>stringfunc.lengthidx(text):
 				return text
 			
-			#apply syntax
-			while pos_on_filter<find.length()-1:
-				var next_on_text=stringfunc.get_until_opts(frontpos,text,compiler.word_endings)
-				if compiler.filter_cases.has(find[pos_on_filter+1]):
-					pos_on_filter+=1
-					var result:Dictionary=compiler.filter_cases[find[pos_on_filter]].found({
+			var backpos=pos_on_text
+			#1 if going forward, -1 if backward
+			var directionsign:int=-1
+			#apply syntax forward from the start
+			for i in 2:
+				if i==1:
+					directionsign=1
+				while (pos_on_filter>0 and directionsign==-1) or (pos_on_filter<find.length() and directionsign==1):
+					print("loop")
+					var next_on_text=stringfunc.get_until_opts(cut_until,text,compiler.word_endings,directionsign)
+					var next_on_filter=stringfunc.get_until_opts(pos_on_filter,find,compiler.word_endings,directionsign)
+					
+					var keyword:Object
+					var symbol=find[pos_on_filter+1*directionsign]
+					if compiler.filter_cases.has(symbol):
+						keyword=compiler.filter_cases[symbol]
+					else:
+						keyword=preload("res://filters/cases/constant.gd")
+					
+					var result=keyword.found(next_on_text,{
 						"pos_on_filter":pos_on_filter,
+						"charachter_found":next_on_filter,
 						"text":text,
 						"origin":self,
 						"next_on_text":next_on_text,
-						"frontpos":frontpos
+						"cut_until":cut_until,
+						"direction":directionsign,
+						"next_on_filter":next_on_filter,
+						"symbol":symbol
 					})
-					if result.has("cancel") and result["cancel"]:
-						return text
-					pos_on_filter=result["pos_on_filter"]
-					text=result["text"]
-					frontpos=result["frontpos"]
-				else:
-					var next=stringfunc.getuntil(pos_on_filter,find," ")
-					var ontext=stringfunc.getuntil(frontpos,text," ")
-					if next!=ontext:
-						return text
-					pos_on_filter+=next.length()
-					frontpos+=ontext.length()
-			text=stringfunc.cutout(pos_on_text,frontpos,text)
+					
+					var accept:bool
+					var context
+					
+					
+					match typeof(result):
+						TYPE_BOOL:
+							accept=result
+						TYPE_ARRAY:
+							accept=result[0]
+							context=result[1]
+						TYPE_DICTIONARY:
+							context=result
+						
+					if accept!=null:
+						if accept:
+							cut_until+=next_on_text.length()*(directionsign*2)
+							pos_on_filter+=next_on_filter.length()
+						
+						else:
+							return text
+					if context!=null:
+						pos_on_filter=context["pos_on_filter"]
+						text=context["text"]
+						cut_until=context["cut_until"]
+					
+					if directionsign==-1:
+						backpos=cut_until
+			text=stringfunc.cutout(pos_on_text,cut_until,text)
 			text=stringfunc.addbetween(text,replace,pos_on_text)
 	if original_text!=text:
 		compiler.used.append(self)

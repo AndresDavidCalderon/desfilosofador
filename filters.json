@@ -28,7 +28,7 @@
 			"inside": [
 				{
 					"type": "filter",
-					"of": "el presente (libro/libra/lero) _",
+					"of": "el presente ª",
 					"to": "este",
 					"enabled": true,
 					"sintax": true
@@ -36,13 +36,6 @@
 				{
 					"type": "verb",
 					"i": 0
-				},
-				{
-					"type": "filter",
-					"of": "voy a ª",
-					"to": "si",
-					"enabled": true,
-					"sintax": true
 				}
 			],
 			"enabled": true,
@@ -51,8 +44,8 @@
 	],
 	[
 		"ir",
-		"fue",
-		"fui",
-		"llendo"
+		"",
+		"",
+		""
 	]
 ]

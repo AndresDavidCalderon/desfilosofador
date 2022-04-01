@@ -40,6 +40,7 @@ phrase_endings = [ ",", ";" ]
 word_endings = [ " " ]
 filter_cases = {
 "(": ExtResource( 15 ),
+")": ExtResource( 15 ),
 "_": ExtResource( 14 ),
 "ª": ExtResource( 16 )
 }

@@ -1,6 +1,8 @@
-extends Node
+##holds universal string manipulation functions.
+##shouldnt be initialized, it just holds code, 
+##isnt supposed to do anything.
 class_name stringfunc
-
+extends Node
 
 #removes part of the string
 static func cutout(from:int,to:int,text:String)->String:
@@ -121,18 +123,27 @@ static func getuntil(idx:int,text:String,until:String)->String:
 			break
 	return word
 
-static func get_until_opts(idx:int,text:String,until:Array)->String:
+static func get_until_opts(idx:int,text:String,until:Array,direction:int=1)->String:
 	var word=""
 	if until.has(text[idx]):
-		idx+=1
+		idx+=1*direction
 	#length retorna 1 más
-	while idx<text.length():
+	while (direction==1 and idx<text.length()) or (direction==.1 and idx>=0):
 		if not until.has(text[idx]):
 			word=word+text[idx]
-			idx+=1
+			idx+=1*direction
 		else:
 			break
 	return word
+
+static func reverse(text:String)->String:
+	var result=""
+	var idx=text.length()-1
+	while idx>=0:
+		result+=text[idx]
+		idx-=1
+	return result
+	
 
 static func countlist(text:String,separator:String)->Array:
 	var list=[]
@@ -142,6 +153,7 @@ static func countlist(text:String,separator:String)->Array:
 		list.append(new)
 		from+=new.length()+1
 	return list
+
 static func findnotbracketed(text:String,open:String,close:String,from:int=0,skipwild:bool=true)->String:
 	while from<text.length()-1:
 		match text[from]:

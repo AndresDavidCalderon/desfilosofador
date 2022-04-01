@@ -1,5 +1,5 @@
 extends Node
 
 static func found(word:String,context:Dictionary):
-	prints("verb",word)
-	return globals.library.verbs.has(word)
+	print("constant")
+	return word==context["next_on_filter"]
