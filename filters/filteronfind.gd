@@ -36,17 +36,19 @@ func found(pos_on_text:int,text:String,_what:String):
 			var directionsign:int=-1
 			#apply syntax forward from the start
 			for i in 2:
-				if i==1:
+				if i==1 or pos_on_filter==0:
 					directionsign=1
-				while (pos_on_filter>0 and directionsign==-1) or (pos_on_filter<find.length() and directionsign==1):
-					print("loop")
+					i=2
+				while (pos_on_filter>=0 and directionsign==-1) or (pos_on_filter<find.length() and directionsign==1):
 					var next_on_text=stringfunc.get_until_opts(cut_until,text,compiler.word_endings,directionsign)
 					var next_on_filter=stringfunc.get_until_opts(pos_on_filter,find,compiler.word_endings,directionsign)
 					
 					var keyword:Object
-					var symbol=find[pos_on_filter+1*directionsign]
+					var symbol=find[pos_on_filter]
+					
 					if compiler.filter_cases.has(symbol):
 						keyword=compiler.filter_cases[symbol]
+						prints("found symbol",symbol)
 					else:
 						keyword=preload("res://filters/cases/constant.gd")
 					
@@ -77,11 +79,12 @@ func found(pos_on_text:int,text:String,_what:String):
 						
 					if accept!=null:
 						if accept:
-							cut_until+=next_on_text.length()*(directionsign*2)
-							pos_on_filter+=next_on_filter.length()
+							cut_until+=(next_on_text.length()+1)*directionsign
+							pos_on_filter+=(next_on_filter.length()+1)*directionsign
 						
 						else:
 							return text
+					
 					if context!=null:
 						pos_on_filter=context["pos_on_filter"]
 						text=context["text"]
@@ -89,6 +92,7 @@ func found(pos_on_text:int,text:String,_what:String):
 					
 					if directionsign==-1:
 						backpos=cut_until
+					
 			text=stringfunc.cutout(pos_on_text,cut_until,text)
 			text=stringfunc.addbetween(text,replace,pos_on_text)
 	if original_text!=text:

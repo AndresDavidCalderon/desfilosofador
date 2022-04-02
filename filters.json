@@ -17,33 +17,22 @@
 			"enabled": true,
 			"inside": [
 				{
-					"type": "folder",
-					"enabled": true,
-					"name": "español",
-					"index": 2
-				}
-			]
-		},
-		{
-			"inside": [
+					"type": "verb",
+					"i": 0
+				},
 				{
 					"type": "filter",
 					"of": "el presente ª",
-					"to": "este",
+					"to": "",
 					"enabled": true,
 					"sintax": true
-				},
-				{
-					"type": "verb",
-					"i": 0
 				}
-			],
-			"enabled": true,
-			"origin": 1
+			]
 		}
 	],
 	[
-		"ir",
+		"*",
+		"libro",
 		"",
 		"",
 		""

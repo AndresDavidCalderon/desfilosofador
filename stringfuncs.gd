@@ -134,6 +134,8 @@ static func get_until_opts(idx:int,text:String,until:Array,direction:int=1)->Str
 			idx+=1*direction
 		else:
 			break
+	if direction==-1:
+		return reverse(word)
 	return word
 
 static func reverse(text:String)->String:

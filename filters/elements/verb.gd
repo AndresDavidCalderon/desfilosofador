@@ -1,6 +1,6 @@
 extends libraryelement
 
-#where the first element is placed on the verb array
+#where the separator is placed on the verb array
 var verb_index=0
 export(int) var verb_size
 onready var global_verbs=get_parent().root.verbs
@@ -26,13 +26,14 @@ func fromfile(dict):
 
 func getsave(dict):
 	dict["i"]=verb_index
+	global_verbs[verb_index]="*"
 	for i in selected.get_children():
-		global_verbs[verb_index+i.get_index()]=i.get_node("val").text
+		global_verbs[verb_index+i.get_index()+1]=i.get_node("val").text
 
 func getdef(data):
 	verb_index=global_verbs.size()
-	var new=[]
-	new.resize(verb_size)
+	var new=["*"]
+	new.resize(verb_size+1)
 	global_verbs.append_array(new)
 
 
@@ -41,13 +42,13 @@ func customdelete():
 		for j in i["inside"]:
 			if j.type=="verb":
 				if j["i"]>verb_index:
-					j["i"]-=verb_size
+					j["i"]-=verb_size+1
 					prints("reindexed verb",j)
 	
 	for i in get_parent().root.box.get_children():
 		if i.type=="verb":
 			if i.verb_index>verb_index:
-				i.verb_index-=verb_size
+				i.verb_index-=verb_size+1
 	
-	for i in verb_size:
+	for i in verb_size+1:
 		global_verbs.remove(verb_index)
