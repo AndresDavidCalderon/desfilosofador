@@ -17,24 +17,16 @@
 			"enabled": true,
 			"inside": [
 				{
-					"type": "verb",
-					"i": 0
-				},
-				{
 					"type": "filter",
-					"of": "el presente ª",
-					"to": "",
+					"of": "el presente silla",
+					"to": "este",
 					"enabled": true,
-					"sintax": true
+					"sintax": false
 				}
 			]
 		}
 	],
 	[
-		"*",
-		"libro",
-		"",
-		"",
-		""
+
 	]
 ]

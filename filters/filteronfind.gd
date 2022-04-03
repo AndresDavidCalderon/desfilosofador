@@ -18,11 +18,14 @@ func fromfile(dict:Dictionary):
 		compiler.filterbyphrase[register].append(self)
 
 
+#stores words that will have to be put in the replacement phrase.
+var newreplaces=[]
+
 func found(pos_on_text:int,text:String,_what:String):
 	var original_text=text
 	if not (stringfunc.withinquotes(pos_on_text,text) and globals.skipquotes):
 		if not usesintax:
-			text=stringfunc.replacefind(find,replace,text,pos_on_text)
+			text=stringfunc.replacefind(find,replace,text,false,pos_on_text)
 		else:
 			
 			var pos_on_filter=find.find(register)
@@ -34,6 +37,7 @@ func found(pos_on_text:int,text:String,_what:String):
 			var backpos=pos_on_text
 			#1 if going forward, -1 if backward
 			var directionsign:int=-1
+			newreplaces.clear()
 			#apply syntax forward from the start
 			for i in 2:
 				if i==1 or pos_on_filter==0:
@@ -81,7 +85,9 @@ func found(pos_on_text:int,text:String,_what:String):
 						if accept:
 							cut_until+=(next_on_text.length()+1)*directionsign
 							pos_on_filter+=(next_on_filter.length()+1)*directionsign
-						
+							
+							if compiler.filter_cases.has(symbol):
+								newreplaces.append(next_on_text)
 						else:
 							return text
 					
@@ -93,8 +99,16 @@ func found(pos_on_text:int,text:String,_what:String):
 					if directionsign==-1:
 						backpos=cut_until
 					
-			text=stringfunc.cutout(pos_on_text,cut_until,text)
+			
+			while replace.find("*")!=-1:
+				
+				replace=stringfunc.replacefind("*",newreplaces[0],replace)
+				newreplaces.remove(0)
+			
+			text=stringfunc.cutout(backpos,cut_until-1,text)
+			
 			text=stringfunc.addbetween(text,replace,pos_on_text)
+			
 	if original_text!=text:
 		compiler.used.append(self)
 	return text
