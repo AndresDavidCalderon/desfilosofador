@@ -17,13 +17,68 @@
 			"enabled": true,
 			"inside": [
 				{
+					"type": "folder",
+					"enabled": true,
+					"name": "español",
+					"index": 2
+				}
+			]
+		},
+		{
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "terminos elegantes",
+					"index": 3
+				}
+			],
+			"enabled": true,
+			"origin": 1
+		},
+		{
+			"inside": [
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "partes del texto",
+					"index": 4
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "sujetos",
+					"index": 5
+				}
+			],
+			"enabled": true,
+			"origin": 2
+		},
+		{
+			"inside": [
+				{
 					"type": "filter",
-					"of": "el presente silla",
-					"to": "este",
+					"of": "epígrafe",
+					"to": "titulo",
 					"enabled": true,
 					"sintax": false
 				}
-			]
+			],
+			"enabled": true,
+			"origin": 3
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "el presente _",
+					"to": "este *",
+					"enabled": true,
+					"sintax": true
+				}
+			],
+			"enabled": true,
+			"origin": 3
 		}
 	],
 	[
