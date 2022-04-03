@@ -1,21 +1,28 @@
+class_name filter_applier,"res://filters/filteronfind.gd"
 extends Resource
+
 var register:String
 var find:String
 var replace:String
+var case_sensitive:bool
 var usesintax:bool
+
 func fromfile(dict:Dictionary):
 	find=dict["of"]
 	replace=dict["to"]
 	if dict.has("sintax"):
 		usesintax=dict["sintax"]
+	case_sensitive=dict["case"]
 	if dict["enabled"]:
 		if not usesintax:
 			register=find
 		else:
 			register=stringfunc.findnotbracketed(find,"(",")")
-		if not compiler.filterbyphrase.has(register):
-			 compiler.filterbyphrase[register]=[]
-		compiler.filterbyphrase[register].append(self)
+		var case_number=int(dict["case"])
+		
+		if not compiler.filterbyphrase[case_number].has(register):
+			 compiler.filterbyphrase[case_number][register]=[]
+		compiler.filterbyphrase[case_number][register].append(self)
 
 
 #stores words that will have to be put in the replacement phrase.
@@ -25,9 +32,9 @@ func found(pos_on_text:int,text:String,_what:String):
 	var original_text=text
 	if not (stringfunc.withinquotes(pos_on_text,text) and globals.skipquotes):
 		if not usesintax:
-			text=stringfunc.replacefind(find,replace,text,false,pos_on_text)
-		else:
 			
+			text=stringfunc.replacefind(find,replace,text,false,pos_on_text,case_sensitive)
+		else:
 			var pos_on_filter=find.find(register)
 			var cut_until=pos_on_text
 			
@@ -52,9 +59,11 @@ func found(pos_on_text:int,text:String,_what:String):
 					
 					if compiler.filter_cases.has(symbol):
 						keyword=compiler.filter_cases[symbol]
-						prints("found symbol",symbol)
 					else:
 						keyword=preload("res://filters/cases/constant.gd")
+					
+					if not case_sensitive:
+						next_on_text=next_on_text.to_lower()
 					
 					var result=keyword.found(next_on_text,{
 						"pos_on_filter":pos_on_filter,

@@ -61,7 +61,8 @@
 					"of": "epígrafe",
 					"to": "titulo",
 					"enabled": true,
-					"sintax": false
+					"sintax": false,
+					"case": true
 				}
 			],
 			"enabled": true,
@@ -74,7 +75,8 @@
 					"of": "el presente _",
 					"to": "este *",
 					"enabled": true,
-					"sintax": true
+					"sintax": true,
+					"case": false
 				}
 			],
 			"enabled": true,

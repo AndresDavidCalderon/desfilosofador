@@ -13,12 +13,15 @@ func getsave(save:Dictionary):
 	save["to"]=new.text
 	save["enabled"]=$enabled.pressed
 	save["sintax"]=$sintax.pressed
+	save["case"]=$expand/options/case.pressed
 
 
 func fromfile(save:Dictionary):
 	if save.has("sintax"):
 		$sintax.pressed=save["sintax"]
 	$enabled.pressed=save["enabled"]
+	if save.has("case"):
+		$expand/options/case.pressed=save["case"]
 	new.text=save["to"]
 	from.text=save["of"]
 	_on_origin_text_changed(from.text)
@@ -30,3 +33,7 @@ func _on_origin_text_changed(new_text:String):
 		if new_text.find(i)!=-1:
 			$sintax.visible=true
 			rect_min_size.y=100
+
+
+func _on_expand_toggled(button_pressed):
+	$expand/options.visible=button_pressed

@@ -20,6 +20,9 @@ func _process(_delta):
 	if $right.pressed or $downright.pressed or $upright.pressed:
 		rect_size.x=(get_local_mouse_position().x-rect_global_position.x)+posoffset.x
 		dragging=true
+	if dragging and Input.is_action_just_pressed("exit"):
+		_on_close_pressed()
+
 func _on_close_pressed():
 	visible=false
 var back=ColorRect.new()

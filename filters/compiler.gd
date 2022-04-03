@@ -15,7 +15,8 @@ enum{
 	SUBJECT,
 	VERB
 }
-var filterbyphrase={}
+var filterbyphrase=[{},{}]
+
 var compilelog=[]
 var pos
 func _ready():
@@ -27,7 +28,7 @@ func _ready():
 var used=[]
 func compile(text:String,filtertree:Array):
 	compilelog.clear()
-	filterbyphrase.clear()
+	filterbyphrase=[{},{}]
 	for i in filtertree.size():
 		if isenabled(i,filtertree):
 			i=filtertree[i] as Dictionary
@@ -35,19 +36,24 @@ func compile(text:String,filtertree:Array):
 				if onfind.has(j["type"]):
 					onfind[j["type"]].new().fromfile(j)
 	used.clear()
-	for i in filterbyphrase.keys():
-		pos=0
-		var timesfound=0
-		while true:
-			pos=text.find(i,pos)
-			if pos!=-1:
-				timesfound+=1
-				for j in filterbyphrase[i].size():
-					var newtext=filterbyphrase[i][j].found(pos,text,i) as String
-					pos+=(newtext.length()-text.length())+i.length()
-					text=newtext
-			else:
-				break
+	for case_loop in 2:
+		for i in filterbyphrase[case_loop-1].keys():
+			pos=0
+			while true:
+				
+				if case_loop==1:
+					#case sensitive
+					pos=text.find(i,pos)
+				else:
+					#case unsensitive
+					pos=text.findn(i,pos)
+				if pos!=-1:
+					for j in filterbyphrase[case_loop-1][i].size():
+						var newtext=filterbyphrase[case_loop-1][i][j].found(pos,text,i) as String
+						pos+=(newtext.length()-text.length())+i.length()
+						text=newtext
+				else:
+					break
 	for i in line_endings:
 		text=text.replace(i+" \n",i+"\n\n")
 	return text

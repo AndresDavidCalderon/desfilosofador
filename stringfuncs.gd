@@ -55,9 +55,12 @@ static func addbetween(text:String,added:String,where:int):
 
 
 #replaces the first apeareance of a substring in a text.
-static func replacefind(find:String,to:String,text:String,search:bool=true,where:int=0):
+static func replacefind(find:String,to:String,text:String,search:bool=true,where:int=0,case_sensitive:bool=true):
 	if search:
-		where=text.find(find,where)
+		if case_sensitive:
+			where=text.find(find,where)
+		else:
+			where=text.findn(find,where)
 		
 	text=cutout(where,where+find.length(),text)
 	
