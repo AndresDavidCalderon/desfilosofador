@@ -18,7 +18,7 @@ func fromfile(dict:Dictionary):
 			register=find
 		else:
 			register=stringfunc.findnotbracketed(find,"(",")")
-		var case_number=int(dict["case"])
+		var case_number=int(not dict["case"])
 		
 		if not compiler.filterbyphrase[case_number].has(register):
 			 compiler.filterbyphrase[case_number][register]=[]

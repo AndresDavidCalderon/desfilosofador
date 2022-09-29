@@ -1,7 +1,7 @@
 extends Panel
 func _ready():
-	globals.reader=$new/center/text
-	$new.visible=true
+	globals.reader=$"%NewText"
+	$NewText.visible=true
 	$read.visible=false
 	get_viewport().connect("size_changed",self,"setsize")
 func setsize():
@@ -14,7 +14,7 @@ onready var reader=$read
 func _on_read_pressed():
 	globals.reader=$read
 	reader.text=getcompile()
-	$new.visible=false
+	$"%NewText".visible=false
 	$read.visible=true
 
 func _on_reconstruct_pressed():
@@ -26,4 +26,4 @@ func _on_change_pressed():
 	$read.visible=false
 
 func getcompile():
-	return compiler.compile($new/center/text.text,$librarycontainer/filtersearch.filtertree)
+	return compiler.compile($"%NewText".text,$librarycontainer/filtersearch.filtertree)

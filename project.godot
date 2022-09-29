@@ -70,7 +70,7 @@ _global_script_classes=[ {
 "path": "res://UI/window/window.gd"
 } ]
 _global_script_class_icons={
-"aligner": "res://ui/extendericon.png",
+"aligner": "",
 "blockbase": "res://blueprints/blockbase.png",
 "expandable": "res://UI/images/expandable.png",
 "filter_applier": "res://filters/filteronfind.gd",

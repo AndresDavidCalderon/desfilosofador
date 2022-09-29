@@ -2,7 +2,6 @@ extends HBoxContainer
 export(float) var margin
 var reader:Control
 onready var result=get_parent().get_parent().get_node("read")
-onready var input=get_parent().get_parent().get_node("new/center/text")
 func _ready():
 	get_viewport().connect("size_changed",self,"resize")
 func resize():
@@ -10,8 +9,8 @@ func resize():
 	rect_position.x=-rect_size.x/2
 
 func vis():
-	if get_parent().get_parent().get_node("new").visible:
-		reader=input
+	if $"%NewText".visible:
+		reader=$"%NewText"
 	else:
 		reader=result
 

@@ -49,6 +49,12 @@
 					"enabled": true,
 					"name": "sujetos",
 					"index": 5
+				},
+				{
+					"type": "folder",
+					"enabled": true,
+					"name": "manera o metodo",
+					"index": 6
 				}
 			],
 			"enabled": true,
@@ -62,7 +68,7 @@
 					"to": "titulo",
 					"enabled": true,
 					"sintax": false,
-					"case": true
+					"case": false
 				}
 			],
 			"enabled": true,
@@ -77,6 +83,20 @@
 					"enabled": true,
 					"sintax": true,
 					"case": false
+				}
+			],
+			"enabled": true,
+			"origin": 3
+		},
+		{
+			"inside": [
+				{
+					"type": "filter",
+					"of": "de este modo",
+					"to": "asì",
+					"enabled": true,
+					"sintax": false,
+					"case": true
 				}
 			],
 			"enabled": true,

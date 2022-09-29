@@ -39,8 +39,7 @@ func compile(text:String,filtertree:Array):
 	for case_loop in 2:
 		for i in filterbyphrase[case_loop-1].keys():
 			pos=0
-			while true:
-				
+			while true:	
 				if case_loop==1:
 					#case sensitive
 					pos=text.find(i,pos)
@@ -80,8 +79,8 @@ func addlog(messages):
 	compilelog.append(final)
 
 
-func wait_for_phrase(who:Object,phrase:String):
+func wait_for_phrase(who:Object,phrase:String,case_sensitive:bool=false):
 	if not filterbyphrase.has(phrase):
-		filterbyphrase[phrase]=[]
-	filterbyphrase[phrase].append(who)
+		filterbyphrase[int(case_sensitive)][phrase]=[]
+	filterbyphrase[int(case_sensitive)][phrase].append(who)
 	

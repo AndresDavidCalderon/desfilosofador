@@ -9,12 +9,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -620.0
-margin_bottom = -501.0
-rect_min_size = Vector2( 404, 90 )
+margin_bottom = -492.0
+rect_min_size = Vector2( 404, 110 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 type = "filter"
 
 [node name="ui" type="VBoxContainer" parent="."]
@@ -127,18 +124,12 @@ margin_right = -67.7753
 margin_bottom = -30.5097
 toggle_mode = true
 icon = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="options" type="VBoxContainer" parent="expand"]
-margin_left = -118.768
-margin_top = 37.5368
-margin_right = 0.231598
-margin_bottom = 77.5368
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = -164.225
+margin_top = 24.5097
+margin_right = -45.2247
+margin_bottom = 64.5097
 
 [node name="case" type="CheckBox" parent="expand/options"]
 margin_right = 119.0

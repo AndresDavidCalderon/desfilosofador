@@ -6,6 +6,7 @@ onready var from=$ui/of/origin
 
 func _ready():
 	$sintax.visible=false
+	_on_expand_toggled(false)
 
 
 func getsave(save:Dictionary):

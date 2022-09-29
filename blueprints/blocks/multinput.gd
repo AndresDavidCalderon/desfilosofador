@@ -22,7 +22,7 @@ func _on_conditions_resized():
 
 
 func _on_del_pressed():
-	get_child(conditions+1).delete()
+	get_child(conditions).delete()
 	conditions-=1
 	if conditions==0:
 		$del.disabled=true
